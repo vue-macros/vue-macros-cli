@@ -1,0 +1,26 @@
+id: export-render
+language: html
+rule:
+  kind: end_tag
+  regex: "</script>"
+  inside:
+    kind: script_element
+    any:
+      - precedes:
+          matches: is-template
+      -  follows:
+          matches: is-template
+fix: |-
+
+  export default () => (
+    $X
+  )
+  </script>
+
+---
+
+id: export-render remove template
+language: html
+rule:
+  matches: is-template
+fix: |-
