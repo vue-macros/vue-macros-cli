@@ -1,18 +1,20 @@
 <script setup lang="tsx">
-const list = 4
+import Comp from './components/Comp.vue'
+
+const list = [{ id: 1 }]
 const bind = { }
 const on = { submit: () => {} }
 </script>
 
 <template>
-  <Comp 
+  <Comp
+    v-for="i in list"
     v-if="list"
-    v-for="i in list" 
-    :key="i" 
+    :key="i"
     v-bind="bind"
     v-on="on"
-  > 
-    <template v-slot="{ id }">
+  >
+    <template #default="{ id }">
       <div>{{ id }}</div>
     </template>
     <template #bottom="{ foo }">
