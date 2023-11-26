@@ -1,7 +1,7 @@
 {
   "name": "vue-macros-cli",
   "type": "module",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Rewriting at vue macros powered by ast-grep.",
   "author": "zhiyuanzmj <zhiyuanzmj@gmail.com>",
   "license": "MIT",
