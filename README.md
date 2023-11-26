@@ -23,4 +23,4 @@ vue-macros-cli sg ./src
 
 ## License
 
-MIT License &copy; 2022-PRESENT [zhiyuanzmj](https://github.com/zhiyuanzmj)
+MIT License &copy; 2023-PRESENT [zhiyuanzmj](https://github.com/zhiyuanzmj)
