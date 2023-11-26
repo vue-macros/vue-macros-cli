@@ -1,7 +1,13 @@
 #! /usr/bin/env node
 import { fileURLToPath } from 'node:url'
+import process from 'node:process'
 import { $, argv, chalk, fs, glob, path } from 'zx'
 import { select } from '@inquirer/prompts'
+
+if (argv._[0] !== 'sg') {
+  console.log(chalk.red('Do you want to use `sg` cmd?'))
+  process.exit()
+}
 
 $.verbose = false
 
@@ -34,9 +40,9 @@ if (macro === 'jsx-directive') {
   })
 }
 
-const defineShortSlots = 'define-slots'
+let defineSlots = 'define-slots'
 if (['jsx-directive', 'setup-sfc'].includes(macro)) {
-  render = await select({
+  defineSlots = await select({
     message: chalk.green(
       `Which define-slots macro do you want to use?`,
     ),
@@ -60,7 +66,7 @@ if (macro === 'short-v-model') {
   })
 }
 
-const targetDirectory = path.resolve(argv._[0] || '.')
+const targetDirectory = path.resolve(argv._.at(-1) || '.')
 
 const files = await glob(`${targetDirectory}/**/*.vue`, {
   ignore: [
@@ -82,7 +88,7 @@ if (['jsx-directive', 'setup-sfc'].includes(macro)) {
 
   await $`${sg} scan -c ${config} -U --filter '^tsx v-' ${targetDirectory}`
 
-  if (defineShortSlots)
+  if (defineSlots === 'define-short-slots')
     await $`${sg} scan -c ${config} -U --filter 'tsx define-short-slots' ${targetDirectory}`
 
   if (macro === 'setup-sfc') {

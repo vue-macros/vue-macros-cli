@@ -1,17 +1,17 @@
 {
-  "name": "vue-macros-sg",
+  "name": "vue-macros-cli",
   "type": "module",
   "version": "0.0.3",
-  "description": "Transform to vue-macros's syntax powered by ast-grep.",
+  "description": "Rewriting at vue macros powered by ast-grep.",
   "author": "zhiyuanzmj <zhiyuanzmj@gmail.com>",
   "license": "MIT",
-  "homepage": "https://github.com/zhiyuanzmj/vue-macros-sg/tree/main#readme",
+  "homepage": "https://github.com/zhiyuanzmj/vue-macros-cli/tree/main#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/zhiyuanzmj/vue-macros-sg"
+    "url": "https://github.com/zhiyuanzmj/vue-macros-cli"
   },
   "bugs": {
-    "url": "https://github.com/zhiyuanzmj/vue-macros-sg/issues"
+    "url": "https://github.com/zhiyuanzmj/vue-macros-cli/issues"
   },
   "keywords": [
     "vue-macros",
