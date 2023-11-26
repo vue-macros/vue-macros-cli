@@ -1,0 +1,11 @@
+id: setup-sfc
+language: html
+rule:
+  kind: script_element
+  has:
+    kind: raw_text
+    pattern: $A
+  inside:
+    kind: fragment
+fix: |-
+  $A

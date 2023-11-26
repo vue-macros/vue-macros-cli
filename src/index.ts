@@ -1,107 +1,99 @@
-import { toArray } from '@unocss/core'
-import type { SourceCodeTransformer } from '@unocss/core'
-import { js } from '@ast-grep/napi'
+#! /usr/bin/env node
+import { fileURLToPath } from 'node:url'
+import { $, argv, chalk, fs, glob, path } from 'zx'
+import { select } from '@inquirer/prompts'
 
-export type FilterPattern = Array<string | RegExp> | string | RegExp | null
+$.verbose = false
 
-function createFilter(
-  include: FilterPattern,
-  exclude: FilterPattern,
-): (id: string) => boolean {
-  const includePattern = toArray(include || [])
-  const excludePattern = toArray(exclude || [])
-  return (id: string) => {
-    if (excludePattern.some(p => id.match(p)))
-      return false
-    return includePattern.some(p => id.match(p))
-  }
+const __filename = fileURLToPath(import.meta.url)
+const sg = path.resolve(path.dirname(__filename), '../node_modules/.bin/ast-grep')
+const config = `${path.dirname(__filename)}/sgconfig.yml`
+
+let macro = await select({
+  message: chalk.green(
+    `Which vue macro do you want to use?`,
+  ),
+  choices: [
+    { value: 'jsx-directive' },
+    { value: 'setup-sfc' },
+    { value: 'short-v-model' },
+  ],
+},
+)
+
+let render = 'define-render'
+if (macro === 'jsx-directive') {
+  render = await select({
+    message: chalk.green(
+      `Which render macro do you want to use?`,
+    ),
+    choices: [
+      { value: 'define-render' },
+      { value: 'export-render' },
+    ],
+  })
 }
 
-export interface TransformerAttributifyJsxOptions {
-  /**
-   * the list of attributes to ignore
-   * @default []
-   */
-  blocklist?: (string | RegExp)[]
-
-  /**
-   * Regex of modules to be included from processing
-   * @default [/\.[jt]sx$/, /\.mdx$/]
-   */
-  include?: FilterPattern
-
-  /**
-   * Regex of modules to exclude from processing
-   *
-   * @default []
-   */
-  exclude?: FilterPattern
+const defineShortSlots = 'define-slots'
+if (['jsx-directive', 'setup-sfc'].includes(macro)) {
+  render = await select({
+    message: chalk.green(
+      `Which define-slots macro do you want to use?`,
+    ),
+    choices: [
+      { value: 'define-slots' },
+      { value: 'define-short-slots' },
+    ],
+  })
 }
 
-export default function transformerAttributifyJsxSg(
-  options: TransformerAttributifyJsxOptions = {},
-): SourceCodeTransformer {
-  const { blocklist = [] } = options
+if (macro === 'short-v-model') {
+  macro = await select({
+    message: chalk.green(
+      `Which prefix do you want to use?`,
+    ),
+    choices: [
+      { name: '$', value: 'short-v-model 1', description: '$foo="foo"' },
+      { name: '::', value: 'short-v-model 2', description: '::foo="foo"' },
+      { name: '*', value: 'short-v-model 3', description: '*foo="foo"' },
+    ],
+  })
+}
 
-  const isBlocked = (matchedRule: string) => {
-    for (const blockedRule of blocklist) {
-      if (blockedRule instanceof RegExp) {
-        if (blockedRule.test(matchedRule))
-          return true
-      }
-      else if (matchedRule === blockedRule) {
-        return true
-      }
-    }
+const targetDirectory = path.resolve(argv._[0] || '.')
 
-    return false
+const files = await glob(`${targetDirectory}/**/*.vue`, {
+  ignore: [
+    '**/node_modules/**',
+    argv.ignore,
+  ].filter(Boolean),
+})
+
+await Promise.all(files.map(async file => fs.move(file, `${file}.sg.html`)))
+
+if (['jsx-directive', 'setup-sfc'].includes(macro)) {
+  await $`${sg} scan -c ${config} -U --filter '^v-' ${targetDirectory}`
+
+  await $`${sg} scan -c ${config} -U --filter '^${macro === 'setup-sfc' ? render : 'export-render'}' ${targetDirectory}`
+
+  await $`${sg} scan -c ${config} -U --filter '^setup-sfc' ${targetDirectory}`
+
+  await Promise.all(files.map(async file => fs.move(`${file}.sg.html`, `${file}.sg.tsx`)))
+
+  await $`${sg} scan -c ${config} -U --filter '^tsx v-' ${targetDirectory}`
+
+  if (defineShortSlots)
+    await $`${sg} scan -c ${config} -U --filter 'tsx define-short-slots' ${targetDirectory}`
+
+  if (macro === 'setup-sfc') {
+    await Promise.all(files.map(async file => fs.move(`${file}.sg.tsx`, `${file.slice(0, -3)}tsx`)))
   }
-
-  const idFilter = createFilter(
-    options.include || [/\.[jt]sx$/, /\.mdx$/],
-    options.exclude || [],
-  )
-
-  return {
-    name: '@unocss/transformer-attributify-jsx-sg',
-    enforce: 'pre',
-    idFilter,
-    async transform(code, _, { uno }) {
-      const tasks: Promise<void>[] = []
-
-      const ast = await js.parseAsync(code.original)
-      const root = ast.root()
-      const nodes = root.findAll({
-        rule: {
-          kind: 'jsx_attribute',
-          not: {
-            has: {
-              any: [{ kind: 'jsx_expression' }, { kind: 'string' }],
-            },
-          },
-        },
-      })
-
-      for (const node of nodes) {
-        const range = node.range()
-        const matchedRule = node.text().replace(/:/i, '-')
-        if (isBlocked(matchedRule))
-          continue
-
-        tasks.push(
-          uno.parseToken(matchedRule).then((matched) => {
-            if (matched) {
-              code.overwrite(
-                range.start.index,
-                range.end.index,
-                `${matchedRule}=""`,
-              )
-            }
-          }),
-        )
-      }
-
-      await Promise.all(tasks)
-    },
+  else {
+    await $`${sg} scan -c ${config} -U --filter '^tsx sfc$' ${targetDirectory}`
+    await Promise.all(files.map(async file => fs.move(`${file}.sg.tsx`, file)))
   }
+}
+else {
+  await $`${sg} scan -c ${config} -U --filter ^${macro} ${targetDirectory}`
+  await Promise.all(files.map(async file => fs.move(`${file}.sg.html`, file)))
 }

@@ -1,0 +1,48 @@
+id: short-v-model 1
+language: html
+rule:
+  kind: attribute_name
+  regex: '^v-model:'
+  pattern: $NAME
+transform:
+  N:
+    replace:
+      replace: ^v-model
+      by: $
+      source: $NAME
+fix:
+  $N
+
+---
+
+id: short-v-model 2
+language: html
+rule:
+  kind: attribute_name
+  regex: '^v-model:'
+  pattern: $NAME
+transform:
+  N:
+    replace:
+      replace: ^v-model
+      by: ':'
+      source: $NAME
+fix:
+  $N
+
+---
+
+id: short-v-model 3
+language: html
+rule:
+  kind: attribute_name
+  regex: '^v-model:'
+  pattern: $NAME
+transform:
+  N:
+    replace:
+      replace: ^v-model
+      by: '*'
+      source: $NAME
+fix: |-
+  $N

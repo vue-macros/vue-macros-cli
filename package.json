@@ -1,61 +1,54 @@
 {
-  "name": "transformer-attributify-jsx-sg",
+  "name": "vue-macros-sg",
   "type": "module",
-  "version": "0.0.6",
-  "description": "Support valueless attributify in JSX/TSX.",
+  "version": "0.0.0",
+  "description": "Transform to vue-macros's syntax powered by ast-grep.",
   "author": "zhiyuanzmj <zhiyuanzmj@gmail.com>",
   "license": "MIT",
-  "homepage": "https://github.com/zhiyuanzmj/transformer-attributify-jsx-sg/tree/main#readme",
+  "homepage": "https://github.com/zhiyuanzmj/vue-macros-sg/tree/main#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/zhiyuanzmj/transformer-attributify-jsx-sg"
+    "url": "https://github.com/zhiyuanzmj/vue-macros-sg"
   },
   "bugs": {
-    "url": "https://github.com/zhiyuanzmj/transformer-attributify-jsx-sg/issues"
+    "url": "https://github.com/zhiyuanzmj/vue-macros-sg/issues"
   },
   "keywords": [
-    "unocss",
-    "unocss-transformer",
+    "vue-macros",
     "ast-grep"
   ],
   "sideEffects": false,
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.cjs"
+      "import": "./dist/index.mjs"
     }
   },
-  "main": "./dist/index.cjs",
+  "main": "./dist/index.mjs",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
+  "bin": "./dist/index.mjs",
   "files": [
     "dist"
   ],
   "scripts": {
     "build": "unbuild",
     "dev": "unbuild --stub",
-    "bench": "UV_THREADPOOL_SIZE=8 node bench/ms.js",
     "test": "vitest",
     "release": "bumpp && pnpm publish",
     "prepublishOnly": "pnpm run build"
   },
   "dependencies": {
-    "@ast-grep/napi": "^0.13.2",
-    "@unocss/core": "^0.57.6"
+    "@ast-grep/cli": "^0.13.2",
+    "@inquirer/prompts": "^3.3.0",
+    "zx": "^7.2.3"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^2.0.0",
-    "@babel/preset-typescript": "^7.23.3",
-    "@unocss/core": "^0.57.4",
-    "@unocss/transformer-attributify-jsx-babel": "^0.57.6",
-    "benny": "^3.7.1",
+    "@antfu/eslint-config": "^2.1.0",
     "bumpp": "^9.2.0",
-    "magic-string": "^0.30.5",
-    "transformer-attributify-jsx-swc": "^0.0.1",
-    "typescript": "^5.2.2",
+    "typescript": "^5.3.2",
     "unbuild": "^2.0.0",
-    "unocss": "^0.57.6",
+    "unocss": "^0.57.7",
     "vitest": "^0.34.6"
   }
 }

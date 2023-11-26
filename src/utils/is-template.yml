@@ -1,0 +1,8 @@
+id: is-template
+language: html
+rule:
+  kind: element
+  inside:
+    kind: fragment
+    has:
+      kind: script_element

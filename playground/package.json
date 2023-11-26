@@ -1,22 +1,18 @@
 {
   "type": "module",
   "scripts": {
-    "start": "node ./script/cli.mjs",
-    "sg": "ast-grep scan -c ./ast-grep/sgconfig.yml -U ./fixtures",
-    "build": "unbuild",
-    "dev": "unbuild --stub",
-    "bench": "UV_THREADPOOL_SIZE=8 node bench/ms.js",
-    "test": "vitest",
-    "release": "bumpp && pnpm publish",
-    "prepublishOnly": "pnpm run build"
+    "sg": "../dist/index.mjs",
+    "dev": "vite",
+    "build": "vite build"
   },
   "dependencies": {
     "@vitejs/plugin-vue": "^4.5.0",
     "@vitejs/plugin-vue-jsx": "^3.1.0",
-    "unplugin-vue-macros": "^2.7.0"
+    "unplugin-vue-macros": "^2.7.0",
+    "vue": "^3.3.9"
   },
   "devDependencies": {
-    "@vue-macros/volar": "^0.17.3",
+    "@vue-macros/volar": "^0.17.4",
     "vite": "^5.0.2"
   }
 }

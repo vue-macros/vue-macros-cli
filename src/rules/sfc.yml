@@ -1,0 +1,9 @@
+id: tsx sfc
+language: tsx
+rule:
+  kind: program
+  pattern: $A
+fix: |-
+  <script setup lang="tsx">
+  $A
+  </script>

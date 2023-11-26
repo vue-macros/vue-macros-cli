@@ -1,0 +1,9 @@
+id: is-script
+language: html
+rule:
+  kind: start_tag
+  regex: script
+  inside:
+    kind: script_element
+    inside:
+      kind: fragment

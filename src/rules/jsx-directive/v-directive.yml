@@ -1,0 +1,22 @@
+id: v-directive
+language: html
+rule:
+  kind: attribute
+  has:
+    kind: attribute_name
+    pattern: $NAME
+    regex: ^v-
+    precedes:
+      kind: quoted_attribute_value
+      has:
+        kind: attribute_value
+        pattern: $V
+      stopBy: end
+transform:
+  K:
+    replace:
+      replace: \.
+      by: _
+      source: $NAME
+fix: |-
+  $K={$V}

@@ -1,0 +1,93 @@
+id: v-define-slots default
+language: html
+rule:
+  kind: tag_name
+  regex: ^slot$
+  precedes:
+    kind: attribute
+    not:
+      has:
+        kind: attribute_name
+        regex: ^name$
+fix:
+  slots.default
+
+---
+
+id: v-define-slots name
+language: html
+rule:
+  kind: tag_name
+  regex: ^slot$
+  precedes:
+    kind: attribute
+    has:
+      kind: attribute_name
+      regex: ^name$
+      precedes:
+        kind: quoted_attribute_value
+        has:
+          kind: attribute_value
+          pattern: $V
+        stopBy: end
+fix:
+  slots.$V
+
+---
+
+id: v-define-slots remove name
+language: html
+rule:
+  kind: attribute
+  has:
+    kind: attribute_name
+    regex: ^name$
+  follows:
+    kind: tag_name
+    regex: ^slot$
+
+fix: |-
+
+---
+
+id: tsx v-define-slots
+language: tsx
+rule:
+  kind: expression_statement
+  pattern: $A
+  has:
+    kind: call_expression
+    has:
+      kind: identifier
+      regex: ^defineSlots$
+  inside:
+    kind: program
+fix: |-
+  const slots = $A
+
+---
+
+id: tsx define-short-slots
+language: tsx
+rule:
+  kind: type_annotation
+  has:
+    kind: function_type
+    has:
+      kind: formal_parameters
+      has:
+        kind: required_parameter
+        has:
+          kind: type_annotation
+          pattern: $A
+  inside:
+    kind: property_signature
+    inside:
+      kind: object_type
+      inside:
+        kind: type_arguments
+        follows:
+          kind: identifier
+          regex: ^defineSlots$
+fix: |-
+  $A

@@ -1,0 +1,39 @@
+id: v-bind shorthand
+language: html
+rule:
+  kind: attribute
+  has:
+    kind: attribute_name
+    regex: '^:'
+    pattern: $NAME
+    precedes:
+      kind: quoted_attribute_value
+      has:
+        kind: attribute_value
+        pattern: $V
+      stopBy: end
+transform:
+  K:
+    substring:
+      startChar: 1
+      source: $NAME
+fix: |-
+  $K={$V}
+
+---
+
+id: v-bind transform to {...props}
+language: html
+rule:
+  kind: attribute
+  has:
+    kind: attribute_name
+    regex: ^v-bind$
+    precedes:
+      kind: quoted_attribute_value
+      has:
+        kind: attribute_value
+        pattern: $V
+      stopBy: end
+fix: |-
+  {...$V}

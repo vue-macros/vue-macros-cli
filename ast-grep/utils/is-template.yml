@@ -1,7 +1,0 @@
-id: is-template
-language: html
-rule:       
-  kind: element
-  has:
-    kind: element
-    pattern: $X

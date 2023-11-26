@@ -1,0 +1,70 @@
+id: define-render
+language: html
+rule:
+  kind: end_tag
+  regex: </script>
+  inside:
+    kind: script_element
+    any:
+      - precedes:
+          matches: is-template
+          has:
+            kind: element
+            pattern: $A
+      - follows:
+          matches: is-template
+          has:
+            kind: element
+            pattern: $A
+fix: |-
+
+  defineRender(() => (
+    $A
+  ))
+  </script>
+
+---
+
+id: define-render remove template
+language: html
+rule:
+  matches: is-template
+fix: |-
+
+---
+
+id: define-render has lang
+language: html
+rule:
+  kind: attribute_value
+  inside:
+    kind: quoted_attribute_value
+    inside:
+      kind: attribute
+      pattern: $NAME
+      has:
+        kind: attribute_name
+        regex: lang
+      inside:
+        matches: is-script
+fix: |-
+  tsx
+
+---
+
+id: define-render no lang
+language: html
+rule:
+  kind: tag_name
+  regex: script
+  pattern: $NAME
+  inside:
+    matches: is-script
+    not:
+      has:
+        kind: attribute
+        has:
+          kind: attribute_name
+          regex: ^lang$
+fix: |-
+  script lang="tsx"

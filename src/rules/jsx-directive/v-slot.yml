@@ -1,0 +1,21 @@
+id: v-slot shorthand
+language: html
+rule:
+  kind: attribute
+  has:
+    kind: attribute_name
+    regex: ^#
+    pattern: $NAME
+    precedes:
+      kind: quoted_attribute_value
+      has:
+        kind: attribute_value
+        pattern: $V
+      stopBy: end
+transform:
+  K:
+    substring:
+      source: $NAME
+      startChar: 1
+fix:
+  v-slot:$K={$V}

@@ -1,0 +1,66 @@
+id: v-on shorthand
+language: html
+rule:
+  kind: attribute
+  has:
+    kind: attribute_name
+    regex: ^@
+    pattern: $NAME
+    precedes:
+      kind: quoted_attribute_value
+      has:
+        kind: attribute_value
+        pattern: $V
+      stopBy: end
+transform:
+  B:
+    substring:
+      startChar: 1
+      endChar: 2
+      source: $NAME
+  C:
+    convert:
+      source: $B
+      toCase: upperCase
+  D:
+    substring:
+      startChar: 2
+      source: $NAME
+  K:
+    replace:
+      replace: \.
+      by: _
+      source: $D
+fix: |-
+  on$C$K={$V}
+
+---
+
+id: v-on transform to on
+language: html
+rule:
+  kind: attribute_name
+  regex: ^v-on$
+fix:
+  on
+
+---
+
+id: tsx v-on
+language: tsx
+rule:
+  kind: jsx_expression
+  not:
+    has:
+      any:
+        - kind: member_expression
+        - kind: identifier
+        - kind: function
+        - kind: arrow_function
+    pattern: $A
+  follows:
+    kind: property_identifier
+    regex: ^on[A-Z_]
+    stopBy: end
+fix: |-
+  {() => $A}

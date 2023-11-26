@@ -1,4 +1,4 @@
-<script setup lang="tsx">
+<script setup>
 import Comp from './components/Comp.vue'
 
 const list = [{ id: 1 }]
@@ -10,11 +10,15 @@ const on = { submit: () => {} }
   <Comp
     v-for="i in list"
     v-if="list"
-    :key="i"
+    :key="i.id"
     v-bind="bind"
+    v-model:id="i.id"
+    v-loading.fullscreen.lock="true"
     v-on="on"
+    @click.once="alert(1)"
+    @submit="alert"
   >
-    <template #default="{ id }">
+    <template v-slot:default="{ id }">
       <div>{{ id }}</div>
     </template>
     <template #bottom="{ foo }">

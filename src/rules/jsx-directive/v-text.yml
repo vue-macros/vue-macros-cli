@@ -1,0 +1,12 @@
+id: tsx v-text
+language: tsx
+rule:
+  kind: jsx_expression
+  has:
+    kind: object
+    pattern: $A
+  not:
+    inside:
+      kind: jsx_attribute
+fix:
+  $A
