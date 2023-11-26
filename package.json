@@ -1,7 +1,7 @@
 {
   "name": "vue-macros-sg",
   "type": "module",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Transform to vue-macros's syntax powered by ast-grep.",
   "author": "zhiyuanzmj <zhiyuanzmj@gmail.com>",
   "license": "MIT",
