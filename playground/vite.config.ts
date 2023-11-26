@@ -10,8 +10,10 @@ export default defineConfig({
       defineRender: true,
       defineSlots: true,
       exportRender: true,
+      reactivityTransform: true,
       plugins: {
         vue: Vue({
+          include: [/\.vue$/, /\.setup\.[cm]?[jt]sx?$/],
           script: {
             propsDestructure: true,
           },
