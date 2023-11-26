@@ -92,7 +92,7 @@ if (['jsx-directive', 'setup-sfc'].includes(macro)) {
     await $`${sg} scan -c ${config} -U --filter 'tsx define-short-slots' ${targetDirectory}`
 
   if (macro === 'setup-sfc') {
-    await Promise.all(files.map(async file => fs.move(`${file}.sg.tsx`, `${file.slice(0, -3)}.setup.tsx`)))
+    await Promise.all(files.map(async file => fs.move(`${file}.sg.tsx`, `${file.slice(0, -3)}setup.tsx`)))
   }
   else {
     await $`${sg} scan -c ${config} -U --filter '^tsx sfc$' ${targetDirectory}`
