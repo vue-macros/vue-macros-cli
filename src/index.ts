@@ -1,5 +1,4 @@
 #! /usr/bin/env node
-/* eslint-disable curly */
 import { fileURLToPath } from 'node:url'
 import process from 'node:process'
 import { $, argv, chalk, fs, glob, path } from 'zx'
@@ -29,7 +28,7 @@ let macro = await select({
 },
 )
 
-let render = 'export-render'
+let render
 if (macro === 'jsx-directive') {
   render = await select({
     message: chalk.green(
@@ -77,31 +76,23 @@ const files = await glob(`${targetDirectory}/**/*.vue`, {
   ].filter(Boolean),
 })
 
-// await Promise.all(files.map(async file => fs.move(file, `${file}.sg.html`)))
-
 if (['jsx-directive', 'setup-sfc'].includes(macro)) {
-  await $`${sg} scan -c ${config}.yml -U --filter '^v-(on|directive)' ${targetDirectory}`
+  await $`${sg} scan -c ${config}.yml -U --filter '^v-' ${targetDirectory}`
 
-  await $`${sg} scan -c ${config}.yml -U --filter '^${macro === 'setup-sfc' ? render : 'export-render'}' ${targetDirectory}`
+  await $`${sg} scan -c ${config}.yml -U --filter '^${macro === 'setup-sfc' ? 'export-render' : render}' ${targetDirectory}`
 
   await $`${sg} scan -c ${config}.yml -U --filter '^setup-sfc' ${targetDirectory}`
 
-  // await Promise.all(files.map(async file => fs.move(`${file}.sg.html`, `${file}.sg.tsx`)))
-
-  await $`${sg} scan -c ${config}-tsx.yml -U --filter '^tsx v-' ${targetDirectory}`
+  await $`${sg} scan -c ${config}-tsx.yml -U --filter '^v-' ${targetDirectory}`
 
   if (defineSlots === 'define-short-slots')
-    await $`${sg} scan -c ${config}.yml -U --filter 'tsx define-short-slots' ${targetDirectory}`
+    await $`${sg} scan -c ${config}-tsx.yml -U --filter 'define-short-slots' ${targetDirectory}`
 
-  if (macro === 'setup-sfc') {
+  if (macro === 'setup-sfc')
     await Promise.all(files.map(async file => fs.move(file, `${file.slice(0, -3)}setup.tsx`)))
-  }
-  else {
-    await $`${sg} scan -c ${config}-tsx.yml -U --filter '^tsx sfc$' ${targetDirectory}`
-    // await Promise.all(files.map(async file => fs.move(`${file}.sg.tsx`, file)))
-  }
+  else
+    await $`${sg} scan -c ${config}-tsx.yml -U --filter '^sfc$' ${targetDirectory}`
 }
 else {
   await $`${sg} scan -c ${config}.yml -U --filter ^${macro} ${targetDirectory}`
-  // await Promise.all(files.map(async file => fs.move(`${file}.sg.html`, file)))
 }

@@ -6,3 +6,6 @@ aliasLanguages:
   vue:
     aliasOf: html
     extensions: [vue]
+  vueTsx:
+    aliasOf: tsx
+    extensions: []

@@ -47,7 +47,7 @@ fix:
 ---
 
 id: tsx v-on
-language: vue
+language: vueTsx
 rule:
   kind: jsx_expression
   not:

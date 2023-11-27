@@ -1,7 +1,7 @@
 {
   "type": "module",
   "scripts": {
-    "sg": "../dist/index.mjs sg",
+    "sg": "../dist/index.mjs sg ./src",
     "dev": "vite",
     "build": "vite build"
   },

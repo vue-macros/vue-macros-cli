@@ -1,5 +1,5 @@
-id: tsx sfc
-language: vue
+id: sfc
+language: vueTsx
 rule:
   kind: program
   pattern: $A

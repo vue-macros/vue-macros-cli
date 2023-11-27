@@ -3,6 +3,9 @@ ruleDirs:
 utilDirs:
   - utils
 aliasLanguages:
-  vue:
+  vueTsx:
     aliasOf: tsx
     extensions: [vue]
+  vue:
+    aliasOf: html
+    extensions: []

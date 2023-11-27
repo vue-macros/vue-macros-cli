@@ -50,8 +50,8 @@ fix: |-
 
 ---
 
-id: tsx v-define-slots
-language: vue
+id: v-define-slots
+language: vueTsx
 rule:
   kind: expression_statement
   pattern: $A
@@ -67,8 +67,8 @@ fix: |-
 
 ---
 
-id: tsx define-short-slots
-language: vue
+id: define-short-slots
+language: vueTsx
 rule:
   kind: type_annotation
   has:
