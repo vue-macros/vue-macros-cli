@@ -1,4 +1,5 @@
 #! /usr/bin/env node
+/* eslint-disable curly */
 import { fileURLToPath } from 'node:url'
 import process from 'node:process'
 import { $, argv, chalk, fs, glob, path } from 'zx'
@@ -12,8 +13,9 @@ if (argv._[0] !== 'sg') {
 $.verbose = false
 
 const __filename = fileURLToPath(import.meta.url)
-const sg = path.resolve(path.dirname(__filename), '../node_modules/.bin/ast-grep')
-const config = `${path.dirname(__filename)}/sgconfig.yml`
+// const sg = path.resolve(path.dirname(__filename), '../node_modules/.bin/ast-grep')
+const sg = 'sg'
+const config = `${path.dirname(__filename)}/sgconfig`
 
 let macro = await select({
   message: chalk.green(
@@ -75,31 +77,31 @@ const files = await glob(`${targetDirectory}/**/*.vue`, {
   ].filter(Boolean),
 })
 
-await Promise.all(files.map(async file => fs.move(file, `${file}.sg.html`)))
+// await Promise.all(files.map(async file => fs.move(file, `${file}.sg.html`)))
 
 if (['jsx-directive', 'setup-sfc'].includes(macro)) {
-  await $`${sg} scan -c ${config} -U --filter '^v-' ${targetDirectory}`
+  await $`${sg} scan -c ${config}.yml -U --filter '^v-(on|directive)' ${targetDirectory}`
 
-  await $`${sg} scan -c ${config} -U --filter '^${macro === 'setup-sfc' ? render : 'export-render'}' ${targetDirectory}`
+  await $`${sg} scan -c ${config}.yml -U --filter '^${macro === 'setup-sfc' ? render : 'export-render'}' ${targetDirectory}`
 
-  await $`${sg} scan -c ${config} -U --filter '^setup-sfc' ${targetDirectory}`
+  await $`${sg} scan -c ${config}.yml -U --filter '^setup-sfc' ${targetDirectory}`
 
-  await Promise.all(files.map(async file => fs.move(`${file}.sg.html`, `${file}.sg.tsx`)))
+  // await Promise.all(files.map(async file => fs.move(`${file}.sg.html`, `${file}.sg.tsx`)))
 
-  await $`${sg} scan -c ${config} -U --filter '^tsx v-' ${targetDirectory}`
+  await $`${sg} scan -c ${config}-tsx.yml -U --filter '^tsx v-' ${targetDirectory}`
 
   if (defineSlots === 'define-short-slots')
-    await $`${sg} scan -c ${config} -U --filter 'tsx define-short-slots' ${targetDirectory}`
+    await $`${sg} scan -c ${config}.yml -U --filter 'tsx define-short-slots' ${targetDirectory}`
 
   if (macro === 'setup-sfc') {
-    await Promise.all(files.map(async file => fs.move(`${file}.sg.tsx`, `${file.slice(0, -3)}setup.tsx`)))
+    await Promise.all(files.map(async file => fs.move(file, `${file.slice(0, -3)}setup.tsx`)))
   }
   else {
-    await $`${sg} scan -c ${config} -U --filter '^tsx sfc$' ${targetDirectory}`
-    await Promise.all(files.map(async file => fs.move(`${file}.sg.tsx`, file)))
+    await $`${sg} scan -c ${config}-tsx.yml -U --filter '^tsx sfc$' ${targetDirectory}`
+    // await Promise.all(files.map(async file => fs.move(`${file}.sg.tsx`, file)))
   }
 }
 else {
-  await $`${sg} scan -c ${config} -U --filter ^${macro} ${targetDirectory}`
-  await Promise.all(files.map(async file => fs.move(`${file}.sg.html`, file)))
+  await $`${sg} scan -c ${config}.yml -U --filter ^${macro} ${targetDirectory}`
+  // await Promise.all(files.map(async file => fs.move(`${file}.sg.html`, file)))
 }

@@ -1,5 +1,5 @@
 id: short-v-model 1
-language: html
+language: vue
 rule:
   kind: attribute_name
   regex: '^v-model:'
@@ -16,7 +16,7 @@ fix:
 ---
 
 id: short-v-model 2
-language: html
+language: vue
 rule:
   kind: attribute_name
   regex: '^v-model:'
@@ -33,7 +33,7 @@ fix:
 ---
 
 id: short-v-model 3
-language: html
+language: vue
 rule:
   kind: attribute_name
   regex: '^v-model:'

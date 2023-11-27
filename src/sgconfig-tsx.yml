@@ -4,5 +4,5 @@ utilDirs:
   - utils
 aliasLanguages:
   vue:
-    aliasOf: html
+    aliasOf: tsx
     extensions: [vue]

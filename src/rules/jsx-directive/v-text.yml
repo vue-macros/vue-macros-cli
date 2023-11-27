@@ -1,5 +1,5 @@
 id: tsx v-text
-language: tsx
+language: vue
 rule:
   kind: jsx_expression
   has:

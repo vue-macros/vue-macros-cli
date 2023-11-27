@@ -1,5 +1,5 @@
 id: v-on shorthand
-language: html
+language: vue
 rule:
   kind: attribute
   has:
@@ -37,7 +37,7 @@ fix: |-
 ---
 
 id: v-on transform to on
-language: html
+language: vue
 rule:
   kind: attribute_name
   regex: ^v-on$
@@ -47,7 +47,7 @@ fix:
 ---
 
 id: tsx v-on
-language: tsx
+language: vue
 rule:
   kind: jsx_expression
   not:
