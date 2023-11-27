@@ -36,17 +36,17 @@ fix: |-
 
 ---
 
-id: v-on transform to on
-language: vue
+id: v-on to on
+language: vueTsx
 rule:
-  kind: attribute_name
+  kind: property_identifier
   regex: ^v-on$
 fix:
   on
 
 ---
 
-id: tsx v-on
+id: v-on
 language: vueTsx
 rule:
   kind: jsx_expression

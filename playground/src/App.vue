@@ -1,11 +1,10 @@
-<script setup>
-import { ref } from 'vue'
+<script setup lang="ts">
 import Comp from './components/Comp.vue'
 
 const list = [{ id: 1 }]
 const bind = { }
 const on = { submit: () => {} }
-const select = $ref()
+const select = $ref<{ id: number }>()
 </script>
 
 <template>
@@ -16,7 +15,7 @@ const select = $ref()
     v-bind="bind"
     v-model:id="i.id"
     v-loading.fullscreen.lock="true"
-    v-memo="[select.id === i.id]"
+    v-memo="[select?.id === i.id]"
     v-on="on"
     @click.once="select = i"
     @submit="alert"
