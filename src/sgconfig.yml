@@ -8,4 +8,4 @@ aliasLanguages:
     extensions: [vue]
   vueTsx:
     aliasOf: tsx
-    extensions: [vue]
+    extensions: []

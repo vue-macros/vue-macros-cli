@@ -45,7 +45,6 @@ rule:
   follows:
     kind: tag_name
     regex: ^slot$
-
 fix: |-
 
 ---
@@ -67,7 +66,7 @@ fix: |-
 
 ---
 
-id: define-short-slots
+id: define-slots
 language: vueTsx
 rule:
   kind: type_annotation

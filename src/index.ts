@@ -24,6 +24,7 @@ let macro = await select({
     { value: 'jsx-directive' },
     { value: 'setup-sfc' },
     { value: 'short-v-model' },
+    { value: 'define-slots' },
   ],
 },
 )
@@ -37,19 +38,6 @@ if (macro === 'jsx-directive') {
     choices: [
       { value: 'define-render' },
       { value: 'export-render' },
-    ],
-  })
-}
-
-let defineSlots = 'define-slots'
-if (['jsx-directive', 'setup-sfc'].includes(macro)) {
-  defineSlots = await select({
-    message: chalk.green(
-      `Which define-slots macro do you want to use?`,
-    ),
-    choices: [
-      { value: 'define-slots' },
-      { value: 'define-short-slots' },
     ],
   })
 }
@@ -76,22 +64,24 @@ const files = await glob(`${targetDirectory}/**/*.vue`, {
   ].filter(Boolean),
 })
 
+async function useTsx(cb = () => {}) {
+  await $`${sg} scan -c ${config}.yml -U --filter '^setup-sfc start' ${targetDirectory}`
+  await $`${sg} scan -c ${config}.yml -U --filter '^setup-sfc end' ${targetDirectory}`
+  await cb()
+  await $`${sg} scan -c ${config}-tsx.yml -U --filter '^setup-sfc clean' ${targetDirectory}`
+}
+
 if (['jsx-directive', 'setup-sfc'].includes(macro)) {
   await $`${sg} scan -c ${config}.yml -U --filter '^v-' ${targetDirectory}`
-
   await $`${sg} scan -c ${config}.yml -U --filter '^${macro === 'setup-sfc' ? 'export-render' : render}' ${targetDirectory}`
 
-  await $`${sg} scan -c ${config}.yml -U --filter '^setup-sfc' ${targetDirectory}`
-
-  await $`${sg} scan -c ${config}-tsx.yml -U --filter '^v-' ${targetDirectory}`
-
-  if (defineSlots === 'define-short-slots')
-    await $`${sg} scan -c ${config}-tsx.yml -U --filter 'define-short-slots' ${targetDirectory}`
+  await useTsx(() => $`${sg} scan -c ${config}-tsx.yml -U --filter '^v-' ${targetDirectory}`)
 
   if (macro === 'setup-sfc')
     await Promise.all(files.map(async file => fs.move(file, `${file.slice(0, -3)}setup.tsx`)))
-  else
-    await $`${sg} scan -c ${config}-tsx.yml -U --filter '^sfc$' ${targetDirectory}`
+}
+else if (macro === 'define-slots') {
+  await useTsx(() => $`${sg} scan -c ${config}-tsx.yml -U --filter '^define-slots' ${targetDirectory}`)
 }
 else {
   await $`${sg} scan -c ${config}.yml -U --filter ^${macro} ${targetDirectory}`

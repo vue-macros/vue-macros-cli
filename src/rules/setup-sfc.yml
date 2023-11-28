@@ -1,11 +1,45 @@
-id: setup-sfc
+id: setup-sfc start comment
 language: vue
 rule:
   kind: script_element
   has:
-    kind: raw_text
-    pattern: $A
+    kind: start_tag
+    pattern: $START
+    precedes:
+      kind: raw_text
+      pattern: $RAW
+      precedes:
+        kind: end_tag
+        pattern: $END
   inside:
     kind: fragment
 fix: |-
-  $A
+  $START*/
+  $RAW/*$END
+
+---
+
+id: setup-sfc end comment
+language: vue
+rule:
+  kind: fragment
+  pattern: $A
+fix: /*$A*/
+
+---
+
+id: setup-sfc clean comment
+language: vueTsx
+rule:
+  kind: comment
+  regex: /\*</?script|<script.*>\*/$
+  pattern: $A
+  inside:
+    kind: program
+transform:
+  B:
+    substring:
+      startChar: 2
+      endChar: -2
+      source: $A
+fix: $B

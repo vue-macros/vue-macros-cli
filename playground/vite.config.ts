@@ -18,7 +18,9 @@ export default defineConfig({
             propsDestructure: true,
           },
         }),
-        vueJsx: vueJsx(),
+        vueJsx: vueJsx({
+          transformOn: true
+        }),
       },
     }),
 

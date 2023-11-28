@@ -1,9 +1,0 @@
-id: sfc
-language: vueTsx
-rule:
-  kind: program
-  pattern: $A
-fix: |-
-  <script setup lang="tsx">
-  $A
-  </script>
