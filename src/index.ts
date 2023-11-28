@@ -26,8 +26,7 @@ let macro = await select({
     { value: 'short-v-model' },
     { value: 'define-slots' },
   ],
-},
-)
+})
 
 let render
 if (macro === 'jsx-directive') {
@@ -56,8 +55,8 @@ if (macro === 'short-v-model') {
 }
 
 const targetDirectory = path.resolve(argv._.at(-1) || '.')
-
-const files = await glob(`${targetDirectory}/**/*.vue`, {
+const filename = path.basename(targetDirectory)
+const files = await glob(`${targetDirectory}${filename ? '' : '/**/*.vue'}`, {
   ignore: [
     '**/node_modules/**',
     argv.ignore,
