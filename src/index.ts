@@ -54,34 +54,36 @@ if (macro === 'short-v-model') {
   })
 }
 
-const targetDirectory = path.resolve(argv._.at(-1) || '.')
-const filename = path.basename(targetDirectory)
-const files = await glob(`${targetDirectory}${filename ? '' : '/**/*.vue'}`, {
-  ignore: [
-    '**/node_modules/**',
-    argv.ignore,
-  ].filter(Boolean),
-})
+const target = path.resolve(argv._.at(-1) || '.')
+async function toSetupSFC() {
+  const filename = path.basename(target)
+  const files = await glob(`${target}${filename ? '' : '/**/*.vue'}`, {
+    ignore: [
+      '**/node_modules/**',
+    ],
+  })
 
-async function useTsx(cb = () => {}) {
-  await $`${sg} scan -c ${config}.yml -U --filter '^setup-sfc start' ${targetDirectory}`
-  await $`${sg} scan -c ${config}.yml -U --filter '^setup-sfc end' ${targetDirectory}`
+  await Promise.all(files.map(async file => fs.move(file, `${file.slice(0, -3)}setup.tsx`)))
+}
+
+async function useTsx(cb = () => {}, action = 'clean') {
+  await $`${sg} scan -c ${config}.yml -U --filter '^setup-sfc start' ${target}`
+  await $`${sg} scan -c ${config}.yml -U --filter '^setup-sfc end' ${target}`
   await cb()
-  await $`${sg} scan -c ${config}-tsx.yml -U --filter '^setup-sfc clean' ${targetDirectory}`
+  await $`${sg} scan -c ${config}-tsx.yml -U --filter '^setup-sfc ${action}' ${target}`
 }
 
 if (['jsx-directive', 'setup-sfc'].includes(macro)) {
-  await $`${sg} scan -c ${config}.yml -U --filter '^v-' ${targetDirectory}`
-  await $`${sg} scan -c ${config}.yml -U --filter '^${macro === 'setup-sfc' ? 'export-render' : render}' ${targetDirectory}`
-
-  await useTsx(() => $`${sg} scan -c ${config}-tsx.yml -U --filter '^v-' ${targetDirectory}`)
+  await $`${sg} scan -c ${config}.yml -U --filter '^v-' ${target}`
+  await $`${sg} scan -c ${config}.yml -U --filter '^${macro === 'setup-sfc' ? 'export-render' : render}' ${target}`
+  await useTsx(() => $`${sg} scan -c ${config}-tsx.yml -U --filter '^v-' ${target}`, macro === 'setup-sfc' ? 'delete' : 'clean')
 
   if (macro === 'setup-sfc')
-    await Promise.all(files.map(async file => fs.move(file, `${file.slice(0, -3)}setup.tsx`)))
+    toSetupSFC()
 }
 else if (macro === 'define-slots') {
-  await useTsx(() => $`${sg} scan -c ${config}-tsx.yml -U --filter '^define-slots' ${targetDirectory}`)
+  await useTsx(() => $`${sg} scan -c ${config}-tsx.yml -U --filter '^define-slots' ${target}`)
 }
 else {
-  await $`${sg} scan -c ${config}.yml -U --filter ^${macro} ${targetDirectory}`
+  await $`${sg} scan -c ${config}.yml -U --filter ^${macro} ${target}`
 }

@@ -1,7 +1,7 @@
 {
   "type": "module",
   "scripts": {
-    "sg": "../dist/index.mjs sg ./src",
+    "sg": "tsx ../src/index.ts sg ./src",
     "dev": "vite",
     "build": "vite build"
   },
@@ -13,6 +13,7 @@
   },
   "devDependencies": {
     "@vue-macros/volar": "^0.17.4",
+    "tsx": "^4.6.1",
     "vite": "^5.0.2"
   }
 }

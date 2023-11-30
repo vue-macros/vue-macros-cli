@@ -44,7 +44,7 @@
     "zx": "^7.2.3"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^2.1.0",
+    "@antfu/eslint-config": "^2.1.1",
     "bumpp": "^9.2.0",
     "typescript": "^5.3.2",
     "unbuild": "^2.0.0",

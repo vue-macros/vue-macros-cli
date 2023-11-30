@@ -1,5 +1,5 @@
 id: v-define-slots default
-language: vue
+language: html
 rule:
   kind: tag_name
   regex: ^slot$
@@ -15,7 +15,7 @@ fix:
 ---
 
 id: v-define-slots name
-language: vue
+language: html
 rule:
   kind: tag_name
   regex: ^slot$
@@ -36,7 +36,7 @@ fix:
 ---
 
 id: v-define-slots remove name
-language: vue
+language: html
 rule:
   kind: attribute
   has:
@@ -50,7 +50,7 @@ fix: |-
 ---
 
 id: v-define-slots
-language: vueTsx
+language: tsx
 rule:
   kind: expression_statement
   pattern: $A
@@ -67,7 +67,7 @@ fix: |-
 ---
 
 id: define-slots
-language: vueTsx
+language: tsx
 rule:
   kind: type_annotation
   has:

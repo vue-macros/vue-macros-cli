@@ -1,5 +1,5 @@
 id: setup-sfc start comment
-language: vue
+language: html
 rule:
   kind: script_element
   has:
@@ -20,7 +20,7 @@ fix: |-
 ---
 
 id: setup-sfc end comment
-language: vue
+language: html
 rule:
   kind: fragment
   pattern: $A
@@ -29,7 +29,7 @@ fix: /*$A*/
 ---
 
 id: setup-sfc clean comment
-language: vueTsx
+language: tsx
 rule:
   kind: comment
   regex: /\*</?script|<script.*>\*/$
@@ -43,3 +43,15 @@ transform:
       endChar: -2
       source: $A
 fix: $B
+
+---
+
+id: setup-sfc delete
+language: tsx
+rule:
+  kind: comment
+  regex: /\*</?script|<script.*>\*/$
+  pattern: $A
+  inside:
+    kind: program
+fix: |-

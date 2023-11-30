@@ -1,5 +1,5 @@
 id: v-directive
-language: vue
+language: html
 rule:
   kind: attribute
   has:

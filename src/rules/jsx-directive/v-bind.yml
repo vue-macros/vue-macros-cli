@@ -1,5 +1,5 @@
 id: v-bind shorthand
-language: vue
+language: html
 rule:
   kind: attribute
   has:
@@ -23,7 +23,7 @@ fix: |-
 ---
 
 id: v-bind transform to {...props}
-language: vue
+language: html
 rule:
   kind: attribute
   has:

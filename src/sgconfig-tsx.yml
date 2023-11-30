@@ -2,10 +2,5 @@ ruleDirs:
   - rules
 utilDirs:
   - utils
-aliasLanguages:
-  vueTsx:
-    aliasOf: tsx
-    extensions: [vue]
-  vue:
-    aliasOf: html
-    extensions: []
+languageGlobs:
+  tsx: ['*.vue']

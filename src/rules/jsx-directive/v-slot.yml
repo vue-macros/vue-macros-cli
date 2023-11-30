@@ -1,5 +1,5 @@
 id: v-slot shorthand
-language: vue
+language: html
 rule:
   kind: attribute
   has:
