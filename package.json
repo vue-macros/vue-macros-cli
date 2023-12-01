@@ -6,7 +6,7 @@
   "description": "Rewriting at vue macros powered by ast-grep.",
   "author": "zhiyuanzmj <zhiyuanzmj@gmail.com>",
   "license": "MIT",
-  "homepage": "https://github.com/vue-macros/@vue-macros/cli/tree/main#readme",
+  "homepage": "https://github.com/vue-macros/cli/tree/main#readme",
   "repository": {
     "type": "git",
     "url": "https://github.com/vue-macros/@vue-macros/cli"
