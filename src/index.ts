@@ -80,7 +80,10 @@ async function useTsx(cb = () => {}, action = 'clean') {
 if (['jsx-directive', 'setup-sfc'].includes(macro)) {
   await $`${sg} scan -c ${config}.yml -U --filter '^v-' ${target}`
   await $`${sg} scan -c ${config}.yml -U --filter '^${macro === 'setup-sfc' ? 'export-render' : render}' ${target}`
-  await useTsx(() => $`${sg} scan -c ${config}-tsx.yml -U --filter '^v-' ${target}`, macro === 'setup-sfc' ? 'delete' : 'clean')
+  await useTsx(async () => {
+    await $`${sg} scan -c ${config}-tsx.yml -U --filter '^v-' ${target}`
+    await $`${sg} scan -c ${config}-tsx.yml -U --filter '^define-emits' ${target}`
+  }, macro === 'setup-sfc' ? 'delete' : 'clean')
 
   if (macro === 'setup-sfc')
     toSetupSFC()

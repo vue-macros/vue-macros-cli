@@ -1,0 +1,25 @@
+id: define-emits add emit
+language: tsx
+rule:
+  kind: expression_statement
+  pattern: $A
+  has:
+    kind: call_expression
+    has:
+      kind: identifier
+      regex: ^defineEmits$
+  inside:
+    kind: program
+fix: |-
+  const emit = $A
+
+---
+
+id: define-emits to emit
+language: tsx
+rule:
+  kind: identifier
+  regex: ^\$emit$
+  inside:
+    kind: call_expression
+fix: emit

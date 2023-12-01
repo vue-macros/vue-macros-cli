@@ -46,21 +46,21 @@ fix:
 
 ---
 
-id: v-on
+id: v-on no $event
 language: tsx
 rule:
-  kind: jsx_expression
-  not:
-    has:
-      any:
-        - kind: member_expression
-        - kind: identifier
-        - kind: function
-        - kind: arrow_function
-    pattern: $A
-  follows:
-    kind: property_identifier
-    regex: ^on[A-Z_]
-    stopBy: end
+  matches: is-event
+  pattern: $A
 fix: |-
   {() => $A}
+
+---
+
+id: v-on has $event
+language: tsx
+rule:
+  matches: is-event
+  pattern: $A
+  regex: '\$event'
+fix: |-
+  {($event) => $A}

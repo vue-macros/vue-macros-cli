@@ -4,13 +4,13 @@ import Comp from './components/Comp.vue'
 const list = [{ id: 1 }]
 const bind = { }
 const on = { submit: () => {} }
-const select = $ref<{ id: number }>()
+const select = $ref<{ id: number }>(list[0])
 </script>
 
 <template>
   <Comp
     v-for="i in list"
-    v-if="list"
+    v-if="select"
     :key="i.id"
     v-bind="bind"
     v-model:id="i.id"
@@ -19,6 +19,7 @@ const select = $ref<{ id: number }>()
     v-on="on"
     @click.once="select = i"
     @submit="alert"
+    @update="select.id = $event"
   >
     <template v-slot:default="{ id }">
       <div>{{ id }}</div>
