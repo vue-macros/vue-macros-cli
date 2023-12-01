@@ -9,7 +9,6 @@ rule:
         - kind: identifier
         - kind: function
         - kind: arrow_function
-  follows:
-    kind: property_identifier
+  inside:
+    kind: jsx_attribute
     regex: ^on[A-Z_]
-    stopBy: end
