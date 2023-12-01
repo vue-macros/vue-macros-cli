@@ -1,6 +1,6 @@
 # @vue-macros/cli
 
-@vue-macros/cli is a cli for rewriting at vue macros powered by [ast-grep](https://github.com/ast-grep/ast-grep).
+@vue-macros/cli is a CLI for rewriting at Vue Macros powered by [ast-grep](https://github.com/ast-grep/ast-grep).
 
 ## Support vue macros
 
