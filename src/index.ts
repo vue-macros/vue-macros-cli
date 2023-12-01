@@ -5,8 +5,29 @@ import { $, argv, chalk, fs, glob, path } from 'zx'
 import { select } from '@inquirer/prompts'
 import { readPackageJSON } from 'pkg-types'
 
-if (argv._[0] !== 'sg') {
-  console.log(chalk.red('Do you want to use `sg` cmd?'))
+function printHelp() {
+  console.log(`
+Rewriting at Vue Macros using ast-grep.
+
+${chalk.underline('Usage:')} vue-macros <command> [directory] {(default current directory)}
+
+${chalk.underline('Commands:')}
+  sg        Rewrite code in specified directory
+ 
+${chalk.underline('Options:')}
+  -h, --help    Print help (see more with '--help')
+  -V, --version Print version
+  `)
+}
+if (argv._[0] !== 'sg' || argv.help || argv.h) {
+  printHelp()
+  process.exit()
+}
+
+const dirname = path.dirname(fileURLToPath(import.meta.url))
+if (argv.v || argv.version) {
+  const localPackageJson = await readPackageJSON(dirname)
+  console.log(`${localPackageJson.name} ${localPackageJson.version}`)
   process.exit()
 }
 
@@ -48,12 +69,6 @@ if (macro === 'short-v-model') {
       { name: '*', value: 'short-v-model 3', description: '*foo="foo"' },
     ],
   })
-}
-
-const dirname = path.dirname(fileURLToPath(import.meta.url))
-if (argv.v || argv.version) {
-  const localPackageJson = await readPackageJSON(dirname)
-  console.log(`${localPackageJson.name} ${localPackageJson.version}`)
 }
 
 const target = path.resolve(argv._.at(1) || './src')
