@@ -2,6 +2,7 @@ id: is-template
 language: html
 rule:
   kind: element
+  regex: ^<template
   inside:
     kind: fragment
     has:
