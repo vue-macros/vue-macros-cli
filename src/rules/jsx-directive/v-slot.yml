@@ -19,3 +19,21 @@ transform:
       startChar: 1
 fix:
   v-slot:$K={$V}
+
+---
+
+id: v-slot shorthand no value
+language: html
+rule:
+  kind: attribute
+  has:
+    kind: attribute_name
+    regex: ^#
+    pattern: $NAME
+transform:
+  K:
+    substring:
+      source: $NAME
+      startChar: 1
+fix:
+  v-slot:$K
