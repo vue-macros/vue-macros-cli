@@ -53,7 +53,7 @@ if (macro === 'short-v-model') {
   })
 }
 
-const target = path.resolve(argv._.at(-1) || '.')
+const target = path.resolve(argv._.at(1) || './src')
 async function toSetupSFC() {
   const filename = path.basename(target)
   const files = await glob(`${target}${filename ? '' : '/**/*.vue'}`, {

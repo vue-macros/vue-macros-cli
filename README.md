@@ -21,7 +21,7 @@ pnpm add -g @vue-macros/cli
 
 ### sg
 ```shell
-@vue-macros/cli sg
+vue-macros sg
 ```
 
 ## License
