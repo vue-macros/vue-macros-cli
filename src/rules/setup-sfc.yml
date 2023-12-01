@@ -24,6 +24,8 @@ language: html
 rule:
   kind: fragment
   pattern: $A
+  has:
+    kind: script_element
 fix: /*$A*/
 
 ---
