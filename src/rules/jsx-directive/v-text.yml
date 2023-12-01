@@ -1,12 +1,18 @@
 id: v-text
-language: tsx
+language: html
 rule:
-  kind: jsx_expression
-  has:
-    kind: object
-    pattern: $A
-  not:
-    inside:
-      kind: jsx_attribute
+  kind: text
+  pattern: $A
+transform:
+  B:
+    replace:
+      replace: \{\{
+      by: '{'
+      source: $A
+  C:
+    replace:
+      replace: \}\}
+      by: '}'
+      source: $B
 fix:
-  $A
+  $C

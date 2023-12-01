@@ -25,7 +25,7 @@ const select = $ref<{ id: number }>(list[0])
       <div>{{ id }}</div>
     </template>
     <template #bottom="{ foo }">
-      <div>{{ foo }}</div>
+      <div>{{ `${foo}` }}</div>
     </template>
   </Comp>
 </template>
