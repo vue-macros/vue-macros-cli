@@ -3,6 +3,7 @@ import { fileURLToPath } from 'node:url'
 import process from 'node:process'
 import { $, argv, chalk, fs, glob, path } from 'zx'
 import { select } from '@inquirer/prompts'
+import { readPackageJSON } from 'pkg-types'
 
 if (argv._[0] !== 'sg') {
   console.log(chalk.red('Do you want to use `sg` cmd?'))
@@ -10,10 +11,6 @@ if (argv._[0] !== 'sg') {
 }
 
 $.verbose = false
-
-const __filename = fileURLToPath(import.meta.url)
-const sg = path.resolve(path.dirname(__filename), '../node_modules/.bin/ast-grep')
-const config = `${path.dirname(__filename)}/sgconfig`
 
 let macro = await select({
   message: chalk.green(
@@ -53,10 +50,16 @@ if (macro === 'short-v-model') {
   })
 }
 
+const dirname = path.dirname(fileURLToPath(import.meta.url))
+if (argv.v || argv.version) {
+  const localPackageJson = await readPackageJSON(dirname)
+  console.log(`${localPackageJson.name} ${localPackageJson.version}`)
+}
+
 const target = path.resolve(argv._.at(1) || './src')
 async function toSetupSFC() {
-  const filename = path.basename(target)
-  const files = await glob(`${target}${filename ? '' : '/**/*.vue'}`, {
+  const extname = path.extname(target)
+  const files = await glob(`${target}${extname ? '' : '/**/*.vue'}`, {
     ignore: [
       '**/node_modules/**',
     ],
@@ -65,6 +68,8 @@ async function toSetupSFC() {
   await Promise.all(files.map(async file => fs.move(file, `${file.slice(0, -3)}setup.tsx`)))
 }
 
+const config = `${dirname}/sgconfig`
+const sg = path.resolve(dirname, '../node_modules/.bin/ast-grep')
 async function useTsx(cb = () => {}, action = 'clean') {
   await $`${sg} scan -c ${config}.yml -U --filter '^setup-sfc start' ${target}`
   await $`${sg} scan -c ${config}.yml -U --filter '^setup-sfc end' ${target}`

@@ -44,6 +44,7 @@
   "dependencies": {
     "@ast-grep/cli": "^0.14.1",
     "@inquirer/prompts": "^3.3.0",
+    "pkg-types": "^1.0.3",
     "zx": "^7.2.3"
   },
   "devDependencies": {
