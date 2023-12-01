@@ -1,6 +1,6 @@
-# vue-macros-cli
+# @vue-macros/cli
 
-vue-macros-cli is a cli for rewriting at vue macros powered by [ast-grep](https://github.com/ast-grep/ast-grep).
+@vue-macros/cli is a cli for rewriting at vue macros powered by [ast-grep](https://github.com/ast-grep/ast-grep).
 
 ## Support vue macros
 
@@ -11,14 +11,17 @@ vue-macros-cli is a cli for rewriting at vue macros powered by [ast-grep](https:
 - [x] short-v-model
 - [x] setup-sfc 
 
+
 ## Usage
 
 ```shell
 # install
-pnpm add -g vue-macros-cli
+pnpm add -g @vue-macros/cli
+```
 
-# run
-vue-macros-cli sg ./src
+### sg
+```shell
+@vue-macros/cli sg
 ```
 
 ## License

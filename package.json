@@ -1,17 +1,17 @@
 {
-  "name": "vue-macros-cli",
+  "name": "@vue-macros/cli",
   "type": "module",
   "version": "0.0.6",
   "description": "Rewriting at vue macros powered by ast-grep.",
   "author": "zhiyuanzmj <zhiyuanzmj@gmail.com>",
   "license": "MIT",
-  "homepage": "https://github.com/zhiyuanzmj/vue-macros-cli/tree/main#readme",
+  "homepage": "https://github.com/zhiyuanzmj/@vue-macros/cli/tree/main#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/zhiyuanzmj/vue-macros-cli"
+    "url": "https://github.com/zhiyuanzmj/@vue-macros/cli"
   },
   "bugs": {
-    "url": "https://github.com/zhiyuanzmj/vue-macros-cli/issues"
+    "url": "https://github.com/zhiyuanzmj/@vue-macros/cli/issues"
   },
   "keywords": [
     "vue-macros",
@@ -39,12 +39,12 @@
     "prepublishOnly": "pnpm run build"
   },
   "dependencies": {
-    "@ast-grep/cli": "^0.13.2",
+    "@ast-grep/cli": "^0.14.1",
     "@inquirer/prompts": "^3.3.0",
     "zx": "^7.2.3"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^2.1.1",
+    "@antfu/eslint-config": "^2.1.2",
     "bumpp": "^9.2.0",
     "typescript": "^5.3.2",
     "unbuild": "^2.0.0",

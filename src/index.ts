@@ -12,8 +12,7 @@ if (argv._[0] !== 'sg') {
 $.verbose = false
 
 const __filename = fileURLToPath(import.meta.url)
-// const sg = path.resolve(path.dirname(__filename), '../node_modules/.bin/ast-grep')
-const sg = 'sg'
+const sg = path.resolve(path.dirname(__filename), '../node_modules/.bin/ast-grep')
 const config = `${path.dirname(__filename)}/sgconfig`
 
 let macro = await select({
