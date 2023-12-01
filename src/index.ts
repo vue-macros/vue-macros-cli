@@ -9,7 +9,10 @@ function printHelp() {
   console.log(`
 Rewriting at Vue Macros using ast-grep.
 
-${chalk.underline('Usage:')} vue-macros <command> [directory] {(default current directory)}
+${chalk.underline('Usage:')} vue-macros <command> [directory] 
+
+${chalk.underline('Directory:')}
+  default current directory
 
 ${chalk.underline('Commands:')}
   sg        Rewrite code in specified directory
