@@ -16,3 +16,24 @@ transform:
       source: $B
 fix:
   $C
+
+---
+
+id: v-text to jsx comment
+language: html
+rule:
+  kind: comment
+  pattern: $A
+transform:
+  B:
+    replace:
+      replace: <!--
+      by: '{/*'
+      source: $A
+  C:
+    replace:
+      replace: -->
+      by: '*/}'
+      source: $B
+fix:
+  $C
