@@ -19,6 +19,24 @@ fix: |-
 
 ---
 
+id: setup-sfc start ignore comment in style
+language: html
+rule:
+  kind: raw_text
+  pattern: $A
+  inside:
+    kind: style_element
+transform:
+  B:
+    replace:
+      replace: \*/
+      by: '*\/'
+      source: $A
+fix: |-
+  $B
+
+---
+
 id: setup-sfc end comment
 language: html
 rule:
@@ -44,7 +62,12 @@ transform:
       startChar: 2
       endChar: -2
       source: $A
-fix: $B
+  C:
+    replace:
+      replace: \*\\/
+      by: '*/'
+      source: $B
+fix: $C
 
 ---
 

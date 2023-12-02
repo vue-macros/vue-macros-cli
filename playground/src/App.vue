@@ -32,3 +32,10 @@ const compRef = shallowRef()
     </template>
   </Comp>
 </template>
+
+<style scoped>
+/* Test comment */
+body {
+  font-size: 14px;
+}
+</style>
