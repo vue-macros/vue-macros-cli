@@ -1,13 +1,12 @@
-id: is-template
+id: is-fragment
 language: html
 rule:
   kind: element
   regex: ^<template
-  not:
-    has:
+  has:
+    kind: element
+    precedes:
       kind: element
-      precedes:
-        kind: element
   inside:
     kind: fragment
     has:

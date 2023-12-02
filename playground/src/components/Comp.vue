@@ -4,6 +4,8 @@
     <slot :id="`${id}`">{{ id }}</slot>
     <slot name="bottom" v-bind="{ foo: id }">bottom</slot>
   </div>
+  
+  <div>Fragment</div>
 </template>
 
 <script setup lang="ts">

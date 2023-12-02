@@ -1,0 +1,33 @@
+id: v-tag has lang
+language: html
+rule:
+  kind: attribute_value
+  inside:
+    kind: quoted_attribute_value
+    inside:
+      kind: attribute
+      has:
+        kind: attribute_name
+        regex: lang
+      inside:
+        matches: is-script
+fix: |-
+  tsx
+
+---
+
+id: v-tag no lang
+language: html
+rule:
+  kind: tag_name
+  regex: script
+  inside:
+    matches: is-script
+    not:
+      has:
+        kind: attribute
+        has:
+          kind: attribute_name
+          regex: ^lang$
+fix: |-
+  script lang="tsx"
