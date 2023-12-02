@@ -5,7 +5,7 @@
     <slot name="bottom" v-bind="{ foo: id }">bottom</slot>
   </div>
   
-  <img>
+  <img :href="id">
   <div>Fragment</div>
 </template>
 

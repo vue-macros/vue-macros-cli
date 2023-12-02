@@ -1,4 +1,4 @@
-id: v-self-closing-tag
+id: self-closing-tag
 language: html
 rule:
   kind: start_tag
