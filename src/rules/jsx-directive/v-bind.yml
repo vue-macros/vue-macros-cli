@@ -22,6 +22,26 @@ fix: |-
 
 ---
 
+id: v-template-ref
+language: html
+rule:
+  kind: quoted_attribute_value
+  pattern: $VALUE
+  follows:
+    kind: attribute_name
+    regex: ^ref$
+    stopBy: end
+transform:
+  V:
+    substring:
+      startChar: 1
+      endChar: -1
+      source: $VALUE
+fix: |-
+  {$V}
+
+---
+
 id: v-bind transform to {...props}
 language: html
 rule:
