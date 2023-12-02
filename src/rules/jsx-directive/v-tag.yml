@@ -1,3 +1,22 @@
+id: v-self-closing-tag
+language: html
+rule:
+  kind: start_tag
+  pattern: $A
+  not:
+    precedes:
+      stopBy: end
+      kind: end_tag
+transform:
+  B:
+    replace:
+      replace: '>$'
+      by: />
+      source: $A
+fix: $B
+
+---
+
 id: v-tag has lang
 language: html
 rule:
