@@ -1,14 +1,26 @@
 id: v-define-slots default
 language: html
+utils:
+  is-default-slot:
+    kind: tag_name
+    regex: ^slot$
+    precedes:
+      kind: attribute
+      not:
+        has:
+          kind: attribute_name
+          regex: ^name$
 rule:
-  kind: tag_name
-  regex: ^slot$
-  precedes:
-    kind: attribute
-    not:
-      has:
-        kind: attribute_name
-        regex: ^name$
+  any:
+    - matches: is-default-slot
+    - kind: tag_name
+      inside:
+        kind: end_tag
+        follows:
+          kind: start_tag
+          stopBy: end
+          has:
+            matches: is-default-slot
 fix:
   slots.default
 
@@ -16,22 +28,35 @@ fix:
 
 id: v-define-slots name
 language: html
+utils:
+  is-slot:
+    kind: tag_name
+    regex: ^slot$
+    precedes:
+      kind: attribute
+      has:
+        kind: attribute_name
+        regex: ^name$
+        precedes:
+          kind: quoted_attribute_value
+          has:
+            kind: attribute_value
+            pattern: $A
+          stopBy: end
 rule:
-  kind: tag_name
-  regex: ^slot$
-  precedes:
-    kind: attribute
-    has:
-      kind: attribute_name
-      regex: ^name$
-      precedes:
-        kind: quoted_attribute_value
-        has:
-          kind: attribute_value
-          pattern: $V
-        stopBy: end
+  any:
+    - matches: is-slot
+    - kind: tag_name
+      regex: slot
+      inside:
+        kind: end_tag
+        follows:
+          kind: start_tag
+          stopBy: end
+          has:
+            matches: is-slot
 fix:
-  slots.$V
+  slots.$A
 
 ---
 

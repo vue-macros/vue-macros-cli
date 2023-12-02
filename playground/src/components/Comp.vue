@@ -1,7 +1,8 @@
 <template>
   <div @click="()=> $emit('update', 2)">
-    <slot :id="`${id}`"/>
-    <slot name="bottom" v-bind="{ foo: id }" />
+    <slot name="top" v-bind="{ foo: id }" />
+    <slot :id="`${id}`">{{ id }}</slot>
+    <slot name="bottom" v-bind="{ foo: id }">bottom</slot>
   </div>
 </template>
 
@@ -14,6 +15,7 @@ defineEmits<{
 
 defineSlots<{
   default: (props: { id: string }) => any
+  top: (props: { foo: number }) => any
   bottom: (props: { foo: number }) => any
 }>()
 </script>
