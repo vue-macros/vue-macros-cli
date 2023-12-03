@@ -19,18 +19,19 @@ ${chalk.underline('Commands:')}
  
 ${chalk.underline('Options:')}
   -h, --help    Print help (see more with '--help')
-  -V, --version Print version
+  -v, --version Print version
   `)
-}
-if (argv._[0] !== 'sg' || argv.help || argv.h) {
-  printHelp()
-  process.exit()
 }
 
 const dirname = path.dirname(fileURLToPath(import.meta.url))
 if (argv.v || argv.version) {
   const localPackageJson = await readPackageJSON(dirname)
   console.log(`${localPackageJson.name} ${localPackageJson.version}`)
+  process.exit()
+}
+
+if (argv._[0] !== 'sg' || argv.help || argv.h) {
+  printHelp()
   process.exit()
 }
 
