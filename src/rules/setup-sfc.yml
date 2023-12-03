@@ -22,18 +22,18 @@ fix: |-
 id: setup-sfc start ignore comment in style
 language: html
 rule:
-  kind: raw_text
+  kind: style_element
   pattern: $A
-  inside:
-    kind: style_element
+  has:
+    kind: raw_text
+    regex: \*/
 transform:
   B:
     replace:
       replace: \*/
       by: '*\/'
       source: $A
-fix: |-
-  $B
+fix: $B
 
 ---
 
@@ -79,4 +79,4 @@ rule:
   pattern: $A
   inside:
     kind: program
-fix: |-
+fix: ''
