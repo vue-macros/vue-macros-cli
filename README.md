@@ -26,7 +26,7 @@ vue-macros sg
 
 ### Init
 ```shell
-pnpm create vite my-vue-macros --template vue
+pnpm create vite my-vue-macros --template vue-ts
 
 cd my-vue-macros
 
