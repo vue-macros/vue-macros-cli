@@ -42,8 +42,10 @@
     "prepublishOnly": "pnpm run build"
   },
   "dependencies": {
-    "@ast-grep/cli": "^0.14.1",
+    "@antfu/ni": "^0.21.12",
+    "@ast-grep/cli": "^0.14.2",
     "@inquirer/prompts": "^3.3.0",
+    "magicast": "^0.3.2",
     "pkg-types": "^1.0.3",
     "zx": "^7.2.3"
   },

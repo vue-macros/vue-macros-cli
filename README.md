@@ -8,7 +8,7 @@
 - [x] define-render
 - [x] export-render
 - [x] define-slots
-- [x] short-v-model
+- [x] short-vmodel
 - [x] setup-sfc 
 
 
@@ -19,11 +19,20 @@
 pnpm add -g @vue-macros/cli
 ```
 
-### sg
+### SG
 ```shell
 vue-macros sg
 ```
 
-## License
+### Init
+```shell
+pnpm create vite my-vue-macros --template vue
+
+cd my-vue-macros
+
+vue-macros init
+```
+
+## Licenase
 
 MIT License &copy; 2023-PRESENT [zhiyuanzmj](https://github.com/zhiyuanzmj)

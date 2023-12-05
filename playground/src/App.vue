@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { shallowRef } from 'vue';
+import { shallowRef } from 'vue'
 import Comp from './components/Comp.vue'
 
 const list = [{ id: 1 }]
@@ -15,8 +15,8 @@ const compRef = shallowRef()
     v-if="select"
     :key="i.id"
     v-bind="bind"
-    v-model:id="i.id"
     ref="compRef"
+    v-model:id="i.id"
     v-loading.fullscreen.lock="true"
     v-memo="[select?.id === i.id]"
     v-on="on"

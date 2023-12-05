@@ -5,8 +5,8 @@ export default defineBuildConfig({
     'src/index',
     {
       builder: 'mkdist',
-      input: './src',
-      outDir: './dist',
+      input: './src/sg',
+      outDir: './dist/sg',
     },
   ],
   clean: true,

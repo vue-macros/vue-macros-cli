@@ -7,7 +7,7 @@ settings:
 dependencies:
   vue:
     specifier: ^3.3.9
-    version: 3.3.9
+    version: 3.3.9(typescript@5.3.2)
 
 devDependencies:
   '@vitejs/plugin-vue':
@@ -18,16 +18,19 @@ devDependencies:
     version: 3.1.0(vite@5.0.4)(vue@3.3.9)
   '@vue-macros/volar':
     specifier: ^0.17.4
-    version: 0.17.4(@vue-macros/reactivity-transform@0.4.0)(vue@3.3.9)
+    version: 0.17.4(@vue-macros/reactivity-transform@0.4.0)(typescript@5.3.2)(vue@3.3.9)
   '@vue/babel-helper-vue-transform-on':
     specifier: 1.2.0-alpha.0
     version: 1.2.0-alpha.0
   tsx:
     specifier: ^4.6.1
     version: 4.6.1
+  typescript:
+    specifier: ^5.3.2
+    version: 5.3.2
   unplugin-vue-macros:
     specifier: ^2.7.0
-    version: 2.7.0(vite@5.0.4)(vue@3.3.9)
+    version: 2.7.0(typescript@5.3.2)(vite@5.0.4)(vue@3.3.9)
   vite:
     specifier: ^5.0.4
     version: 5.0.4
@@ -883,7 +886,7 @@ packages:
       '@babel/plugin-transform-typescript': 7.23.5(@babel/core@7.23.5)
       '@vue/babel-plugin-jsx': 1.1.5(@babel/core@7.23.5)
       vite: 5.0.4
-      vue: 3.3.9
+      vue: 3.3.9(typescript@5.3.2)
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -896,7 +899,7 @@ packages:
       vue: ^3.2.25
     dependencies:
       vite: 5.0.4
-      vue: 3.3.9
+      vue: 3.3.9(typescript@5.3.2)
     dev: true
 
   /@volar/language-core@1.10.10:
@@ -972,7 +975,7 @@ packages:
       ast-kit: 0.11.2
       local-pkg: 0.5.0
       magic-string-ast: 0.3.0
-      vue: 3.3.9
+      vue: 3.3.9(typescript@5.3.2)
     transitivePeerDependencies:
       - rollup
     dev: true
@@ -986,7 +989,7 @@ packages:
       '@vue-macros/api': 0.9.0(vue@3.3.9)
       '@vue-macros/common': 1.9.0(vue@3.3.9)
       unplugin: 1.5.1
-      vue: 3.3.9
+      vue: 3.3.9(typescript@5.3.2)
     transitivePeerDependencies:
       - rollup
     dev: true
@@ -1017,7 +1020,7 @@ packages:
       '@vue-macros/api': 0.9.0(vue@3.3.9)
       '@vue-macros/common': 1.9.0(vue@3.3.9)
       unplugin: 1.5.1
-      vue: 3.3.9
+      vue: 3.3.9(typescript@5.3.2)
     transitivePeerDependencies:
       - rollup
     dev: true
@@ -1030,7 +1033,7 @@ packages:
     dependencies:
       '@vue-macros/common': 1.9.0(vue@3.3.9)
       unplugin: 1.5.1
-      vue: 3.3.9
+      vue: 3.3.9(typescript@5.3.2)
     transitivePeerDependencies:
       - rollup
     dev: true
@@ -1045,7 +1048,7 @@ packages:
       '@vue-macros/common': 1.9.0(vue@3.3.9)
       '@vue-macros/reactivity-transform': 0.4.0(vue@3.3.9)
       unplugin: 1.5.1
-      vue: 3.3.9
+      vue: 3.3.9(typescript@5.3.2)
     transitivePeerDependencies:
       - rollup
     dev: true
@@ -1058,7 +1061,7 @@ packages:
     dependencies:
       '@vue-macros/common': 1.9.0(vue@3.3.9)
       unplugin: 1.5.1
-      vue: 3.3.9
+      vue: 3.3.9(typescript@5.3.2)
     transitivePeerDependencies:
       - rollup
     dev: true
@@ -1071,12 +1074,12 @@ packages:
     dependencies:
       '@vue-macros/common': 1.9.0(vue@3.3.9)
       unplugin: 1.5.1
-      vue: 3.3.9
+      vue: 3.3.9(typescript@5.3.2)
     transitivePeerDependencies:
       - rollup
     dev: true
 
-  /@vue-macros/devtools@0.2.0(vite@5.0.4):
+  /@vue-macros/devtools@0.2.0(typescript@5.3.2)(vite@5.0.4):
     resolution: {integrity: sha512-jHjvY1bFgQLe/2+5pBOG4fgmL5MPhsqQDj7Barhj8YN+Oe7U2hBImvfAyOGpqd2uucLOWQTP1cWrp3q9b1svsg==}
     engines: {node: '>=16.14.0'}
     peerDependencies:
@@ -1087,7 +1090,7 @@ packages:
     dependencies:
       sirv: 2.0.3
       vite: 5.0.4
-      vue: 3.3.9
+      vue: 3.3.9(typescript@5.3.2)
     transitivePeerDependencies:
       - typescript
     dev: true
@@ -1101,7 +1104,7 @@ packages:
       '@vue-macros/common': 1.9.0(vue@3.3.9)
       '@vue/compiler-sfc': 3.3.9
       unplugin: 1.5.1
-      vue: 3.3.9
+      vue: 3.3.9(typescript@5.3.2)
     transitivePeerDependencies:
       - rollup
     dev: true
@@ -1114,7 +1117,7 @@ packages:
     dependencies:
       '@vue-macros/common': 1.9.0(vue@3.3.9)
       unplugin: 1.5.1
-      vue: 3.3.9
+      vue: 3.3.9(typescript@5.3.2)
     transitivePeerDependencies:
       - rollup
     dev: true
@@ -1128,7 +1131,7 @@ packages:
       '@vue-macros/common': 1.9.0(vue@3.3.9)
       '@vue/compiler-sfc': 3.3.9
       unplugin: 1.5.1
-      vue: 3.3.9
+      vue: 3.3.9(typescript@5.3.2)
     transitivePeerDependencies:
       - rollup
     dev: true
@@ -1179,7 +1182,7 @@ packages:
       '@vue/shared': 3.3.9
       magic-string: 0.30.5
       unplugin: 1.5.1
-      vue: 3.3.9
+      vue: 3.3.9(typescript@5.3.2)
     transitivePeerDependencies:
       - rollup
     dev: true
@@ -1251,7 +1254,7 @@ packages:
       - vue
     dev: true
 
-  /@vue-macros/volar@0.17.4(@vue-macros/reactivity-transform@0.4.0)(vue@3.3.9):
+  /@vue-macros/volar@0.17.4(@vue-macros/reactivity-transform@0.4.0)(typescript@5.3.2)(vue@3.3.9):
     resolution: {integrity: sha512-bPOp9KPAlm1nxIYPVAKoiKS5ERQMgSROAs6fQdlYv9sE4ZgxKpha3S0ZBCFniXkRwOwGaEfMqGkflo0V1buEfw==}
     engines: {node: '>=16.14.0'}
     peerDependencies:
@@ -1265,7 +1268,7 @@ packages:
       '@vue-macros/define-props': 2.0.0(@vue-macros/reactivity-transform@0.4.0)(vue@3.3.9)
       '@vue-macros/short-bind': 0.2.0(vue@3.3.9)
       '@vue-macros/short-vmodel': 1.4.0(vue@3.3.9)
-      '@vue/language-core': 1.8.22
+      '@vue/language-core': 1.8.22(typescript@5.3.2)
     transitivePeerDependencies:
       - '@vue-macros/reactivity-transform'
       - rollup
@@ -1334,7 +1337,7 @@ packages:
       '@vue/compiler-dom': 3.3.9
       '@vue/shared': 3.3.9
 
-  /@vue/language-core@1.8.22:
+  /@vue/language-core@1.8.22(typescript@5.3.2):
     resolution: {integrity: sha512-bsMoJzCrXZqGsxawtUea1cLjUT9dZnDsy5TuZ+l1fxRMzUGQUG9+Ypq4w//CqpWmrx7nIAJpw2JVF/t258miRw==}
     peerDependencies:
       typescript: '*'
@@ -1349,6 +1352,7 @@ packages:
       computeds: 0.0.1
       minimatch: 9.0.3
       muggle-string: 0.3.1
+      typescript: 5.3.2
       vue-template-compiler: 2.7.15
     dev: true
 
@@ -1386,7 +1390,7 @@ packages:
     dependencies:
       '@vue/compiler-ssr': 3.3.9
       '@vue/shared': 3.3.9
-      vue: 3.3.9
+      vue: 3.3.9(typescript@5.3.2)
 
   /@vue/shared@3.3.9:
     resolution: {integrity: sha512-ZE0VTIR0LmYgeyhurPTpy4KzKsuDyQbMSdM49eKkMnT5X4VfFBLysMzjIZhLEFQYjjOVVfbvUDHckwjDFiO2eA==}
@@ -1911,6 +1915,11 @@ packages:
       fsevents: 2.3.3
     dev: true
 
+  /typescript@5.3.2:
+    resolution: {integrity: sha512-6l+RyNy7oAHDfxC4FzSJcz9vnjTKxrLpDG5M2Vu4SHRVNg6xzqZp6LYSR9zjqQTu8DU/f5xwxUdADOkbrIX2gQ==}
+    engines: {node: '>=14.17'}
+    hasBin: true
+
   /ufo@1.3.2:
     resolution: {integrity: sha512-o+ORpgGwaYQXgqGDwd+hkS4PuZ3QnmqMMxRuajK/a38L6fTpcE5GPIfrf+L/KemFzfUpeUQc1rRS1iDBozvnFA==}
     dev: true
@@ -1950,7 +1959,7 @@ packages:
       - vue
     dev: true
 
-  /unplugin-vue-macros@2.7.0(vite@5.0.4)(vue@3.3.9):
+  /unplugin-vue-macros@2.7.0(typescript@5.3.2)(vite@5.0.4)(vue@3.3.9):
     resolution: {integrity: sha512-SztF4ARBbrd1yuH4FbJOhp22rTvzakjzJUHTKLRQkZY1KMkIzx/KAdzEkxjAG2Xteqb29SYrc7XcoPdrUPMCCw==}
     engines: {node: '>=16.14.0'}
     peerDependencies:
@@ -1967,7 +1976,7 @@ packages:
       '@vue-macros/define-props-refs': 1.2.0(vue@3.3.9)
       '@vue-macros/define-render': 1.5.0(vue@3.3.9)
       '@vue-macros/define-slots': 1.1.0(vue@3.3.9)
-      '@vue-macros/devtools': 0.2.0(vite@5.0.4)
+      '@vue-macros/devtools': 0.2.0(typescript@5.3.2)(vite@5.0.4)
       '@vue-macros/export-expose': 0.1.0(vue@3.3.9)
       '@vue-macros/export-props': 0.4.0(vue@3.3.9)
       '@vue-macros/export-render': 0.2.0(vue@3.3.9)
@@ -1984,7 +1993,7 @@ packages:
       unplugin: 1.5.1
       unplugin-combine: 0.8.1(vite@5.0.4)
       unplugin-vue-define-options: 1.4.0(vue@3.3.9)
-      vue: 3.3.9
+      vue: 3.3.9(typescript@5.3.2)
     transitivePeerDependencies:
       - '@vueuse/core'
       - esbuild
@@ -2056,7 +2065,7 @@ packages:
       he: 1.2.0
     dev: true
 
-  /vue@3.3.9:
+  /vue@3.3.9(typescript@5.3.2):
     resolution: {integrity: sha512-sy5sLCTR8m6tvUk1/ijri3Yqzgpdsmxgj6n6yl7GXXCXqVbmW2RCXe9atE4cEI6Iv7L89v5f35fZRRr5dChP9w==}
     peerDependencies:
       typescript: '*'
@@ -2069,6 +2078,7 @@ packages:
       '@vue/runtime-dom': 3.3.9
       '@vue/server-renderer': 3.3.9(vue@3.3.9)
       '@vue/shared': 3.3.9
+      typescript: 5.3.2
 
   /webpack-sources@3.2.3:
     resolution: {integrity: sha512-/DyMEOrDgLKKIG0fmvtz+4dUX/3Ghozwgm6iPp8KRhvn+eQf9+Q7GWxVNMk3+uCPWfdXYC4ExGBckIXdFEfH1w==}

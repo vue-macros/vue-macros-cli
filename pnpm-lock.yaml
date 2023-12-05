@@ -5,12 +5,18 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@antfu/ni':
+    specifier: ^0.21.12
+    version: 0.21.12
   '@ast-grep/cli':
-    specifier: ^0.14.1
-    version: 0.14.1
+    specifier: ^0.14.2
+    version: 0.14.2
   '@inquirer/prompts':
     specifier: ^3.3.0
     version: 3.3.0
+  magicast:
+    specifier: ^0.3.2
+    version: 0.3.2
   pkg-types:
     specifier: ^1.0.3
     version: 1.0.3
@@ -135,12 +141,17 @@ packages:
       find-up: 7.0.0
     dev: true
 
+  /@antfu/ni@0.21.12:
+    resolution: {integrity: sha512-2aDL3WUv8hMJb2L3r/PIQWsTLyq7RQr3v9xD16fiz6O8ys1xEyLhhTOv8gxtZvJiTzjTF5pHoArvRdesGL1DMQ==}
+    hasBin: true
+    dev: false
+
   /@antfu/utils@0.7.6:
     resolution: {integrity: sha512-pvFiLP2BeOKA/ZOS6jxx4XhKzdVLHDhGlFEaZ2flWWYf2xOqVniqpk38I04DFRyz+L0ASggl7SkItTc+ZLju4w==}
     dev: true
 
-  /@ast-grep/cli-darwin-arm64@0.14.1:
-    resolution: {integrity: sha512-mJtzgfvPswpfyIS5zWksCZ9y+vTWXEUl/5B28Co5QSU0ezu3fkBljlrPGfmb6+R4pWl8VM36x8Nv1ENKpjXavA==}
+  /@ast-grep/cli-darwin-arm64@0.14.2:
+    resolution: {integrity: sha512-l6UUYwSy6sDWeCMHtfFlK1LJrs8ltENBvO47WhfIRgPNjzW9jzsuXDMQMn8ulaYJLrII+bMDarGi7noSC/k21g==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [darwin]
@@ -148,8 +159,8 @@ packages:
     dev: false
     optional: true
 
-  /@ast-grep/cli-darwin-x64@0.14.1:
-    resolution: {integrity: sha512-dDjw9vaZu4N4YuzMs4WZAuRmC2qMVDiteYmhQB6wgIYrODyPoqH7jvZOTKGYh/ZOnbzUGM5S3wyNiTugIcQm2Q==}
+  /@ast-grep/cli-darwin-x64@0.14.2:
+    resolution: {integrity: sha512-zxvIFY+VjGrIY5NCc1dovTJkma9toIATSBKXfDL7kDlZa+jN+ni7e7wRtQiAmlFZpLqVerdM4Per3BJyhCaPJQ==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [darwin]
@@ -157,8 +168,8 @@ packages:
     dev: false
     optional: true
 
-  /@ast-grep/cli-linux-arm64-gnu@0.14.1:
-    resolution: {integrity: sha512-aJqcfWsHAwT2YtiX2ZjaAm+KGp1vRrnJvoqbAx1nGXk7LuE986tv8SS4RN+F9g/lVCXzDZSBNR/mdZf/b8rN4A==}
+  /@ast-grep/cli-linux-arm64-gnu@0.14.2:
+    resolution: {integrity: sha512-dn7nsEVboNGJl2dC8Bg7AAHmzdxbYTmq+Ej5kxAYGLfiEdaTwitfOgsygH6x2Bz2N0QwX07KtT6wPf/2UN68ow==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [linux]
@@ -166,8 +177,8 @@ packages:
     dev: false
     optional: true
 
-  /@ast-grep/cli-linux-x64-gnu@0.14.1:
-    resolution: {integrity: sha512-8EUNb7PQIJI3494P8P137Hiv4m7dimb44csXopSHqXX3qjxRZN7YmIyShf2nGFt8kViSqxjnr4S1k4uM+0Vexg==}
+  /@ast-grep/cli-linux-x64-gnu@0.14.2:
+    resolution: {integrity: sha512-9CihQ90nbncGmGfKKdO30uiKvAOGIuMFJnGLwBrup7NwrrFwYlhBvhf9mH1ZiFREUfeLn+Wkt5lRyKl6c+lQNw==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [linux]
@@ -175,8 +186,8 @@ packages:
     dev: false
     optional: true
 
-  /@ast-grep/cli-win32-arm64-msvc@0.14.1:
-    resolution: {integrity: sha512-7HhgD/bqsdm2ciGZi5TdjAqx5hf0ml/j9h3oFW/vpXFliA60AW71u7KezEeQIlhWa5KoXbCFkhSvHMN10sNmmw==}
+  /@ast-grep/cli-win32-arm64-msvc@0.14.2:
+    resolution: {integrity: sha512-I+ffWrmHZ5hj+Sy4HUXE5i6AxN5XleDt06F47duRnTn5uo0KRQngtWxUez/m4YvpzVJEmYEhlQuVE5cZJbH74g==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [win32]
@@ -184,8 +195,8 @@ packages:
     dev: false
     optional: true
 
-  /@ast-grep/cli-win32-ia32-msvc@0.14.1:
-    resolution: {integrity: sha512-8/Kvbb0v9zd+/9tzQwK+xkhEAtkpdEmKqrPGY1cjuz6VWdMJyE8rg5PLcjVxBfaqQtO9gb/whrmr53TwuMizrg==}
+  /@ast-grep/cli-win32-ia32-msvc@0.14.2:
+    resolution: {integrity: sha512-Iux+Aoc9SO1V6lD9qCqeQFp/RwwrQ8k4Yohk6jO0855tGXrexo4ZnVAsam6w/b/XPDu/VkeuVC+ezHyKWcifMg==}
     engines: {node: '>= 10'}
     cpu: [ia32]
     os: [win32]
@@ -193,8 +204,8 @@ packages:
     dev: false
     optional: true
 
-  /@ast-grep/cli-win32-x64-msvc@0.14.1:
-    resolution: {integrity: sha512-f+9t0+jWa/lntgojXEs/YAplf9hpgIOFToE6JmSo1+vU0fCk/T+VIu8zfnaIahrIKDMYA2cKAAB2qjdlS4WtsQ==}
+  /@ast-grep/cli-win32-x64-msvc@0.14.2:
+    resolution: {integrity: sha512-0B3JDRb7J2tQYAWE6PdmnNwYEsXRaGsBaMtGl1PGFhr4ozGpN1ZwnsqjrwYk7CL3TMoQo/BqwwgDSkdY8ScTJQ==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [win32]
@@ -202,21 +213,21 @@ packages:
     dev: false
     optional: true
 
-  /@ast-grep/cli@0.14.1:
-    resolution: {integrity: sha512-YPHp8VBox+hH+b0YBX1hADFYh93zElXNwJ57fKJCfRyF4DriUSaf0ioXcIPdDFExhs5UqD1fllJSI/njNCI0zg==}
+  /@ast-grep/cli@0.14.2:
+    resolution: {integrity: sha512-u3JG/Hjun/uRzlxzNOBTEZwLXACKqT0/+nPpIZpnzF+KPcOoUGpsVy8ZLiS7F8Zkd9QoYQuNiSW1joZ0vObFsQ==}
     engines: {node: '>= 12.0.0'}
     hasBin: true
     requiresBuild: true
     dependencies:
       detect-libc: 2.0.2
     optionalDependencies:
-      '@ast-grep/cli-darwin-arm64': 0.14.1
-      '@ast-grep/cli-darwin-x64': 0.14.1
-      '@ast-grep/cli-linux-arm64-gnu': 0.14.1
-      '@ast-grep/cli-linux-x64-gnu': 0.14.1
-      '@ast-grep/cli-win32-arm64-msvc': 0.14.1
-      '@ast-grep/cli-win32-ia32-msvc': 0.14.1
-      '@ast-grep/cli-win32-x64-msvc': 0.14.1
+      '@ast-grep/cli-darwin-arm64': 0.14.2
+      '@ast-grep/cli-darwin-x64': 0.14.2
+      '@ast-grep/cli-linux-arm64-gnu': 0.14.2
+      '@ast-grep/cli-linux-x64-gnu': 0.14.2
+      '@ast-grep/cli-win32-arm64-msvc': 0.14.2
+      '@ast-grep/cli-win32-ia32-msvc': 0.14.2
+      '@ast-grep/cli-win32-x64-msvc': 0.14.2
     dev: false
 
   /@babel/code-frame@7.23.5:
@@ -397,12 +408,10 @@ packages:
   /@babel/helper-string-parser@7.23.4:
     resolution: {integrity: sha512-803gmbQdqwdf4olxrX4AJyFBV/RTr3rSmOj0rKwesmzlfhYNDEs+/iOcznzpNWlJlIlTJC2QfPFcHB6DlzdVLQ==}
     engines: {node: '>=6.9.0'}
-    dev: true
 
   /@babel/helper-validator-identifier@7.22.20:
     resolution: {integrity: sha512-Y4OZ+ytlatR8AI+8KZfKuL5urKp7qey08ha31L8b3BwewJAoJamTzyvxPR/5D+KkdJCGPq/+8TukHBlY10FX9A==}
     engines: {node: '>=6.9.0'}
-    dev: true
 
   /@babel/helper-validator-option@7.23.5:
     resolution: {integrity: sha512-85ttAOMLsr53VgXkTbkx8oA6YTfT4q7/HzXSLEYmjcSTJPMPQtvq1BD79Byep5xMUYbGRzEpDsjUf3dyp54IKw==}
@@ -436,7 +445,6 @@ packages:
     hasBin: true
     dependencies:
       '@babel/types': 7.23.5
-    dev: true
 
   /@babel/plugin-syntax-jsx@7.23.3(@babel/core@7.23.5):
     resolution: {integrity: sha512-EB2MELswq55OHUoRZLGg/zC7QWUKfNLpE57m/S2yr1uEneIgsTgrSzXP3NXEsMkVn76OlaVVnzN+ugObuYGwhg==}
@@ -536,7 +544,6 @@ packages:
       '@babel/helper-string-parser': 7.23.4
       '@babel/helper-validator-identifier': 7.22.20
       to-fast-properties: 2.0.0
-    dev: true
 
   /@es-joy/jsdoccomment@0.41.0:
     resolution: {integrity: sha512-aKUhyn1QI5Ksbqcr3fFJj16p99QdjUxXAEuFst1Z47DRyoiMwivIH9MV/ARcJOCXVjPfjITciej8ZD2O/6qUmw==}
@@ -3525,6 +3532,14 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.15
     dev: true
 
+  /magicast@0.3.2:
+    resolution: {integrity: sha512-Fjwkl6a0syt9TFN0JSYpOybxiMCkYNEeOTnOTNRbjphirLakznZXAqrXgj/7GG3D1dvETONNwrBfinvAbpunDg==}
+    dependencies:
+      '@babel/parser': 7.23.5
+      '@babel/types': 7.23.5
+      source-map-js: 1.0.2
+    dev: false
+
   /map-stream@0.1.0:
     resolution: {integrity: sha512-CkYQrPYZfWnu/DAmVCpTSX/xHpKZ80eKh2lAkyA6AJTef6bW+6JpbQZN5rofum7da+SyN1bi5ctTm+lTfcCW3g==}
     dev: false
@@ -4542,7 +4557,6 @@ packages:
   /source-map-js@1.0.2:
     resolution: {integrity: sha512-R0XvVJ9WusLiqTCEiGCmICCMplcCkIwwR11mOSD9CR5u+IXYdiseeEuXCVAjS54zqwkLcPNnmU4OeJ6tUrWhDw==}
     engines: {node: '>=0.10.0'}
-    dev: true
 
   /spdx-correct@3.2.0:
     resolution: {integrity: sha512-kN9dJbvnySHULIluDHy32WHRUu3Og7B9sbY7tsFLctQkIqnMh3hErYgdMjTYuqmcXX+lK5T1lnUt3G7zNswmZA==}
@@ -4721,7 +4735,6 @@ packages:
   /to-fast-properties@2.0.0:
     resolution: {integrity: sha512-/OaKK0xYrs3DmxRYqL/yDc+FxFUVYhDlXMhRmv3z915w2HF1tnN1omB354j8VUGO/hbRzyD6Y3sA7v7GS/ceog==}
     engines: {node: '>=4'}
-    dev: true
 
   /to-regex-range@5.0.1:
     resolution: {integrity: sha512-65P7iz6X5yEr1cwcgvQxbbIw7Uk3gOy5dIdtZ4rDveLqhrdJP+Li/Hx6tyK0NEb+2GCyneCMJiGqrADCSNk8sQ==}

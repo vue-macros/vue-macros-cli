@@ -1,7 +1,7 @@
-import { defineConfig } from 'vite'
-import VueMacros from 'unplugin-vue-macros/vite'
+import VueJsx from '@vitejs/plugin-vue-jsx'
 import Vue from '@vitejs/plugin-vue'
-import vueJsx from '@vitejs/plugin-vue-jsx'
+import VueMacros from 'unplugin-vue-macros/vite'
+import { defineConfig } from 'vite'
 
 export default defineConfig({
   plugins: [
@@ -11,18 +11,18 @@ export default defineConfig({
       defineSlots: true,
       exportRender: true,
       reactivityTransform: true,
+
       plugins: {
         vue: Vue({
-          include: [/\.vue$/, /\.setup\.[cm]?[jt]sx?$/],
           script: {
             propsDestructure: true,
           },
         }),
-        vueJsx: vueJsx({
-          transformOn: true
+
+        vueJsx: VueJsx({
+          transformOn: true,
         }),
       },
     }),
-
   ],
 })

@@ -1,9 +1,8 @@
 #! /usr/bin/env node
-import { fileURLToPath } from 'node:url'
-import process from 'node:process'
-import { $, argv, chalk, fs, glob, path } from 'zx'
-import { select } from '@inquirer/prompts'
+import { $, argv, chalk, path } from 'zx'
 import { readPackageJSON } from 'pkg-types'
+import { init } from './init/index'
+import { sg } from './sg'
 
 function printHelp() {
   console.log(`
@@ -16,6 +15,7 @@ ${chalk.underline('Directory:')}
 
 ${chalk.underline('Commands:')}
   sg        Rewrite code in specified directory
+  init      Auto config for Vue Macros
  
 ${chalk.underline('Options:')}
   -h, --help    Print help (see more with '--help')
@@ -23,94 +23,18 @@ ${chalk.underline('Options:')}
   `)
 }
 
-const dirname = path.dirname(fileURLToPath(import.meta.url))
+const target = path.resolve(argv._.at(1) || '.')
 if (argv.v || argv.version) {
-  const localPackageJson = await readPackageJSON(dirname)
+  const localPackageJson = await readPackageJSON(import.meta.url)
   console.log(`${localPackageJson.name} ${localPackageJson.version}`)
-  process.exit()
 }
-
-if (argv._[0] !== 'sg' || argv.help || argv.h) {
-  printHelp()
-  process.exit()
+else if (argv._[0] === 'init') {
+  await init(target)
 }
-
-$.verbose = false
-
-let macro = await select({
-  message: chalk.green(
-    `Which vue macro do you want to use?`,
-  ),
-  choices: [
-    { value: 'jsx-directive' },
-    { value: 'setup-sfc' },
-    { value: 'short-v-model' },
-    { value: 'define-slots' },
-  ],
-})
-
-let render
-if (macro === 'jsx-directive') {
-  render = await select({
-    message: chalk.green(
-      `Which render macro do you want to use?`,
-    ),
-    choices: [
-      { value: 'define-render' },
-      { value: 'export-render' },
-    ],
-  })
-}
-
-if (macro === 'short-v-model') {
-  macro = await select({
-    message: chalk.green(
-      `Which prefix do you want to use?`,
-    ),
-    choices: [
-      { name: '$', value: 'short-v-model 1', description: '$foo="foo"' },
-      { name: '::', value: 'short-v-model 2', description: '::foo="foo"' },
-      { name: '*', value: 'short-v-model 3', description: '*foo="foo"' },
-    ],
-  })
-}
-
-const target = path.resolve(argv._.at(1) || './src')
-async function toSetupSFC() {
-  const extname = path.extname(target)
-  const files = await glob(`${target}${extname ? '' : '/**/*.vue'}`, {
-    ignore: [
-      '**/node_modules/**',
-    ],
-  })
-
-  await Promise.all(files.map(async file => fs.move(file, `${file.slice(0, -3)}setup.tsx`)))
-}
-
-const config = `${dirname}/sgconfig`
-const sg = path.resolve(dirname, '../node_modules/.bin/ast-grep')
-async function useTsx(cb = () => {}, action = 'clean') {
-  await $`${sg} scan -c ${config}.yml -U --filter '^setup-sfc start' ${target}`
-  await $`${sg} scan -c ${config}.yml -U --filter '^setup-sfc end' ${target}`
-  await cb()
-  await $`${sg} scan -c ${config}-tsx.yml -U --filter '^setup-sfc ${action}' ${target}`
-}
-
-if (['jsx-directive', 'setup-sfc'].includes(macro)) {
-  await $`${sg} scan -c ${config}.yml -U --filter '^self-closing-tag' ${target}`
-  await $`${sg} scan -c ${config}.yml -U --filter '^v-' ${target}`
-  await $`${sg} scan -c ${config}.yml -U --filter '^${macro === 'setup-sfc' ? 'export-render' : render}' ${target}`
-  await useTsx(async () => {
-    await $`${sg} scan -c ${config}-tsx.yml -U --filter '^v-' ${target}`
-    await $`${sg} scan -c ${config}-tsx.yml -U --filter '^define-emits' ${target}`
-  }, macro === 'setup-sfc' ? 'delete' : 'clean')
-
-  if (macro === 'setup-sfc')
-    toSetupSFC()
-}
-else if (macro === 'define-slots') {
-  await useTsx(() => $`${sg} scan -c ${config}-tsx.yml -U --filter '^define-slots' ${target}`)
+else if (argv._[0] === 'sg') {
+  $.verbose = false
+  sg(target)
 }
 else {
-  await $`${sg} scan -c ${config}.yml -U --filter ^${macro} ${target}`
+  printHelp()
 }

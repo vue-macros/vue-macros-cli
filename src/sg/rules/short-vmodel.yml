@@ -1,4 +1,4 @@
-id: short-v-model 1
+id: short-vmodel 0
 language: html
 rule:
   kind: attribute_name
@@ -15,7 +15,7 @@ fix:
 
 ---
 
-id: short-v-model 2
+id: short-vmodel 1
 language: html
 rule:
   kind: attribute_name
@@ -32,7 +32,7 @@ fix:
 
 ---
 
-id: short-v-model 3
+id: short-vmodel 2
 language: html
 rule:
   kind: attribute_name
