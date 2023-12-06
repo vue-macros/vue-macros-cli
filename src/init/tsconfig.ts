@@ -1,12 +1,15 @@
 import type { TSConfig } from 'pkg-types'
 import { readTSConfig, writeTSConfig } from 'pkg-types'
+import { fs } from 'zx'
 import type { VueMacros } from '../common'
 import { vueMacros } from '../common'
 
 export async function rewriteTsConfig(selectedMacros: VueMacros, target: string) {
-  const tsconfig = await readTSConfig(target) as TSConfig & { vueCompilerOptions?: any }
-  if (!tsconfig)
+  const filename = `${target}/nuxt.config.ts`
+  if (!await fs.pathExists(filename))
     return
+
+  const tsconfig = await readTSConfig(target) as TSConfig & { vueCompilerOptions?: any }
 
   const macros = vueMacros.reduce((result, macro) => {
     if (macro.volar) {
