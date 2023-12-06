@@ -5,7 +5,7 @@ import Comp from './components/Comp.vue'
 const list = [{ id: 1 }]
 const bind = { }
 const on = { submit: () => {} }
-const select = $ref<{ id: number }>(list[0])
+let select = $ref<{ id: number }>(list[0])
 const compRef = shallowRef()
 </script>
 

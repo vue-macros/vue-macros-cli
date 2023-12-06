@@ -12,6 +12,7 @@ export default antfu(
       },
       typescript: {
         'no-console': 'off',
+        'prefer-const': 'off',
       },
       yaml: {
         'yaml/indent': 'off',

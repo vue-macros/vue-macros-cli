@@ -80,3 +80,59 @@ rule:
   inside:
     kind: program
 fix: ''
+
+---
+
+id: setup-sfc delete .vue suffix in ts
+language: ts
+rule:
+  kind: string_fragment
+  regex: \.vue$
+  pattern: $A
+  any:
+    - inside:
+        kind: string
+        inside:
+          kind: import_statement
+    - inside:
+        kind: string
+        inside:
+          kind: arguments
+          follows:
+            kind: import
+            stopBy: end
+transform:
+  B:
+    replace:
+      replace: vue$
+      by: setup.tsx
+      source: $A
+fix: $B
+
+---
+
+id: setup-sfc delete .vue suffix in tsx
+language: tsx
+rule:
+  kind: string_fragment
+  regex: \.vue$
+  pattern: $A
+  any:
+    - inside:
+        kind: string
+        inside:
+          kind: import_statement
+    - inside:
+        kind: string
+        inside:
+          kind: arguments
+          follows:
+            kind: import
+            stopBy: end
+transform:
+  B:
+    replace:
+      replace: vue$
+      by: setup.tsx
+      source: $A
+fix: $B

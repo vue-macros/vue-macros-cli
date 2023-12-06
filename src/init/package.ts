@@ -21,7 +21,7 @@ export async function rewritePackage(macros: VueMacros, target: string) {
       && !packageJson.optionalDependencies?.[dep],
     )
 
-    if (devDeps)
+    if (devDeps.length)
       return $`${ni} ${devDeps} -D`
   }
 
