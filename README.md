@@ -18,7 +18,7 @@ Rewriting at Vue Macros.
 vue-macros sg
 ```
 
-supported vue macros:
+supported macros:
 
 - [x] jsx-directive
 - [x] define-render
