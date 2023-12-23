@@ -4,6 +4,8 @@ utils:
   is-default-slot:
     kind: tag_name
     regex: ^slot$
+    inside:
+      kind: start_tag
     precedes:
       not:
         has:
@@ -31,6 +33,8 @@ utils:
   is-slot:
     kind: tag_name
     regex: ^slot$
+    inside:
+      kind: start_tag
     precedes:
       kind: attribute
       has:
