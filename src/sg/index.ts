@@ -65,6 +65,7 @@ export async function sg(target: string) {
 
   if (['setup-sfc', 'define-render', 'export-render'].includes(macro)) {
     await $`${sg} scan -c ${config}.yml -U --filter '^self-closing-tag' ${target}`
+    await $`${sg} scan -c ${config}.yml -U --filter '^dot-to-underline' ${target}`
     await $`${sg} scan -c ${config}.yml -U --filter '^v-' ${target}`
     await $`${sg} scan -c ${config}.yml -U --filter '^${macro === 'setup-sfc' ? 'export-render' : macro}' ${target}`
     await useTsx(async () => {

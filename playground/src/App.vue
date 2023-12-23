@@ -20,6 +20,8 @@ const compRef = shallowRef()
     v-loading.fullscreen.lock="true"
     v-memo="[select?.id === i.id]"
     v-on="on"
+    v-on:click="alert"
+    @sub-mit.prevent
     @click.once="select = i"
     @submit="alert"
     @update:model-value="select.id = $event"

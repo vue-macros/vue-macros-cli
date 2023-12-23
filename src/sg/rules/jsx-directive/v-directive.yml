@@ -1,17 +1,25 @@
 id: v-directive
 language: html
 rule:
-  kind: attribute
+  kind: quoted_attribute_value
   has:
+    kind: attribute_value
+    pattern: $V
+  follows:
     kind: attribute_name
     pattern: $NAME
-    regex: ^v-
-    precedes:
-      kind: quoted_attribute_value
-      has:
-        kind: attribute_value
-        pattern: $V
-      stopBy: end
+    regex: ^v-|@
+    stopBy: end
+fix: |-
+  {$V}
+
+---
+
+id: dot-to-underline
+language: html
+rule:
+  kind: attribute_name
+  pattern: $NAME
 transform:
   K:
     replace:
@@ -19,4 +27,4 @@ transform:
       by: _
       source: $NAME
 fix: |-
-  $K={$V}
+  $K

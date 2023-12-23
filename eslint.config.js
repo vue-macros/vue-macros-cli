@@ -18,5 +18,6 @@ export default antfu(
         'yaml/indent': 'off',
       },
     },
+    ignores: ['**/playground/**'],
   },
 )
