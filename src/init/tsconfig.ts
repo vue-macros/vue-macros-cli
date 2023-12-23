@@ -2,7 +2,7 @@ import type { TSConfig } from 'pkg-types'
 import { readTSConfig, writeTSConfig } from 'pkg-types'
 import { fs } from 'zx'
 import type { VueMacros } from '../common'
-import { vueMacros } from '../common'
+import { camelize, vueMacros } from '../common'
 
 export async function rewriteTsConfig(selectedMacros: VueMacros, target: string) {
   const filename = `${target}/nuxt.config.ts`
@@ -28,9 +28,11 @@ export async function rewriteTsConfig(selectedMacros: VueMacros, target: string)
   const vueCompilerOptions = tsconfig.vueCompilerOptions ??= {}
   const plugins = vueCompilerOptions.plugins ??= []
   for (const [macro, options] of Object.entries(macros)) {
-    if (macro === 'short-vmodel' && options !== true) {
+    if (options !== true) {
       const vueMacros = vueCompilerOptions.vueMacros ??= {}
-      vueMacros.shortVmodel = options
+      vueMacros[camelize(macro)] = options.edition
+        ? { experimentalDefinePropProposal: options.edition }
+        : options
     }
 
     // prevent exportProps and exportExpose co-usage

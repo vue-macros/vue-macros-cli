@@ -11,8 +11,8 @@ export async function init(target: string) {
   const selectedMacros = (await checkbox({
     message: chalk.green(`Which vue macros do you want to use?`),
     choices: [
-      ...stableMacros.slice(-2),
       ...officialMacros.slice(-1),
+      ...stableMacros.slice(-2),
       ...experimentalMacros,
     ],
     pageSize: 14,
@@ -39,9 +39,23 @@ export async function init(target: string) {
         { value: '::' },
         { value: '*' },
       ],
-    }) as any
+    })
 
     selectedMacros.shortVmodel = { prefix }
+  }
+
+  if (selectedMacros.defineProp) {
+    const edition = await select({
+      message: chalk.green(
+      `Which edition do you want to use?`,
+      ),
+      choices: [
+        { name: 'kevinEdition', value: 'kevinEdition' },
+        { name: 'johnsonEdition', value: 'johnsonEdition' },
+      ],
+    })
+
+    selectedMacros.defineProp = { edition }
   }
 
   await rewriteConfig(selectedMacros, target)
