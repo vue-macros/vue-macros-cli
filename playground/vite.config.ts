@@ -19,9 +19,7 @@ export default defineConfig({
           },
         }),
 
-        vueJsx: VueJsx({
-          transformOn: true,
-        }),
+        vueJsx: VueJsx(),
       },
     }),
   ],

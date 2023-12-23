@@ -32,7 +32,7 @@ export async function rewritePackage(macros: VueMacros, target: string) {
     'typescript',
   ]
   if (macros.jsxDirective || macros.setupSFC)
-    deps.push('@vitejs/plugin-vue-jsx', '@vue/babel-helper-vue-transform-on')
+    deps.push('@vitejs/plugin-vue-jsx')
 
   await installDeps(deps)
 }

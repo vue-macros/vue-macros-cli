@@ -37,11 +37,6 @@ export async function rewriteViteConfig(macros: VueMacros, target: string) {
   }
 
   const vueJsx: ProxifiedFunctionCall = vueMacrosOptions?.plugins?.vueJsx || getVitePlugin('@vitejs/plugin-vue-jsx', 'VueJsx')
-  if (vueJsx && (macros.jsxDirective || macros.setupSFC)) {
-    vueJsx.$args[0] ?? vueJsx.$args.push({})
-    const arg = vueJsx.$args[0] as any
-    arg.transformOn = true
-  }
 
   updateVitePluginConfig(config, 'unplugin-vue-macros/vite', {
     ...macros,

@@ -1,7 +1,7 @@
 import { checkbox, select } from '@inquirer/prompts'
 import { chalk } from 'zx'
 import type { VueMacros } from '../common'
-import { experimentalMacros, stableMacros } from '../common'
+import { experimentalMacros, officialMacros, stableMacros } from '../common'
 import { rewriteNuxtConfig } from './nuxt'
 import { rewriteTsConfig } from './tsconfig'
 import { rewriteViteConfig } from './vite'
@@ -12,9 +12,10 @@ export async function init(target: string) {
     message: chalk.green(`Which vue macros do you want to use?`),
     choices: [
       ...stableMacros.slice(-2),
+      ...officialMacros.slice(-1),
       ...experimentalMacros,
     ],
-    pageSize: 13,
+    pageSize: 14,
   })).reduce((result, macro) => {
     result[macro] = true
     return result

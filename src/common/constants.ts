@@ -1,7 +1,7 @@
 export const officialMacros = [
   { name: 'define-options', value: 'defineOptions', volar: true, status: 'official' },
   { name: 'define-slots', value: 'defineSlots', volar: true, status: 'official' },
-  { name: 'define-emits', value: 'defineEmits', volar: true, status: 'official' },
+  { name: 'short-emits', value: 'shortEmits', volar: false, status: 'official' },
 ] as const
 
 export const stableMacros = [

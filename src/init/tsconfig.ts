@@ -28,7 +28,7 @@ export async function rewriteTsConfig(selectedMacros: VueMacros, target: string)
   const vueCompilerOptions = tsconfig.vueCompilerOptions ??= {}
   const plugins = vueCompilerOptions.plugins ??= []
   for (const [macro, options] of Object.entries(macros)) {
-    if (macro === 'short-vmodel') {
+    if (macro === 'short-vmodel' && options !== true) {
       const vueMacros = vueCompilerOptions.vueMacros ??= {}
       vueMacros.shortVmodel = options
     }

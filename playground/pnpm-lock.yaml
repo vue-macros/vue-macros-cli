@@ -19,9 +19,6 @@ devDependencies:
   '@vue-macros/volar':
     specifier: ^0.17.4
     version: 0.17.4(@vue-macros/reactivity-transform@0.4.0)(typescript@5.3.2)(vue@3.3.9)
-  '@vue/babel-helper-vue-transform-on':
-    specifier: 1.2.0-alpha.0
-    version: 1.2.0-alpha.0
   tsx:
     specifier: ^4.6.1
     version: 4.6.1
@@ -1278,10 +1275,6 @@ packages:
 
   /@vue/babel-helper-vue-transform-on@1.1.5:
     resolution: {integrity: sha512-SgUymFpMoAyWeYWLAY+MkCK3QEROsiUnfaw5zxOVD/M64KQs8D/4oK6Q5omVA2hnvEOE0SCkH2TZxs/jnnUj7w==}
-    dev: true
-
-  /@vue/babel-helper-vue-transform-on@1.2.0-alpha.0:
-    resolution: {integrity: sha512-8oelfDzzYre1XGykAGOYc8sSIL8ToDkWMG5awjN+tain/1XSu4KMyBYYESnEMqhyyo8pfMbgBXcQW5nRDrm61A==}
     dev: true
 
   /@vue/babel-plugin-jsx@1.1.5(@babel/core@7.23.5):
