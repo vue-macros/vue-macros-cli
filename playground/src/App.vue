@@ -22,10 +22,10 @@ const compRef = shallowRef()
     v-on="on"
     @click.once="select = i"
     @submit="alert"
-    @update="select.id = $event"
+    @update:model-value="select.id = $event"
   >
     <template v-slot:default="{ id }">
-      <div>{{ id }}</div>
+      <el-input>{{ id }}</el-input>
     </template>
     <template #bottom="{ foo }">
       <div>{{ `${foo}` }}</div>

@@ -1,0 +1,46 @@
+id: v-pascal-case for tagName
+language: tsx
+rule:
+    kind: identifier
+    pattern: $A
+    regex: '-'
+    inside:
+      any:
+        - kind: jsx_opening_element
+        - kind: jsx_closing_element
+        - kind: jsx_self_closing_element
+transform:
+  B:
+    convert:
+      source: $A
+      toCase: pascalCase
+      separatedBy: [dash]
+fix:
+  $B
+
+---
+
+id: v-pascal-case for attributeName
+language: tsx
+rule:
+  any:
+    - kind: property_identifier
+      pattern: $A
+      regex: ^[^v]-
+    - kind: identifier
+      pattern: $A
+      regex: '-'
+      follows:
+        kind: identifier
+        stopBy: end
+        inside:
+          kind: jsx_namespace_name
+
+transform:
+  B:
+    convert:
+      source: $A
+      toCase: camelCase
+      separatedBy: [dash]
+fix:
+  $B
