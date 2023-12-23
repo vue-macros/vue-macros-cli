@@ -1,48 +1,20 @@
-id: v-on shorthand
+id: v-on
 language: html
 rule:
-  kind: attribute
-  has:
-    kind: attribute_name
-    regex: ^@
-    pattern: $NAME
-    precedes:
-      kind: quoted_attribute_value
-      has:
-        kind: attribute_value
-        pattern: $V
-      stopBy: end
+  kind: attribute_name
+  regex: '^@|v-on:'
+  pattern: $NAME
 transform:
   B:
-    substring:
-      startChar: 1
-      endChar: 2
+    replace:
+      replace: '^@|v-on:'
+      by: ''
       source: $NAME
   C:
     convert:
       source: $B
-      toCase: upperCase
-  D:
-    substring:
-      startChar: 2
-      source: $NAME
-  K:
-    replace:
-      replace: \.
-      by: _
-      source: $D
-fix: |-
-  on$C$K={$V}
-
----
-
-id: v-on to on
-language: tsx
-rule:
-  kind: property_identifier
-  regex: ^v-on$
-fix:
-  on
+      toCase: capitalize
+fix: on$C
 
 ---
 
