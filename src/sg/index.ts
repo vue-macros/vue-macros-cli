@@ -1,8 +1,8 @@
 import { fileURLToPath } from 'node:url'
-import { $, chalk, fs, glob, path } from 'zx'
 import { select } from '@inquirer/prompts'
-import { rewriteConfig } from '../init/index'
+import { $, chalk, fs, glob, path } from 'zx'
 import { camelize } from '../common'
+import { rewriteConfig } from '../init/index'
 
 async function toSetupSFC(target: string) {
   const extname = path.extname(target)
@@ -18,7 +18,7 @@ async function toSetupSFC(target: string) {
 export async function sg(target: string) {
   let macro = await select({
     message: chalk.green(
-    `Which vue macro do you want to use?`,
+      `Which vue macro do you want to use?`,
     ),
     choices: [
       { value: 'jsx-directive' },
@@ -31,7 +31,7 @@ export async function sg(target: string) {
   if (macro === 'jsx-directive') {
     macro = await select({
       message: chalk.green(
-      `Which render macro do you want to use?`,
+        `Which render macro do you want to use?`,
       ),
       choices: [
         { value: 'define-render' },
@@ -43,7 +43,7 @@ export async function sg(target: string) {
   if (macro === 'short-vmodel') {
     macro = await select({
       message: chalk.green(
-      `Which prefix do you want to use?`,
+        `Which prefix do you want to use?`,
       ),
       choices: [
         { name: '$', value: 'short-vmodel 0', description: '$foo="foo"' },

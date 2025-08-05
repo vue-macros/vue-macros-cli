@@ -25,7 +25,7 @@ supported macros:
 - [x] export-render
 - [x] define-slots
 - [x] short-vmodel
-- [x] setup-sfc 
+- [x] setup-sfc
 
 ### Initialization
 

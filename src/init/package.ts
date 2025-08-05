@@ -1,7 +1,7 @@
+import type { VueMacros } from '../common'
 import { fileURLToPath } from 'node:url'
 import { readPackageJSON } from 'pkg-types'
 import { $, path } from 'zx'
-import type { VueMacros } from '../common'
 
 export async function rewritePackage(macros: VueMacros, target: string) {
   const packageJson = await readPackageJSON(target)

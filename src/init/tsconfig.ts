@@ -1,7 +1,7 @@
 import type { TSConfig } from 'pkg-types'
+import type { VueMacros } from '../common'
 import { readTSConfig, writeTSConfig } from 'pkg-types'
 import { fs } from 'zx'
-import type { VueMacros } from '../common'
 import { camelize, vueMacros } from '../common'
 
 export async function rewriteTsConfig(selectedMacros: VueMacros, target: string) {

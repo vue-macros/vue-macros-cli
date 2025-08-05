@@ -1,7 +1,7 @@
+import type { VueMacros } from '../common'
 import { loadFile, writeFile } from 'magicast'
 import { addNuxtModule, getDefaultExportOptions } from 'magicast/helpers'
 import { fs } from 'zx'
-import type { VueMacros } from '../common'
 
 export async function rewriteNuxtConfig(macros: VueMacros, target: string) {
   const filename = `${target}/nuxt.config.ts`

@@ -1,6 +1,6 @@
 #! /usr/bin/env node
-import { $, argv, chalk, path } from 'zx'
 import { readPackageJSON } from 'pkg-types'
+import { $, argv, chalk, path } from 'zx'
 import { init } from './init/index'
 import { sg } from './sg'
 

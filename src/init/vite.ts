@@ -1,8 +1,8 @@
 import type { ProxifiedFunctionCall } from 'magicast'
+import type { VueMacros } from '../common'
 import { loadFile, writeFile } from 'magicast'
 import { addVitePlugin, findVitePluginCall, getDefaultExportOptions, updateVitePluginConfig } from 'magicast/helpers'
 import { fs } from 'zx'
-import type { VueMacros } from '../common'
 
 export async function rewriteViteConfig(macros: VueMacros, target: string) {
   const filename = `${target}/vite.config.ts`

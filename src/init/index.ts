@@ -1,11 +1,11 @@
+import type { VueMacros } from '../common'
 import { checkbox, select } from '@inquirer/prompts'
 import { chalk } from 'zx'
-import type { VueMacros } from '../common'
 import { experimentalMacros, officialMacros, stableMacros } from '../common'
 import { rewriteNuxtConfig } from './nuxt'
+import { rewritePackage } from './package'
 import { rewriteTsConfig } from './tsconfig'
 import { rewriteViteConfig } from './vite'
-import { rewritePackage } from './package'
 
 export async function init(target: string) {
   const selectedMacros = (await checkbox({
@@ -47,7 +47,7 @@ export async function init(target: string) {
   if (selectedMacros.defineProp) {
     const edition = await select({
       message: chalk.green(
-      `Which edition do you want to use?`,
+        `Which edition do you want to use?`,
       ),
       choices: [
         { name: 'kevinEdition', value: 'kevinEdition' },
