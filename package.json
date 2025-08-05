@@ -38,7 +38,7 @@
     "build": "unbuild",
     "dev": "unbuild --stub",
     "test": "vitest",
-    "release": "bumpp && pnpm publish",
+    "release": "bumpp",
     "prepublishOnly": "pnpm run build"
   },
   "dependencies": {

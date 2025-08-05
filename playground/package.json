@@ -1,5 +1,6 @@
 {
   "type": "module",
+  "private": true,
   "scripts": {
     "sg": "node ../dist/index.mjs",
     "dev": "vite",
