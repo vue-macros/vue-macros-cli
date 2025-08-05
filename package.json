@@ -2,7 +2,7 @@
   "name": "@vue-macros/cli",
   "type": "module",
   "version": "1.2.1",
-  "packageManager": "pnpm@8.10.5",
+  "packageManager": "pnpm@10.14.0",
   "description": "Rewriting at vue macros powered by ast-grep.",
   "author": "zhiyuanzmj <zhiyuanzmj@gmail.com>",
   "license": "MIT",
@@ -42,24 +42,25 @@
     "prepublishOnly": "pnpm run build"
   },
   "dependencies": {
-    "@antfu/ni": "^0.21.12",
-    "@ast-grep/cli": "^0.14.2",
-    "@inquirer/prompts": "^3.3.0",
-    "magicast": "^0.3.2",
-    "pkg-types": "^1.0.3",
-    "zx": "^7.2.3"
+    "@antfu/ni": "^25.0.0",
+    "@ast-grep/cli": "^0.39.2",
+    "@inquirer/prompts": "^7.8.0",
+    "magicast": "^0.3.5",
+    "pkg-types": "^2.2.0",
+    "zx": "^8.7.2"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^2.1.2",
-    "@vitejs/plugin-vue": "^4.5.1",
-    "@vitejs/plugin-vue-jsx": "^3.1.0",
-    "@vue-macros/volar": "^0.17.4",
-    "@vue/babel-helper-vue-transform-on": "1.2.0-alpha.0",
-    "bumpp": "^9.2.0",
-    "typescript": "^5.3.2",
-    "unbuild": "^2.0.0",
-    "unocss": "^0.57.7",
-    "unplugin-vue-macros": "^2.7.0",
-    "vitest": "^0.34.6"
+    "@antfu/eslint-config": "^5.1.0",
+    "@types/node": "^24.2.0",
+    "@vitejs/plugin-vue": "^6.0.1",
+    "@vitejs/plugin-vue-jsx": "^5.0.1",
+    "@vue-macros/volar": "^3.0.0-beta.20",
+    "@vue/babel-helper-vue-transform-on": "1.4.0",
+    "bumpp": "^10.2.2",
+    "typescript": "^5.9.2",
+    "unbuild": "^3.6.0",
+    "unocss": "^66.4.1",
+    "unplugin-vue-macros": "^2.14.5",
+    "vitest": "^3.2.4"
   }
 }
