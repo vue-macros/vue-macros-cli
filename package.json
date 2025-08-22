@@ -60,7 +60,7 @@
     "typescript": "^5.9.2",
     "unbuild": "^3.6.0",
     "unocss": "^66.4.1",
-    "unplugin-vue-macros": "^2.14.5",
-    "vitest": "^3.2.4"
+    "vitest": "^3.2.4",
+    "vue-macros": "^3.0.0-beta.21"
   }
 }

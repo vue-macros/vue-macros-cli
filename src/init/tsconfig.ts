@@ -49,8 +49,8 @@ export async function rewriteTsConfig(selectedMacros: VueMacros, target: string)
 
   tsconfig.compilerOptions ??= {}
   tsconfig.compilerOptions.types ??= []
-  if (!tsconfig.compilerOptions.types.includes('unplugin-vue-macros/macros-global'))
-    tsconfig.compilerOptions.types.push('unplugin-vue-macros/macros-global')
+  if (!tsconfig.compilerOptions.types.includes('vue-macros/macros-global'))
+    tsconfig.compilerOptions.types.push('vue-macros/macros-global')
 
   await writeTSConfig(`${target}/tsconfig.json`, tsconfig)
 }

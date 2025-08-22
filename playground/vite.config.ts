@@ -1,6 +1,6 @@
 import VueJsx from '@vitejs/plugin-vue-jsx'
 import Vue from '@vitejs/plugin-vue'
-import VueMacros from 'unplugin-vue-macros/vite'
+import VueMacros from 'vue-macros/vite'
 import { defineConfig } from 'vite'
 
 export default defineConfig({

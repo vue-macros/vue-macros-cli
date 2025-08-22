@@ -23,7 +23,7 @@ export async function rewriteViteConfig(macros: VueMacros, target: string) {
     return findVitePluginCall(config, from)
   }
 
-  const vueMacros = getVitePlugin('unplugin-vue-macros/vite', 'VueMacros')
+  const vueMacros = getVitePlugin('vue-macros/vite', 'VueMacros')
   if (!vueMacros)
     return
 
@@ -38,7 +38,7 @@ export async function rewriteViteConfig(macros: VueMacros, target: string) {
 
   const vueJsx: ProxifiedFunctionCall = vueMacrosOptions?.plugins?.vueJsx || getVitePlugin('@vitejs/plugin-vue-jsx', 'VueJsx')
 
-  updateVitePluginConfig(config, 'unplugin-vue-macros/vite', {
+  updateVitePluginConfig(config, 'vue-macros/vite', {
     ...macros,
     plugins: {
       ...vue ? { vue } : {},

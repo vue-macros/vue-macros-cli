@@ -57,12 +57,12 @@ importers:
       unocss:
         specifier: ^66.4.1
         version: 66.4.1(postcss@8.5.6)(vite@7.0.6(@types/node@24.2.0)(jiti@2.5.1)(tsx@4.20.3)(yaml@2.8.0))
-      unplugin-vue-macros:
-        specifier: ^2.14.5
-        version: 2.14.5(esbuild@0.25.8)(rollup@4.46.2)(typescript@5.9.2)(vite@7.0.6(@types/node@24.2.0)(jiti@2.5.1)(tsx@4.20.3)(yaml@2.8.0))(vue@3.5.18(typescript@5.9.2))
       vitest:
         specifier: ^3.2.4
         version: 3.2.4(@types/debug@4.1.12)(@types/node@24.2.0)(jiti@2.5.1)(tsx@4.20.3)(yaml@2.8.0)
+      vue-macros:
+        specifier: ^3.0.0-beta.21
+        version: 3.0.0-beta.21(esbuild@0.25.8)(rollup@4.46.2)(typescript@5.9.2)(vite@7.0.6(@types/node@24.2.0)(jiti@2.5.1)(tsx@4.20.3)(yaml@2.8.0))(vue@3.5.18(typescript@5.9.2))
 
   playground:
     dependencies:
@@ -85,12 +85,12 @@ importers:
       typescript:
         specifier: ^5.9.2
         version: 5.9.2
-      unplugin-vue-macros:
-        specifier: ^2.14.5
-        version: 2.14.5(esbuild@0.25.8)(rollup@4.46.2)(typescript@5.9.2)(vite@7.0.6(@types/node@24.2.0)(jiti@2.5.1)(tsx@4.20.3)(yaml@2.8.0))(vue@3.5.18(typescript@5.9.2))
       vite:
         specifier: ^7.0.6
         version: 7.0.6(@types/node@24.2.0)(jiti@2.5.1)(tsx@4.20.3)(yaml@2.8.0)
+      vue-macros:
+        specifier: ^3.0.0-beta.21
+        version: 3.0.0-beta.21(esbuild@0.25.8)(rollup@4.46.2)(typescript@5.9.2)(vite@7.0.6(@types/node@24.2.0)(jiti@2.5.1)(tsx@4.20.3)(yaml@2.8.0))(vue@3.5.18(typescript@5.9.2))
 
 packages:
 
@@ -294,6 +294,11 @@ packages:
 
   '@babel/parser@7.28.0':
     resolution: {integrity: sha512-jVZGvOxOuNSsuQuLRTh13nU0AogFlw32w/MT+LV6D3sP5WdbW61E77RnkbaO2dUvmPAYrBDJXGn5gGS6tH4j8g==}
+    engines: {node: '>=6.0.0'}
+    hasBin: true
+
+  '@babel/parser@7.28.3':
+    resolution: {integrity: sha512-7+Ey1mAgYqFAx2h0RuoxcQT5+MlG3GTV0TQrgr7/ZliKsm/MNDxVVutlWaziMq7wJNAz8MTqz55XLpWvva6StA==}
     engines: {node: '>=6.0.0'}
     hasBin: true
 
@@ -713,6 +718,9 @@ packages:
   '@jridgewell/gen-mapping@0.3.12':
     resolution: {integrity: sha512-OuLGC46TjB5BbN1dH8JULVVZY4WTdkF7tV9Ys6wLL1rubZnCMstOhNHueU5bLCrnRuDhKPDM4g6sw4Bel5Gzqg==}
 
+  '@jridgewell/remapping@2.3.5':
+    resolution: {integrity: sha512-LI9u/+laYG4Ds1TDKSJW2YPrIlcVYOwi2fUC6xB43lueCjgxV4lffOCZCtYFiH6TNOX+tQKXx97T4IKHbhyHEQ==}
+
   '@jridgewell/resolve-uri@3.1.2':
     resolution: {integrity: sha512-bRISgCIjP20/tbWSPWMEi54QVPRZExkuD9lJL+UIxUKtwVJA8wW1Trb1jMs1RFXo1CBTNZ/5hpC9QvmKWdopKw==}
     engines: {node: '>=6.0.0'}
@@ -723,8 +731,8 @@ packages:
   '@jridgewell/trace-mapping@0.3.29':
     resolution: {integrity: sha512-uw6guiW/gcAGPDhLmd77/6lW8QLeiV5RUTsAX46Db6oLhGaVj4lhnPwb184s1bkc8kdVg/+h988dro8GRDpmYQ==}
 
-  '@napi-rs/wasm-runtime@0.2.12':
-    resolution: {integrity: sha512-ZVWUcfwY4E/yPitQJl481FjFo3K22D6qF0DuFH6Y/nbnE11GY5uguDxZMGXPQ8WQ0128MXQD7TnfHyK4oWoIJQ==}
+  '@napi-rs/wasm-runtime@1.0.3':
+    resolution: {integrity: sha512-rZxtMsLwjdXkMUGC3WwsPwLNVqVqnTJT6MNIB6e+5fhMcSCPP0AOsNWuMQ5mdCq6HNjs/ZeWAEchpqeprqBD2Q==}
 
   '@nodelib/fs.scandir@2.1.5':
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
@@ -738,58 +746,98 @@ packages:
     resolution: {integrity: sha512-oGB+UxlgWcgQkgwo8GcEGwemoTFt3FIO9ababBmaGwXIoBKZ+GTy0pP185beGg7Llih/NSHSV2XAs1lnznocSg==}
     engines: {node: '>= 8'}
 
-  '@oxc-resolver/binding-darwin-arm64@4.2.0':
-    resolution: {integrity: sha512-DP+KY4nXRJvL5XayKda0P7NCjcP1zZ5x6RZznMM/bMPCBrjcYNG4XKV9v/EbkSq3Et24mEJFYOM55WmPxtqf0w==}
+  '@oxc-resolver/binding-android-arm-eabi@11.6.2':
+    resolution: {integrity: sha512-b1h87/Nv5QPiT2xXg7RiSzJ0HsKSMf1U8vj6cUKdEDD1+KhDaXEH9xffB5QE54Df3SM4+wrYVy9NREil7/0C/Q==}
+    cpu: [arm]
+    os: [android]
+
+  '@oxc-resolver/binding-android-arm64@11.6.2':
+    resolution: {integrity: sha512-iIFsbWOQ42VJqOH0PkNs2+IcIjkmO7T+Gr27XDVXmaIWz3dkVYzYRlCtqGJOMIrjyUD52BtVXjej5s51i9Lgmg==}
+    cpu: [arm64]
+    os: [android]
+
+  '@oxc-resolver/binding-darwin-arm64@11.6.2':
+    resolution: {integrity: sha512-Lt/6pfDy2rtoxGmwFQOp4a9GxIW0CEUSQYofW1eQBpy/JpGM/AJgLTsg2nmgszODJpBOPO19GCIlzSZ7Et5cGg==}
     cpu: [arm64]
     os: [darwin]
 
-  '@oxc-resolver/binding-darwin-x64@4.2.0':
-    resolution: {integrity: sha512-k8wrYcZPE94Wq7QvLi7FVqdbnlg52L/J7dZOvdjmQaJN9zp2Gg/rhIXlXGf1yFqOC0NfiDIW0C4CpEat/zmw+Q==}
+  '@oxc-resolver/binding-darwin-x64@11.6.2':
+    resolution: {integrity: sha512-UmGEeXk4/E3ubBWgoehVEQSBTEpl+UjZqY55sB+/5NHYFPMxY6PgG8y7dGZhyWPvwVW/pS/drnG3gptAjwF8cg==}
     cpu: [x64]
     os: [darwin]
 
-  '@oxc-resolver/binding-freebsd-x64@4.2.0':
-    resolution: {integrity: sha512-ozYwrwsJMBPCF6PEvO4UeGcV1klyV3raVMoZeGPElF0QQpWTiLiOc1CEN3U/H82ZVYWLMDLNPTmTOdsc3CELqA==}
+  '@oxc-resolver/binding-freebsd-x64@11.6.2':
+    resolution: {integrity: sha512-p0Aj5aQKmyVamAtRio7Ct0Woh/iElvMxhAlbSWqJ9J/GH7lPG8H4R/iHWjURz+2iYPywqJICR8Eu1GDSApnzfA==}
     cpu: [x64]
     os: [freebsd]
 
-  '@oxc-resolver/binding-linux-arm-gnueabihf@4.2.0':
-    resolution: {integrity: sha512-3LjgnQBIrQywemSbVJvjCP+X6kcmChF1NRytgccbVCtOFocNh8JWtykdUnAbeJRY8SeM49QP0WtAPlEEdHMNTQ==}
+  '@oxc-resolver/binding-linux-arm-gnueabihf@11.6.2':
+    resolution: {integrity: sha512-hDAF4FAkGxZsJCvutoBQ21LKcpUrvq5qAj3FpBTIzBaeIpupe6z0kHF9oIeTF8DJiLj4uEejaZXXtOSfJY50+A==}
     cpu: [arm]
     os: [linux]
 
-  '@oxc-resolver/binding-linux-arm64-gnu@4.2.0':
-    resolution: {integrity: sha512-mMB1AvqzTH25rbUo1eRfvFzNqBopX6aRlDmO1fIVVzIWi6YJNKckxbkGaatez4hH/n86IR6aEdZFM3qBUjn3Tg==}
+  '@oxc-resolver/binding-linux-arm-musleabihf@11.6.2':
+    resolution: {integrity: sha512-LTUs3PG9O3YjGPbguiM/fhaoWr19Yu/vqkBKXgvUo2Zpa7InHzZzurMQU9BAPr6A7gnIrKQ3W61h+RhQfSuUGQ==}
+    cpu: [arm]
+    os: [linux]
+
+  '@oxc-resolver/binding-linux-arm64-gnu@11.6.2':
+    resolution: {integrity: sha512-VBZZ/5uYiFs+09h1royv78GAEPPy5Bsro53hPWMlJL/E9pPibaj3fCzZEAnrKSzVpvwf7+QSc5w7ZUrX3xAKpg==}
     cpu: [arm64]
     os: [linux]
 
-  '@oxc-resolver/binding-linux-arm64-musl@4.2.0':
-    resolution: {integrity: sha512-9oPBU8Yb35z15/14LzALn/8rRwwrtfe19l25N1MRZVSONGiOwfzWNqDNjWiDdyW+EUt/hlylmFOItZmreL6iIw==}
+  '@oxc-resolver/binding-linux-arm64-musl@11.6.2':
+    resolution: {integrity: sha512-x+LooeNXy3hhvDT7q29jLjh914OYX9YnrQbGT3ogep5EY/LLbUiG3LV8XSrWRqXD5132gea9SOYxmcpF9i6xTQ==}
     cpu: [arm64]
     os: [linux]
 
-  '@oxc-resolver/binding-linux-x64-gnu@4.2.0':
-    resolution: {integrity: sha512-8wU4fwHb0b45i0qMBJ24UYBEtaLyvYWUOqVVCn0SpQZ1mhWWC8dvD6+zIVAKRVex/cKdgzi3imXoKGIDqVEu9w==}
+  '@oxc-resolver/binding-linux-ppc64-gnu@11.6.2':
+    resolution: {integrity: sha512-+CluEbUpAaKvcNREZtUUiunqzo5o0/qp+6xoFkbDAwNhWIw1mtWCg1Di++Fa053Cah/Rx+dRMQteANoMBGCxxg==}
+    cpu: [ppc64]
+    os: [linux]
+
+  '@oxc-resolver/binding-linux-riscv64-gnu@11.6.2':
+    resolution: {integrity: sha512-OKWK/QvC6gECaeCNjfhuj0yiqMIisS0ewCRAmgT2pyxDwkNWgSm2wli+Tj/gpLjua2HjFDnDEcg0/dOoO6+xQg==}
+    cpu: [riscv64]
+    os: [linux]
+
+  '@oxc-resolver/binding-linux-riscv64-musl@11.6.2':
+    resolution: {integrity: sha512-YtQ3hLvhVzan3boR44C0qu/jiTanaBAL9uTqs/S2tzOLfpO2PoTDbQDgADvOqYJDTJkOGiofJC2E1lJcRmpbXQ==}
+    cpu: [riscv64]
+    os: [linux]
+
+  '@oxc-resolver/binding-linux-s390x-gnu@11.6.2':
+    resolution: {integrity: sha512-pcX/ih9QHrEWliiXJdZoX/bnfOlr5E0eOWSG2ew5U1HntGket/1AcdcA4UH3MQU/TrOLxxiKhGzeZv+fwewmmA==}
+    cpu: [s390x]
+    os: [linux]
+
+  '@oxc-resolver/binding-linux-x64-gnu@11.6.2':
+    resolution: {integrity: sha512-LFYSgeYW11u4cQXzgIGthqCRAoLvl0IqbIMGeJLVt1tD7yrpTukfQynMzwP3vuTK5hmWgYc7NfK6G5+Zv/75hw==}
     cpu: [x64]
     os: [linux]
 
-  '@oxc-resolver/binding-linux-x64-musl@4.2.0':
-    resolution: {integrity: sha512-5CS2wlGxzESPJCj4NlNGr73QCku75VpGtkwNp8qJF4hLELKAzkoqIB0eBbcvNPg8m2rB7YeXb1u+puGUKXDhNQ==}
+  '@oxc-resolver/binding-linux-x64-musl@11.6.2':
+    resolution: {integrity: sha512-IE13zwhg+XX9FVQHADbIe6RB2MgQeqyKdGyH67meGPgqCbLqT41K9qAm0k2uDlSswjLK8nhNe5Z+hhopBKzRRg==}
     cpu: [x64]
     os: [linux]
 
-  '@oxc-resolver/binding-wasm32-wasi@4.2.0':
-    resolution: {integrity: sha512-VOLpvmVAQZjvj/7Et/gYzW6yBqL9VKjLWOGaFiQ7cvTpY9R9d/1mrNKEuP3beDHF2si2fM5f2pl9bL+N4tvwiA==}
+  '@oxc-resolver/binding-wasm32-wasi@11.6.2':
+    resolution: {integrity: sha512-6nNW/wOKrptS9Rebf83aHvIsIiNcXOEWwUmhMR/4MHrH07zbcptBoZQcWO6362B9Y2lMN7dIF9v7brQcNDs63A==}
     engines: {node: '>=14.0.0'}
     cpu: [wasm32]
 
-  '@oxc-resolver/binding-win32-arm64-msvc@4.2.0':
-    resolution: {integrity: sha512-8tPj93hd1H5vXMtud1jN3C+prLZnvNzGw+BuyMer1+Z6RCQZHqn0XrfCalcuDOggKUYFagcKDdpdhv/CSW2/ZQ==}
+  '@oxc-resolver/binding-win32-arm64-msvc@11.6.2':
+    resolution: {integrity: sha512-YDR9UBOlKfFvWhVlyvNSlZjJ+B5kDpDn5K5s69JKW+Ke5ZYupVPTJPZ3GIMjbgj54fJQNFW+BiT4dL/EUGOHVQ==}
     cpu: [arm64]
     os: [win32]
 
-  '@oxc-resolver/binding-win32-x64-msvc@4.2.0':
-    resolution: {integrity: sha512-of3dYwB4RN825qq9kBu/79QPVXDZFb5S/opLtJScLqyRhI6owkFWV4P9VmFih8dfBh/7SImdvt/B4HQTF1fthg==}
+  '@oxc-resolver/binding-win32-ia32-msvc@11.6.2':
+    resolution: {integrity: sha512-8MqToY82sKT4po6bfb71LTiWW4PYXy/WNnzFIpkO88O1TtZV8ZsZ1kSeSwFazbqhV8H8nnxyJemqXNIqhtqNfw==}
+    cpu: [ia32]
+    os: [win32]
+
+  '@oxc-resolver/binding-win32-x64-msvc@11.6.2':
+    resolution: {integrity: sha512-y/xXcOwP9kp+3zRC8PiG5E4VMJeW59gwwRyxzh6DyMrKlcfikMFnuEbC2ZV0+mOffg7pkOOMKlNRK2aJC8gzkA==}
     cpu: [x64]
     os: [win32]
 
@@ -1215,34 +1263,25 @@ packages:
   '@volar/source-map@2.4.22':
     resolution: {integrity: sha512-L2nVr/1vei0xKRgO2tYVXtJYd09HTRjaZi418e85Q+QdbbqA8h7bBjfNyPPSsjnrOO4l4kaAo78c8SQUAdHvgA==}
 
-  '@vue-macros/api@0.13.4':
-    resolution: {integrity: sha512-owQSbo1sVzMBZpu8MJ6GiSxwBDMSOgqBIajZj1HOj6U8wTHk/F55X77I02PZi+/TXgGdGSVK2OsiV8dOLgiCcg==}
-    engines: {node: '>=16.14.0'}
+  '@vue-macros/api@3.0.0-beta.21':
+    resolution: {integrity: sha512-LFjWN7sJUXBVCbO4ewuq8LwEYAWCTDSsee+nqrtdlicpRavC9UQ6JWjrnFhH7apJCiKl7qpHKWr/D4+yqJra7w==}
+    engines: {node: '>=20.18.0'}
 
-  '@vue-macros/better-define@1.11.4':
-    resolution: {integrity: sha512-0VSKuNHLJTVKUj/eh9PL/BYmbHAJTPKIpCf1iXx1fOjhPExeGKaGZJf1Awk4/Qx8NGVa9xytEZYqKh+cw3r4OA==}
-    engines: {node: '>=16.14.0'}
-
-  '@vue-macros/boolean-prop@0.5.5':
-    resolution: {integrity: sha512-FfsIPefse634+jtqKC4AN3VUZ0OjndWqAlkOepV8h1UQ1pJnPk6DD87HhxGGtDuzOX9cKrMobvGHcPoqidQzMA==}
-    engines: {node: '>=16.14.0'}
+  '@vue-macros/better-define@3.0.0-beta.21':
+    resolution: {integrity: sha512-RQRKH707PTJFSPG2jsHi3hzX8iVPYrcL8H9Eg3Oxn55rv+0J6yTK4MlzZ1WU576lDk+B5sLJ1hDP3B4Vp6w9mg==}
+    engines: {node: '>=20.18.0'}
 
   '@vue-macros/boolean-prop@3.0.0-beta.20':
     resolution: {integrity: sha512-KSC4sR/iVlcx5NuJteiFlppZjL/VexQPFjt/grAatHUdCkFoX+UF+CKw8TyKcf+/4Bx85nbXnYjIn2P8hD2JqA==}
     engines: {node: '>=20.18.0'}
 
-  '@vue-macros/chain-call@0.4.5':
-    resolution: {integrity: sha512-5Fpt0malmMuO4aL6sO5F16EJ2pW+kqwZHLEWDHDPgCH7zWvpH2NbeEauu0HPPImD2Ym+9d+YaEM0CULYMrPNyQ==}
-    engines: {node: '>=16.14.0'}
+  '@vue-macros/boolean-prop@3.0.0-beta.21':
+    resolution: {integrity: sha512-8G2LM35vre8pDRmlptc+K69F8FVUTxMb2LmF1WbW3VqlcfFEIGWyFfhZ9NXiUrExaD+Eir+C70zJRitjLzChDQ==}
+    engines: {node: '>=20.18.0'}
 
-  '@vue-macros/common@1.16.1':
-    resolution: {integrity: sha512-Pn/AWMTjoMYuquepLZP813BIcq8DTZiNCoaceuNlvaYuOTd8DqBZWc5u0uOMQZMInwME1mdSmmBAcTluiV9Jtg==}
-    engines: {node: '>=16.14.0'}
-    peerDependencies:
-      vue: ^2.7.0 || ^3.2.25
-    peerDependenciesMeta:
-      vue:
-        optional: true
+  '@vue-macros/chain-call@3.0.0-beta.21':
+    resolution: {integrity: sha512-fdsP9FwSDH4/HmRBnWhoIDGyDDAW3OuRglQDog/scOTbEpcA1yErAqqxB8daImxsnfqk2ZTpR9UFtze9VHQO1g==}
+    engines: {node: '>=20.18.0'}
 
   '@vue-macros/common@3.0.0-beta.20':
     resolution: {integrity: sha512-k4ez00bGD4mesrrreJarUj9Wuyqzl8N58+j3hsHkw4F9JSTCPMHVeQ7vHXETgnHtNAyJp2o6KRjTLLyzPc1cuA==}
@@ -1253,161 +1292,170 @@ packages:
       vue:
         optional: true
 
-  '@vue-macros/config@0.6.1':
-    resolution: {integrity: sha512-iQ1+QpgcvqCcgzRuoK46L1C1Z29hXVq8Zb90Mryfizafkl2dxfUqBQV6AytV7+jhCIjJPtN2laGIRownNti8+Q==}
-    engines: {node: '>=16.14.0'}
+  '@vue-macros/common@3.0.0-beta.21':
+    resolution: {integrity: sha512-dK02Z8vSxWaFlJfPSxAoCKe1QgE6T/fWQ/7B2fdn2qN5AKpDlXmKriey2GTUxY9FPy1OZC4G5XxKWW0qieanSQ==}
+    engines: {node: '>=20.18.0'}
+    peerDependencies:
+      vue: ^2.7.0 || ^3.2.25
+    peerDependenciesMeta:
+      vue:
+        optional: true
 
   '@vue-macros/config@3.0.0-beta.20':
     resolution: {integrity: sha512-Dh1QV3AU4wxUpMu1YMDmx2QszYptues/BhJvnZcK8buMOpDp9DNquc1s7DuG1jDptOqZdSPjx5Kt5LqeVkJOiQ==}
     engines: {node: '>=20.18.0'}
 
-  '@vue-macros/define-emit@0.5.4':
-    resolution: {integrity: sha512-LBRiBOfaGrRlCdiicVkbSRVzriabrHfF7NDf8g2FT2WSl4vXXKXEDGj5qvG7WCbDTVClDmUBPreOx/zeKIMmdg==}
-    engines: {node: '>=16.14.0'}
+  '@vue-macros/config@3.0.0-beta.21':
+    resolution: {integrity: sha512-SmPE04hN43axNiNn1mM1pQUDcIwEF/DkrbUDXu9WVdlcWg7g3R3oaTGqnR3zB2hessTN4lOHwPFSCSaPUVeQdw==}
+    engines: {node: '>=20.18.0'}
+
+  '@vue-macros/define-emit@3.0.0-beta.21':
+    resolution: {integrity: sha512-hRUmzielCeZH3D9NJzPEtLDz92gZsBdhbXD1yHEW2CUIeoKfDZ5yv5aX46lsOXyu3P9kD+L63GvQPduuA1VXYQ==}
+    engines: {node: '>=20.18.0'}
     peerDependencies:
       vue: ^2.7.0 || ^3.2.25
 
-  '@vue-macros/define-models@1.3.5':
-    resolution: {integrity: sha512-XFUG498vLmzavLHYmZdiFKT+cN5bYDuVEOfG4hsVAdOoflGqBcRhZmnr9b2M/Y90olULq8AZY7xSnWx9Vqyerw==}
-    engines: {node: '>=16.14.0'}
+  '@vue-macros/define-models@3.0.0-beta.21':
+    resolution: {integrity: sha512-+bsOK2mW+bsx218ydfcFuS7Iqro6vnMJf8WS6QKZWD0pUWIb/Hp5+TO19DslXKFIwL5ipmHOK/avCyfuMVZ4Uw==}
+    engines: {node: '>=20.18.0'}
     peerDependencies:
       '@vueuse/core': '>=9.0.0'
     peerDependenciesMeta:
       '@vueuse/core':
         optional: true
 
-  '@vue-macros/define-prop@0.6.5':
-    resolution: {integrity: sha512-9/xJHCvuAYBe77qPXdjOENa0KUweKpUWpUSYul8COPreOqKKVULCxeKFM9zv9ervlpT5g9s4JD83tm7dIV9+NQ==}
-    engines: {node: '>=16.14.0'}
+  '@vue-macros/define-prop@3.0.0-beta.21':
+    resolution: {integrity: sha512-zVfX50QXYyCSc6e5L757klKCkfcaAq/EX34LtdiMcVK6hNj89IbjUGgVxBIAg9q+0sGIHCq2CUI0YQTzFmuKGg==}
+    engines: {node: '>=20.18.0'}
     peerDependencies:
       vue: ^2.7.0 || ^3.2.25
 
-  '@vue-macros/define-props-refs@1.3.5':
-    resolution: {integrity: sha512-DpvGrIsjM+BGbtkadJspKq3Y2oa/ryXghx3N/VZ4AvnKDmBFTRBG9epU6NKoKJNTvXq87232qv2PTfrT3S5xQQ==}
-    engines: {node: '>=16.14.0'}
+  '@vue-macros/define-props-refs@3.0.0-beta.21':
+    resolution: {integrity: sha512-YuX3E5kTwQIXHWjLS9U9XjNGvkZtAPI/7OfW3UPEXminhOGZnyQflrRiAm69P6omNZSWxPs4GbzAsQ06FeS0Kg==}
+    engines: {node: '>=20.18.0'}
     peerDependencies:
       vue: ^2.7.0 || ^3.2.25
 
-  '@vue-macros/define-props@4.0.6':
-    resolution: {integrity: sha512-cfFg84z9/qa0HNpkubERQOcBBkLo2Y9RpI8BXq/tl4gceuR6++ycIgqZZMSxoaLdet0VnDv+CMRz3yHGVSClKw==}
-    engines: {node: '>=16.14.0'}
+  '@vue-macros/define-props@3.0.0-beta.21':
+    resolution: {integrity: sha512-it+zXrhtX+wrW8S+0LLMe55PNs3B17fTVqVszzT3qLPAi9vAu9nE9E3zePbyjN3A8ybWSyyqccG5j/qh9P9mjQ==}
+    engines: {node: '>=20.18.0'}
     peerDependencies:
-      '@vue-macros/reactivity-transform': ^1.1.6
+      '@vue-macros/reactivity-transform': ^3.0.0-beta.21
       vue: ^2.7.0 || ^3.2.25
 
-  '@vue-macros/define-render@1.6.6':
-    resolution: {integrity: sha512-EIc1mZ+SJ8eohtLYSzHU4zlGqOZDPYqCIaRUutwIL6EAcIv0/GskO6s3gZzrnrA0K8fNj1AwBWjXktO4p6RcgQ==}
-    engines: {node: '>=16.14.0'}
+  '@vue-macros/define-render@3.0.0-beta.21':
+    resolution: {integrity: sha512-4eE/hzxltpAwgNAGarIOsb4PoLCfeiEFuFhZdvWDDv6xAqPSNC3k4+9OhBFsT1xg/P7NRT4O/egaM5LNDVFpCQ==}
+    engines: {node: '>=20.18.0'}
     peerDependencies:
       vue: ^2.7.0 || ^3.0.0
 
-  '@vue-macros/define-slots@1.2.6':
-    resolution: {integrity: sha512-2IFysgXkKVMJqRm6lXEiamB5DBFMcEZBKVXU0s+CRLnN6CJ4kN0oOLlaHyNhe0Dj/jtBVCriDqeIT25AQA3bDQ==}
-    engines: {node: '>=16.14.0'}
+  '@vue-macros/define-slots@3.0.0-beta.21':
+    resolution: {integrity: sha512-6cO5oLCV/csPCy1bK0VE+wabJZ3t1WZugPY/1eYi81rDbCkpNwfQCS60ZwMobPXHxmgoaU5JsCtTfuybE8WopA==}
+    engines: {node: '>=20.18.0'}
     peerDependencies:
       vue: ^2.7.0 || ^3.0.0
 
-  '@vue-macros/define-stylex@0.2.3':
-    resolution: {integrity: sha512-UDFK7k4yHuJI9umUrjMbfM9jNUZamV5nlnSXRORz0wA2ybbQ5MbjEPAviwAlvKmy/I+rWL5dbLD8QdpHoTkBPQ==}
-    engines: {node: '>=16.14.0'}
+  '@vue-macros/define-stylex@3.0.0-beta.21':
+    resolution: {integrity: sha512-ch7KweMR/yIlCYGvWlLUMJ8AkfuVWRq2TQAb+OyyuPY2w+/wHBkmZuVbs7TQXX54lp7Q6YWnJcqXtdBQth/lMg==}
+    engines: {node: '>=20.18.0'}
 
-  '@vue-macros/devtools@0.4.1':
-    resolution: {integrity: sha512-bsNFXYZpLT6wiqBiJ5Ej4n76b/mV/S6y+R9Djd3r9smr7BneYcNtYuIFZU3BeQKP6+Zb+QEXPvp7jWhM4nQG+w==}
-    engines: {node: '>=16.14.0'}
+  '@vue-macros/devtools@3.0.0-beta.21':
+    resolution: {integrity: sha512-gXtNBXc3TgB7NHXjH9PgvwxqA12dVFugk7nXpNW68y5R7KcNGKtBue6drqLdQu/8jM5AKLfhoGtBDyYEmJRgkA==}
+    engines: {node: '>=20.18.0'}
     peerDependencies:
-      vite: ^4.0.0 || ^5.0.0-0 || ^6.0.0
+      vite: ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0
     peerDependenciesMeta:
       vite:
         optional: true
 
-  '@vue-macros/export-expose@0.3.5':
-    resolution: {integrity: sha512-X84DWs0vhnPrM1zVIhHNtS2hAPJcSLGVzpdfJwPtW2L3FqVj25/9cW3UBV6Oa6pt+0+upZUwgxftOA5Tn4Dmjw==}
-    engines: {node: '>=16.14.0'}
+  '@vue-macros/export-expose@3.0.0-beta.21':
+    resolution: {integrity: sha512-UxXcR3eXLFUpnVxrD9fL1s8K6LEOGUj/JqkX2awO3TAyftxLcjORh1XBKhm8xKEZtXsb62K6VVb9uJs3iUQgfA==}
+    engines: {node: '>=20.18.0'}
     peerDependencies:
       vue: ^2.7.0 || ^3.2.25
 
-  '@vue-macros/export-props@0.6.5':
-    resolution: {integrity: sha512-NfHl526bVRRPX1sIaSdnCU81Tne0tqqCiSlvxZsiRKwKkI/eudF8EDqVOzPu9jtXbsZxtT331XdBjPFxjRlapA==}
-    engines: {node: '>=16.14.0'}
+  '@vue-macros/export-props@3.0.0-beta.21':
+    resolution: {integrity: sha512-sizbUoijb2IhiTAChjNPJwgJqqmoN7htANP/fKIsj2MODUeAfm8uA7GhWpSi8Dskiwz7xl+D8G7cyAQTweYVfg==}
+    engines: {node: '>=20.18.0'}
     peerDependencies:
       vue: ^2.7.0 || ^3.2.25
 
-  '@vue-macros/export-render@0.3.5':
-    resolution: {integrity: sha512-OQGLrYEVNS2daouty2yM1mnz6fduiE0swpsRhrWf6aEBbT3kqkgT+hSBgBoVBrjRaLJVm6WO0sNQXqQeXQGgJQ==}
-    engines: {node: '>=16.14.0'}
+  '@vue-macros/export-render@3.0.0-beta.21':
+    resolution: {integrity: sha512-Kgpq4bYzS7CbQnwB/xjMjaaNqykLZPdLjQGMHdfaKT0y9XnEJGn9hP8YvNyD8vPL1QozQ4iaLPa4mkePcnyTog==}
+    engines: {node: '>=20.18.0'}
     peerDependencies:
       vue: ^2.7.0 || ^3.2.25
 
-  '@vue-macros/hoist-static@1.7.0':
-    resolution: {integrity: sha512-qIKU0xLzZ4Woo5JfLR6eZwiCj/QXee7GmGqVPZquR5Nrnbf5PvkAJeirX3Wlizjgvg+snmkz1dOg+80qcYooTQ==}
-    engines: {node: '>=16.14.0'}
+  '@vue-macros/hoist-static@3.0.0-beta.21':
+    resolution: {integrity: sha512-0OBMzL/+UP3jfJqVzcS/WwnpLPqv16ph7izO6jasYwKcJxDRhMWBfTI/h/k5FQb7XEnZ61bk5M0hf/BcRe/L0A==}
+    engines: {node: '>=20.18.0'}
 
-  '@vue-macros/jsx-directive@0.10.6':
-    resolution: {integrity: sha512-I7vfvd5sWxlnWYUpHLRrpfs4S6Piz5Ef+zlFRdfqZRq00KiUWJd/m//Xv0vd8ORR3CEu6bbQVDXXxVGh+2mhKQ==}
-    engines: {node: '>=16.14.0'}
+  '@vue-macros/jsx-directive@3.0.0-beta.21':
+    resolution: {integrity: sha512-28z7nZpx1CFnq6ETMTTh/POdhOUIoRW61Mdp2QuJfxwc0bDjIZSuGAz+SBHLRCY0YOK9ZZFQhc1eDiVTGBhJgQ==}
+    engines: {node: '>=20.18.0'}
 
-  '@vue-macros/named-template@0.5.5':
-    resolution: {integrity: sha512-wKPxZC3wqUpahGat9bFpIzZOrzrsh7P7Evz5IAZjIsv25HzzFlxN6Lmd7WGn2XXBjV1ZAUsMlCtmCBlIxX8RzQ==}
-    engines: {node: '>=16.14.0'}
+  '@vue-macros/named-template@3.0.0-beta.21':
+    resolution: {integrity: sha512-45t57v1oTKq3JxPLFwkFpSE9ZQhGeEBHJN+zQf7IhlsOE5MoTIaWfaSOa/vS1GhFLCHVAuzhSky9q03dJTxiCA==}
+    engines: {node: '>=20.18.0'}
 
-  '@vue-macros/reactivity-transform@1.1.6':
-    resolution: {integrity: sha512-yicxeIdSuV9IXFCbRwHbM7hy4yUB5qYXf8dxvm/ITE3vhZkVV7omLoQPdUA0zGc/ldSwXfYL3Ul3xnms7EBiCQ==}
-    engines: {node: '>=16.14.0'}
+  '@vue-macros/reactivity-transform@3.0.0-beta.21':
+    resolution: {integrity: sha512-NWWgactSPDvKcu6WIc0vbYCFwcjtk52j5rWWCRwZuJJMpA8d7llR79zl/vmxJr11OdjWJR2q+L/PiD4+LZpr9A==}
+    engines: {node: '>=20.18.0'}
     peerDependencies:
       vue: ^2.7.0 || ^3.2.25
 
-  '@vue-macros/script-lang@0.2.5':
-    resolution: {integrity: sha512-2twUdHbDRT1wm1zF8kem04D0MXWHd5+OHP/5hy8zb2g0QfXWTOQSlq/n9Xh1fO/XWYpaipKV8XMOKehfqfHtjg==}
-    engines: {node: '>=16.14.0'}
+  '@vue-macros/script-lang@3.0.0-beta.21':
+    resolution: {integrity: sha512-yGKIZuu8Pg3FLRzf2qLCGCOatOrPyi2Izkr4DmKk45DMlskbavGsiGPT7/pF+f/V+4FFDIhG6VEWzGRNb3iRrg==}
+    engines: {node: '>=20.18.0'}
     peerDependencies:
       vue: ^2.7.0 || ^3.0.0
 
-  '@vue-macros/setup-block@0.4.5':
-    resolution: {integrity: sha512-xmAHTwYu9igrwuUrKgN4CckGeR9aaIgjmylOdaVtg28ZPxhbQ+VDLnYlN3tabOoHFeZD/L7CCA6z+fZGuLcsCw==}
-    engines: {node: '>=16.14.0'}
+  '@vue-macros/setup-block@3.0.0-beta.21':
+    resolution: {integrity: sha512-bVJO6TEh5joliXLiKFp6MWVDGeNKYRhn+e7soMVJNWQoj+RVdtadcbw1Hym0X/ndKropLcS+yeHNFnIErG1cCQ==}
+    engines: {node: '>=20.18.0'}
 
-  '@vue-macros/setup-component@0.18.5':
-    resolution: {integrity: sha512-Op1IIQX+AthQ5SSmm26DbZEeXpiFQfwi0vi8nwkAq24C6WlBLv/QUqsnq+D2o/0+t1sCDzLHPY5Y5oZpxu9FLw==}
-    engines: {node: '>=16.14.0'}
+  '@vue-macros/setup-component@3.0.0-beta.21':
+    resolution: {integrity: sha512-YU5XMTUCy4RXmAHAPyKt+PE4QybsmaXFTdU7PH9KqXZn0mD8y2gypBImYJt41oYZ/z4wf3ck5ouPIPWBj84VvQ==}
+    engines: {node: '>=20.18.0'}
 
-  '@vue-macros/setup-sfc@0.18.5':
-    resolution: {integrity: sha512-J4M2qXOOb1jeeShq6WpC4LRngLP3/SAQdOK8XxioaILe/UCIuty6QWjxbmoz4im6Ol1pNS44dQNKa5gOsxUusg==}
-    engines: {node: '>=16.14.0'}
-
-  '@vue-macros/short-bind@1.1.5':
-    resolution: {integrity: sha512-PSm30G05Asa6hLrGN90D3yWquCCEYupZ2eq7TVP0F/DVlRHYBn5vjngOcU3jdTSqRdeMLoqzFRr7G6nzqtiPcQ==}
-    engines: {node: '>=16.14.0'}
+  '@vue-macros/setup-sfc@3.0.0-beta.21':
+    resolution: {integrity: sha512-Yz9KTDJnGjxtywDPCg9+II+6SSMDfQbarGzG0Ah7JHFyM9p4UbZUlFGM8TAfvS8zReLO0SVwwZ+R4I0VJPAY6Q==}
+    engines: {node: '>=20.18.0'}
 
   '@vue-macros/short-bind@3.0.0-beta.20':
     resolution: {integrity: sha512-JJSyZYBcfvP4YGVZo3Ppv7zSnUzDdoW6tRGuq7dOI8kxF+4HshitckmEO9ehJJEIy7b22EsFZYfrV8crnieslQ==}
     engines: {node: '>=20.18.0'}
 
-  '@vue-macros/short-emits@1.6.5':
-    resolution: {integrity: sha512-o1fAnavDmybqBxp5uwqMEBHOLmjdHTdH8nKYNLegZwUGhYpRmLsVdq6dSWkGOGDodwCnqc1I/tfFIFdQPkgcLA==}
-    engines: {node: '>=16.14.0'}
+  '@vue-macros/short-bind@3.0.0-beta.21':
+    resolution: {integrity: sha512-pHXEWHPcq473vXTw0riLp8o8hRAOftecfNK2qfckFsf/6rcQlhCu2ueTmqmWO84ltyPFrhe6VhTU1968pKh+ng==}
+    engines: {node: '>=20.18.0'}
 
-  '@vue-macros/short-vmodel@1.5.5':
-    resolution: {integrity: sha512-EYEf0f3QU8csOxgBsGiu4tOblOnBKiLFiYaZ3g72ER+6PwJ7kF2fLhHwdA6H/4RL+VEpSOFSTAazpZa4lCed+Q==}
-    engines: {node: '>=16.14.0'}
+  '@vue-macros/short-emits@3.0.0-beta.21':
+    resolution: {integrity: sha512-/x/Zrkeoc+MRSq22IqWn5DIk56v+Xrp4+t+UN92t98tsTO6Q2hudJjxzbx7syiLyIOP4MZD74Ss2y14I3IJZUg==}
+    engines: {node: '>=20.18.0'}
 
   '@vue-macros/short-vmodel@3.0.0-beta.20':
     resolution: {integrity: sha512-UVmRfz9CDEFbc1UrnjDu9LlGyGh7AWR8kstHUQJ5xP+aq3Y7SQKIgFt6YbubHf0Wka7Aiax+tAGyADUBybSMpw==}
     engines: {node: '>=20.18.0'}
 
-  '@vue-macros/volar@0.30.15':
-    resolution: {integrity: sha512-CU2/XTH1Md06bpE+Opc8LDnY9t06tX8V2daZTWemsNb2NxxzRE+5Xj+EUGR/pG3R9dDXAZ7kQfERiIgO+dAb8w==}
-    engines: {node: '>=16.14.0'}
-    peerDependencies:
-      vue-tsc: 2.1.10
-    peerDependenciesMeta:
-      vue-tsc:
-        optional: true
+  '@vue-macros/short-vmodel@3.0.0-beta.21':
+    resolution: {integrity: sha512-Kuqh13QCZGQxtd5OBXwRKRnu5HJlBuqBxf5ylyNmmONtwCoRKwlqAvQfbmELahB58lHYs22yc2YRtfK96O17Bg==}
+    engines: {node: '>=20.18.0'}
 
   '@vue-macros/volar@3.0.0-beta.20':
     resolution: {integrity: sha512-+FwD2dMqe+pCcp+3FkTbJXbEZi0/f107gk5LXIzMUIkbNu/i8fMVwRGS+7EPTcS0YghDyDU2U09UtITrKDvIig==}
     engines: {node: '>=20.18.0'}
     peerDependencies:
       vue-tsc: 3.0.4
+    peerDependenciesMeta:
+      vue-tsc:
+        optional: true
+
+  '@vue-macros/volar@3.0.0-beta.21':
+    resolution: {integrity: sha512-KZslp65cnij4JW0QzPPCuF75HvknLfbFDa30Qpt6NTH5T3My/BzK5SPrAyq9dgRl2jBYPDpK32uoAcbA89sM2g==}
+    engines: {node: '>=20.18.0'}
+    peerDependencies:
+      vue-tsc: 3.0.5
     peerDependenciesMeta:
       vue-tsc:
         optional: true
@@ -1443,16 +1491,16 @@ packages:
   '@vue/compiler-vue2@2.7.16':
     resolution: {integrity: sha512-qYC3Psj9S/mfu9uVi5WvNZIzq+xnXMhOwbTFKKDD7b1lhpnn71jXSFdTQ+WsIEk0ONCd7VV2IMm7ONl6tbQ86A==}
 
-  '@vue/language-core@2.1.10':
-    resolution: {integrity: sha512-DAI289d0K3AB5TUG3xDp9OuQ71CnrujQwJrQnfuZDwo6eGNf0UoRlPuaVNO+Zrn65PC3j0oB2i7mNmVPggeGeQ==}
+  '@vue/language-core@3.0.4':
+    resolution: {integrity: sha512-BvueED4LfBCSNH66eeUQk37MQCb7hjdezzGgxniM0LbriW53AJIyLorgshAtStmjfsAuOCcTl/c1b+nz/ye8xQ==}
     peerDependencies:
       typescript: '*'
     peerDependenciesMeta:
       typescript:
         optional: true
 
-  '@vue/language-core@3.0.4':
-    resolution: {integrity: sha512-BvueED4LfBCSNH66eeUQk37MQCb7hjdezzGgxniM0LbriW53AJIyLorgshAtStmjfsAuOCcTl/c1b+nz/ye8xQ==}
+  '@vue/language-core@3.0.5':
+    resolution: {integrity: sha512-gCEjn9Ik7I/seHVNIEipOm8W+f3/kg60e8s1IgIkMYma2wu9ZGUTMv3mSL2bX+Md2L8fslceJ4SU8j1fgSRoiw==}
     peerDependencies:
       typescript: '*'
     peerDependenciesMeta:
@@ -1488,9 +1536,6 @@ packages:
 
   ajv@6.12.6:
     resolution: {integrity: sha512-j3fVLgvTo527anyYyJOGTYJbG+vnnQYvE0m5mmkc1TK+nxAppkCLMIL0aZ4dblVCNoGShhm+kzE4ZUykBoMg4g==}
-
-  alien-signals@0.2.2:
-    resolution: {integrity: sha512-cZIRkbERILsBOXTQmMrxc9hgpxglstn69zm+F1ARf4aPAzdAFYd6sBq87ErO0Fj3DV94tglcyHG5kQz9nDC/8A==}
 
   alien-signals@2.0.6:
     resolution: {integrity: sha512-P3TxJSe31bUHBiblg59oU1PpaWPtmxF9GhJ/cB7OkgJ0qN/ifFSKUI25/v8ZhsT+lIG6ac8DpTOplXxORX6F3Q==}
@@ -1529,17 +1574,17 @@ packages:
     resolution: {integrity: sha512-Izi8RQcffqCeNVgFigKli1ssklIbpHnCYc6AknXGYoB6grJqyeby7jv12JUQgmTAnIDnbck1uxksT4dzN3PWBA==}
     engines: {node: '>=12'}
 
-  ast-kit@1.4.3:
-    resolution: {integrity: sha512-MdJqjpodkS5J149zN0Po+HPshkTdUyrvF7CKTafUgv69vBSPtncrj+3IiUgqdd7ElIEkbeXCsEouBUwLrw9Ilg==}
-    engines: {node: '>=16.14.0'}
-
   ast-kit@2.1.1:
     resolution: {integrity: sha512-mfh6a7gKXE8pDlxTvqIc/syH/P3RkzbOF6LeHdcKztLEzYe6IMsRCL7N8vI7hqTGWNxpkCuuRTpT21xNWqhRtQ==}
     engines: {node: '>=20.18.0'}
 
-  ast-walker-scope@0.6.2:
-    resolution: {integrity: sha512-1UWOyC50xI3QZkRuDj6PqDtpm1oHWtYs+NQGwqL/2R11eN3Q81PHAHPM0SWW3BNQm53UDwS//Jv8L4CCVLM1bQ==}
-    engines: {node: '>=16.14.0'}
+  ast-kit@2.1.2:
+    resolution: {integrity: sha512-cl76xfBQM6pztbrFWRnxbrDm9EOqDr1BF6+qQnnDZG2Co2LjyUktkN9GTJfBAfdae+DbT2nJf2nCGAdDDN7W2g==}
+    engines: {node: '>=20.18.0'}
+
+  ast-walker-scope@0.8.2:
+    resolution: {integrity: sha512-3pYeLyDZ6nJew9QeBhS4Nly02269Dkdk32+zdbbKmL6n4ZuaGorwwA+xx12xgOciA8BF1w9x+dlH7oUkFTW91w==}
+    engines: {node: '>=20.18.0'}
 
   autoprefixer@10.4.21:
     resolution: {integrity: sha512-O+A6LWV5LDHSJD3LjHYoNi4VLsj/Whi7k6zG12xTYaU4cQ8oxQGckXNX8cRHK5yOZ/ppVHe0ZBXGzSV9jXdVbQ==}
@@ -2351,10 +2396,6 @@ packages:
   lru-cache@5.1.1:
     resolution: {integrity: sha512-KpNARQA3Iwv+jTA0utUVVbrh+Jlrr1Fv0e56GGzAFOXN7dk/FviaDW8LHmK52DlcH4WP2n6gI8vN1aesBFgo9w==}
 
-  magic-string-ast@0.7.1:
-    resolution: {integrity: sha512-ub9iytsEbT7Yw/Pd29mSo/cNQpaEu67zR1VVcXDiYjSFwzeBxNdTd0FMnSslLQXiRj8uGPzwsaoefrMD5XAmdw==}
-    engines: {node: '>=16.14.0'}
-
   magic-string-ast@1.0.0:
     resolution: {integrity: sha512-8rbuNizut2gW94kv7pqgt0dvk+AHLPVIm0iJtpSgQJ9dx21eWx5SBel8z3jp1xtC0j6/iyK3AWGhAR1H61s7LA==}
     engines: {node: '>=20.18.0'}
@@ -2364,9 +2405,6 @@ packages:
 
   magicast@0.3.5:
     resolution: {integrity: sha512-L0WhttDl+2BOsybvEOLK7fW3UA0OQ0IQ2d6Zl2x/a6vVRs3bAY0ECOSHHeL5jD+SbOpOCUEi0y1DgHEn9Qn1AQ==}
-
-  make-synchronized@0.2.10:
-    resolution: {integrity: sha512-7NTbfv+5oJJdjHRPW4j4P/n7sYeu7mrBTZLVHD5ACSyFPRObPhsZAIoR/75SlVl20x/g7PIP75FBBHqSJ2FPuA==}
 
   markdown-table@3.0.4:
     resolution: {integrity: sha512-wiYz4+JrLyb/DqW2hkFJxP7Vd7JuTDm77fvbM8VfEQdmSMqcImWeeRbHwZjBjIFki/VaMK2BhFi7oUUZeM5bqw==}
@@ -2562,11 +2600,20 @@ packages:
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
 
+  napi-postinstall@0.3.3:
+    resolution: {integrity: sha512-uTp172LLXSxuSYHv/kou+f6KW3SMppU9ivthaVTXian9sOt3XM/zHYHpRZiLgQoxeWfYUnslNWQHF1+G71xcow==}
+    engines: {node: ^12.20.0 || ^14.18.0 || >=16.0.0}
+    hasBin: true
+
   natural-compare@1.4.0:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}
 
   natural-orderby@5.0.0:
     resolution: {integrity: sha512-kKHJhxwpR/Okycz4HhQKKlhWe4ASEfPgkSWNmKFHd7+ezuQlxkA5cM3+XkBPvm1gmHen3w53qsYAv+8GwRrBlg==}
+    engines: {node: '>=18'}
+
+  neverthrow@8.2.0:
+    resolution: {integrity: sha512-kOCT/1MCPAxY5iUV3wytNFUMUolzuwd/VF/1KCx7kf6CutrOsTie+84zTGTpgQycjvfLdBBdvBvFLqFD2c0wkQ==}
     engines: {node: '>=18'}
 
   node-fetch-native@1.6.7:
@@ -2605,8 +2652,8 @@ packages:
     resolution: {integrity: sha512-D2FR03Vir7FIu45XBY20mTb+/ZSWB00sjU9jdQXt83gDrI4Ztz5Fs7/yy74g2N5SVQY4xY1qDr4rNddwYRVX0g==}
     engines: {node: '>=0.10.0'}
 
-  oxc-resolver@4.2.0:
-    resolution: {integrity: sha512-x9bzmn1rQRu2cRT6dC6qOCKyStDVubXsf5H3UloUG/UFjzufmNu8DHTxafYDaSlA9Y+rorD+EnmF7sWSaFdd7g==}
+  oxc-resolver@11.6.2:
+    resolution: {integrity: sha512-9lXwNQUzgPs5UgjKig5+EINESHYJCFsRQLzPyjWLc7sshl6ZXvXPiQfEGqUIs2fsd9SdV/jYmL7IuaK43cL0SA==}
 
   p-limit@3.1.0:
     resolution: {integrity: sha512-TYOanM3wGwNGsZN2cVTYPArw454xnXj5qmWF1bEoAc4+cU/ol7GVh7odevjp1FNHduHc3KZMcFduxU5Xc6uJRQ==}
@@ -3101,11 +3148,11 @@ packages:
     peerDependencies:
       typescript: '>=4.0.0'
 
-  ts-macro@0.1.35:
-    resolution: {integrity: sha512-cMPJUCH8VsH9s9FANjL1r/SrkV2T6CKBjgWqgP2XGiS+y/zBBwmw0C3C31M4LqrLEjb8djgUMDV18vQ4Dr+/mg==}
-
   ts-macro@0.3.1:
     resolution: {integrity: sha512-Q7fVWKas1W7ZlULXdLgacU92g7WY92YIkVe+lENUINBjRPD/1Gfq0dV9Txr8ZszIpJPRE9vw+Rai95DH3sMUFg==}
+
+  ts-macro@0.3.4:
+    resolution: {integrity: sha512-DK5+PYk9mhyY2VCGMQ/OpjULl8kANvInoQMp/POil08EH0GZsptWAMILjh0tGl9iYAL5OLv4W0C7dZhZuVuS5Q==}
 
   tslib@2.8.1:
     resolution: {integrity: sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w==}
@@ -3170,16 +3217,16 @@ packages:
       vite:
         optional: true
 
-  unplugin-combine@1.2.1:
-    resolution: {integrity: sha512-qGkXjQo8yTq5QknP8f8p8/Aw3BJKqclTbTe8de0pC6exHzpoPBnH69Eztf00G2oc50IaIlV7KX/g4cKgzCq9BA==}
-    engines: {node: '>=16.14.0'}
+  unplugin-combine@2.1.2:
+    resolution: {integrity: sha512-vURL3GLA8sHpu8tVxr7l7EDgLz1bESYMVk/JIeoHV1dN0nmUYC4bPDnhbsjZGB2AYnxLqZpjpvSPzfVl7UL9mw==}
+    engines: {node: '>=20.18.0'}
     peerDependencies:
       '@rspack/core': '*'
       esbuild: '>=0.13'
       rolldown: '*'
       rollup: ^3.2.0 || ^4.0.0
       unplugin: ^1.0.0 || ^2.0.0
-      vite: ^2.3.0 || ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0-0
+      vite: ^2.3.0 || ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0
       webpack: 4 || 5
     peerDependenciesMeta:
       '@rspack/core':
@@ -3201,19 +3248,13 @@ packages:
     resolution: {integrity: sha512-8U/MtpkPkkk3Atewj1+RcKIjb5WBimZ/WSLhhR3w6SsIj8XJuKTacSP8g+2JhfSGw0Cb125Y+2zA/IzJZDVbhA==}
     engines: {node: '>=18.12.0'}
 
-  unplugin-vue-define-options@1.5.5:
-    resolution: {integrity: sha512-V50sWbpoADsjyVgovxewoLo2IDW0zfgHJbKiAl2EdZT8OL3g3h1Mz3QKoAAu09i8+LnkDatIEQMgBVeHHxWXNg==}
-    engines: {node: '>=16.14.0'}
+  unplugin-vue-define-options@3.0.0-beta.21:
+    resolution: {integrity: sha512-lwGAB22LiYhypVDtf7/M1qaGmasYtoUR66LPgrCrSu2pmTpeVJtxh8MNf+kM/+tNajMZLlatu/2Yds3Z5ajUhA==}
+    engines: {node: '>=20.18.0'}
 
-  unplugin-vue-macros@2.14.5:
-    resolution: {integrity: sha512-jlZhsr26/wreKBrkX6BM21Mpm9DbS6H2H0aMrd3gu/wabA3YWUj/t+zqZD5Y5yShaTKO/03yJjb5BfPck9mPtw==}
-    engines: {node: '>=16.14.0'}
-    peerDependencies:
-      vue: ^2.7.0 || ^3.2.25
-
-  unplugin@1.16.1:
-    resolution: {integrity: sha512-4/u/j4FrCKdi17jaxuJA0jClGxB1AvU2hw/IuayPc4ay1XGaJs/rbb4v5WKwAjNifjmXK9PIFyuPiaK8azyR9w==}
-    engines: {node: '>=14.0.0'}
+  unplugin@2.3.8:
+    resolution: {integrity: sha512-lkaSIlxceytPyt9yfb1h7L9jDFqwMqvUZeGsKB7Z8QrvAO3xZv2S+xMQQYzxk0AGJHcQhbcvhKEstrMy99jnuQ==}
+    engines: {node: '>=18.12.0'}
 
   untyped@2.0.0:
     resolution: {integrity: sha512-nwNCjxJTjNuLCgFr42fEak5OcLuB3ecca+9ksPFNvtfYSLpjf+iJqSIaSnIile6ZPbKYxI5k2AfXqeopGudK/g==}
@@ -3312,6 +3353,12 @@ packages:
 
   vue-flow-layout@0.2.0:
     resolution: {integrity: sha512-zKgsWWkXq0xrus7H4Mc+uFs1ESrmdTXlO0YNbR6wMdPaFvosL3fMB8N7uTV308UhGy9UvTrGhIY7mVz9eN+L0Q==}
+
+  vue-macros@3.0.0-beta.21:
+    resolution: {integrity: sha512-EYofxb1wLMkb9pUFqiMhTmZvAWZEsSowECKNOo42P7alA+uwalP8BKBYul/BuGIRZSjI8ejvSCxMddXYDPS3sw==}
+    engines: {node: '>=20.18.0'}
+    peerDependencies:
+      vue: ^2.7.0 || ^3.2.25
 
   vue@3.5.18:
     resolution: {integrity: sha512-7W4Y4ZbMiQ3SEo+m9lnoNpV9xG7QVMLa+/0RFwwiAVkeYoyGXqWE85jabU4pllJNUzqfLShJ5YLptewhCWUgNA==}
@@ -3594,6 +3641,10 @@ snapshots:
       '@babel/types': 7.28.2
 
   '@babel/parser@7.28.0':
+    dependencies:
+      '@babel/types': 7.28.2
+
+  '@babel/parser@7.28.3':
     dependencies:
       '@babel/types': 7.28.2
 
@@ -3978,6 +4029,11 @@ snapshots:
       '@jridgewell/sourcemap-codec': 1.5.4
       '@jridgewell/trace-mapping': 0.3.29
 
+  '@jridgewell/remapping@2.3.5':
+    dependencies:
+      '@jridgewell/gen-mapping': 0.3.12
+      '@jridgewell/trace-mapping': 0.3.29
+
   '@jridgewell/resolve-uri@3.1.2': {}
 
   '@jridgewell/sourcemap-codec@1.5.4': {}
@@ -3987,7 +4043,7 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.4
 
-  '@napi-rs/wasm-runtime@0.2.12':
+  '@napi-rs/wasm-runtime@1.0.3':
     dependencies:
       '@emnapi/core': 1.4.5
       '@emnapi/runtime': 1.4.5
@@ -4006,39 +4062,63 @@ snapshots:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.19.1
 
-  '@oxc-resolver/binding-darwin-arm64@4.2.0':
+  '@oxc-resolver/binding-android-arm-eabi@11.6.2':
     optional: true
 
-  '@oxc-resolver/binding-darwin-x64@4.2.0':
+  '@oxc-resolver/binding-android-arm64@11.6.2':
     optional: true
 
-  '@oxc-resolver/binding-freebsd-x64@4.2.0':
+  '@oxc-resolver/binding-darwin-arm64@11.6.2':
     optional: true
 
-  '@oxc-resolver/binding-linux-arm-gnueabihf@4.2.0':
+  '@oxc-resolver/binding-darwin-x64@11.6.2':
     optional: true
 
-  '@oxc-resolver/binding-linux-arm64-gnu@4.2.0':
+  '@oxc-resolver/binding-freebsd-x64@11.6.2':
     optional: true
 
-  '@oxc-resolver/binding-linux-arm64-musl@4.2.0':
+  '@oxc-resolver/binding-linux-arm-gnueabihf@11.6.2':
     optional: true
 
-  '@oxc-resolver/binding-linux-x64-gnu@4.2.0':
+  '@oxc-resolver/binding-linux-arm-musleabihf@11.6.2':
     optional: true
 
-  '@oxc-resolver/binding-linux-x64-musl@4.2.0':
+  '@oxc-resolver/binding-linux-arm64-gnu@11.6.2':
     optional: true
 
-  '@oxc-resolver/binding-wasm32-wasi@4.2.0':
+  '@oxc-resolver/binding-linux-arm64-musl@11.6.2':
+    optional: true
+
+  '@oxc-resolver/binding-linux-ppc64-gnu@11.6.2':
+    optional: true
+
+  '@oxc-resolver/binding-linux-riscv64-gnu@11.6.2':
+    optional: true
+
+  '@oxc-resolver/binding-linux-riscv64-musl@11.6.2':
+    optional: true
+
+  '@oxc-resolver/binding-linux-s390x-gnu@11.6.2':
+    optional: true
+
+  '@oxc-resolver/binding-linux-x64-gnu@11.6.2':
+    optional: true
+
+  '@oxc-resolver/binding-linux-x64-musl@11.6.2':
+    optional: true
+
+  '@oxc-resolver/binding-wasm32-wasi@11.6.2':
     dependencies:
-      '@napi-rs/wasm-runtime': 0.2.12
+      '@napi-rs/wasm-runtime': 1.0.3
     optional: true
 
-  '@oxc-resolver/binding-win32-arm64-msvc@4.2.0':
+  '@oxc-resolver/binding-win32-arm64-msvc@11.6.2':
     optional: true
 
-  '@oxc-resolver/binding-win32-x64-msvc@4.2.0':
+  '@oxc-resolver/binding-win32-ia32-msvc@11.6.2':
+    optional: true
+
+  '@oxc-resolver/binding-win32-x64-msvc@11.6.2':
     optional: true
 
   '@pkgr/core@0.2.9': {}
@@ -4527,25 +4607,20 @@ snapshots:
 
   '@volar/source-map@2.4.22': {}
 
-  '@vue-macros/api@0.13.4(vue@3.5.18(typescript@5.9.2))':
+  '@vue-macros/api@3.0.0-beta.21(vue@3.5.18(typescript@5.9.2))':
     dependencies:
-      '@vue-macros/common': 1.16.1(vue@3.5.18(typescript@5.9.2))
-      oxc-resolver: 4.2.0
+      '@vue-macros/common': 3.0.0-beta.21(vue@3.5.18(typescript@5.9.2))
+      neverthrow: 8.2.0
+      oxc-resolver: 11.6.2
     transitivePeerDependencies:
       - vue
 
-  '@vue-macros/better-define@1.11.4(vue@3.5.18(typescript@5.9.2))':
+  '@vue-macros/better-define@3.0.0-beta.21(vue@3.5.18(typescript@5.9.2))':
     dependencies:
-      '@vue-macros/api': 0.13.4(vue@3.5.18(typescript@5.9.2))
-      '@vue-macros/common': 1.16.1(vue@3.5.18(typescript@5.9.2))
-      unplugin: 1.16.1
-    transitivePeerDependencies:
-      - vue
-
-  '@vue-macros/boolean-prop@0.5.5(vue@3.5.18(typescript@5.9.2))':
-    dependencies:
-      '@vue-macros/common': 1.16.1(vue@3.5.18(typescript@5.9.2))
-      '@vue/compiler-core': 3.5.18
+      '@vue-macros/api': 3.0.0-beta.21(vue@3.5.18(typescript@5.9.2))
+      '@vue-macros/common': 3.0.0-beta.21(vue@3.5.18(typescript@5.9.2))
+      neverthrow: 8.2.0
+      unplugin: 2.3.8
     transitivePeerDependencies:
       - vue
 
@@ -4556,23 +4631,19 @@ snapshots:
     transitivePeerDependencies:
       - vue
 
-  '@vue-macros/chain-call@0.4.5(vue@3.5.18(typescript@5.9.2))':
+  '@vue-macros/boolean-prop@3.0.0-beta.21(vue@3.5.18(typescript@5.9.2))':
     dependencies:
-      '@vue-macros/common': 1.16.1(vue@3.5.18(typescript@5.9.2))
-      unplugin: 1.16.1
+      '@vue-macros/common': 3.0.0-beta.21(vue@3.5.18(typescript@5.9.2))
+      '@vue/compiler-core': 3.5.18
     transitivePeerDependencies:
       - vue
 
-  '@vue-macros/common@1.16.1(vue@3.5.18(typescript@5.9.2))':
+  '@vue-macros/chain-call@3.0.0-beta.21(vue@3.5.18(typescript@5.9.2))':
     dependencies:
-      '@vue/compiler-sfc': 3.5.18
-      ast-kit: 1.4.3
-      local-pkg: 1.1.1
-      magic-string-ast: 0.7.1
-      pathe: 2.0.3
-      picomatch: 4.0.3
-    optionalDependencies:
-      vue: 3.5.18(typescript@5.9.2)
+      '@vue-macros/common': 3.0.0-beta.21(vue@3.5.18(typescript@5.9.2))
+      unplugin: 2.3.8
+    transitivePeerDependencies:
+      - vue
 
   '@vue-macros/common@3.0.0-beta.20(vue@3.5.18(typescript@5.9.2))':
     dependencies:
@@ -4584,13 +4655,15 @@ snapshots:
     optionalDependencies:
       vue: 3.5.18(typescript@5.9.2)
 
-  '@vue-macros/config@0.6.1(vue@3.5.18(typescript@5.9.2))':
+  '@vue-macros/common@3.0.0-beta.21(vue@3.5.18(typescript@5.9.2))':
     dependencies:
-      '@vue-macros/common': 1.16.1(vue@3.5.18(typescript@5.9.2))
-      make-synchronized: 0.2.10
-      unconfig: 7.3.2
-    transitivePeerDependencies:
-      - vue
+      '@vue/compiler-sfc': 3.5.18
+      ast-kit: 2.1.1
+      local-pkg: 1.1.1
+      magic-string-ast: 1.0.0
+      unplugin-utils: 0.2.4
+    optionalDependencies:
+      vue: 3.5.18(typescript@5.9.2)
 
   '@vue-macros/config@3.0.0-beta.20(vue@3.5.18(typescript@5.9.2))':
     dependencies:
@@ -4600,61 +4673,69 @@ snapshots:
     transitivePeerDependencies:
       - vue
 
-  '@vue-macros/define-emit@0.5.4(vue@3.5.18(typescript@5.9.2))':
+  '@vue-macros/config@3.0.0-beta.21(vue@3.5.18(typescript@5.9.2))':
     dependencies:
-      '@vue-macros/common': 1.16.1(vue@3.5.18(typescript@5.9.2))
-      unplugin: 1.16.1
-      vue: 3.5.18(typescript@5.9.2)
-
-  '@vue-macros/define-models@1.3.5(vue@3.5.18(typescript@5.9.2))':
-    dependencies:
-      '@vue-macros/common': 1.16.1(vue@3.5.18(typescript@5.9.2))
-      ast-walker-scope: 0.6.2
-      unplugin: 1.16.1
+      '@vue-macros/common': 3.0.0-beta.21(vue@3.5.18(typescript@5.9.2))
+      quansync: 0.2.10
+      unconfig: 7.3.2
     transitivePeerDependencies:
       - vue
 
-  '@vue-macros/define-prop@0.6.5(vue@3.5.18(typescript@5.9.2))':
+  '@vue-macros/define-emit@3.0.0-beta.21(vue@3.5.18(typescript@5.9.2))':
     dependencies:
-      '@vue-macros/api': 0.13.4(vue@3.5.18(typescript@5.9.2))
-      '@vue-macros/common': 1.16.1(vue@3.5.18(typescript@5.9.2))
-      unplugin: 1.16.1
+      '@vue-macros/common': 3.0.0-beta.21(vue@3.5.18(typescript@5.9.2))
+      unplugin: 2.3.8
       vue: 3.5.18(typescript@5.9.2)
 
-  '@vue-macros/define-props-refs@1.3.5(vue@3.5.18(typescript@5.9.2))':
+  '@vue-macros/define-models@3.0.0-beta.21(vue@3.5.18(typescript@5.9.2))':
     dependencies:
-      '@vue-macros/common': 1.16.1(vue@3.5.18(typescript@5.9.2))
-      unplugin: 1.16.1
+      '@vue-macros/common': 3.0.0-beta.21(vue@3.5.18(typescript@5.9.2))
+      ast-walker-scope: 0.8.2
+      unplugin: 2.3.8
+    transitivePeerDependencies:
+      - vue
+
+  '@vue-macros/define-prop@3.0.0-beta.21(vue@3.5.18(typescript@5.9.2))':
+    dependencies:
+      '@vue-macros/api': 3.0.0-beta.21(vue@3.5.18(typescript@5.9.2))
+      '@vue-macros/common': 3.0.0-beta.21(vue@3.5.18(typescript@5.9.2))
+      unplugin: 2.3.8
       vue: 3.5.18(typescript@5.9.2)
 
-  '@vue-macros/define-props@4.0.6(@vue-macros/reactivity-transform@1.1.6(vue@3.5.18(typescript@5.9.2)))(vue@3.5.18(typescript@5.9.2))':
+  '@vue-macros/define-props-refs@3.0.0-beta.21(vue@3.5.18(typescript@5.9.2))':
     dependencies:
-      '@vue-macros/common': 1.16.1(vue@3.5.18(typescript@5.9.2))
-      '@vue-macros/reactivity-transform': 1.1.6(vue@3.5.18(typescript@5.9.2))
-      unplugin: 1.16.1
+      '@vue-macros/common': 3.0.0-beta.21(vue@3.5.18(typescript@5.9.2))
+      unplugin: 2.3.8
       vue: 3.5.18(typescript@5.9.2)
 
-  '@vue-macros/define-render@1.6.6(vue@3.5.18(typescript@5.9.2))':
+  '@vue-macros/define-props@3.0.0-beta.21(@vue-macros/reactivity-transform@3.0.0-beta.21(vue@3.5.18(typescript@5.9.2)))(vue@3.5.18(typescript@5.9.2))':
     dependencies:
-      '@vue-macros/common': 1.16.1(vue@3.5.18(typescript@5.9.2))
-      unplugin: 1.16.1
+      '@vue-macros/common': 3.0.0-beta.21(vue@3.5.18(typescript@5.9.2))
+      '@vue-macros/reactivity-transform': 3.0.0-beta.21(vue@3.5.18(typescript@5.9.2))
+      unplugin: 2.3.8
       vue: 3.5.18(typescript@5.9.2)
 
-  '@vue-macros/define-slots@1.2.6(vue@3.5.18(typescript@5.9.2))':
+  '@vue-macros/define-render@3.0.0-beta.21(vue@3.5.18(typescript@5.9.2))':
     dependencies:
-      '@vue-macros/common': 1.16.1(vue@3.5.18(typescript@5.9.2))
-      unplugin: 1.16.1
+      '@vue-macros/common': 3.0.0-beta.21(vue@3.5.18(typescript@5.9.2))
+      unplugin: 2.3.8
       vue: 3.5.18(typescript@5.9.2)
 
-  '@vue-macros/define-stylex@0.2.3(vue@3.5.18(typescript@5.9.2))':
+  '@vue-macros/define-slots@3.0.0-beta.21(vue@3.5.18(typescript@5.9.2))':
     dependencies:
-      '@vue-macros/common': 1.16.1(vue@3.5.18(typescript@5.9.2))
+      '@vue-macros/common': 3.0.0-beta.21(vue@3.5.18(typescript@5.9.2))
+      unplugin: 2.3.8
+      vue: 3.5.18(typescript@5.9.2)
+
+  '@vue-macros/define-stylex@3.0.0-beta.21(vue@3.5.18(typescript@5.9.2))':
+    dependencies:
+      '@vue-macros/common': 3.0.0-beta.21(vue@3.5.18(typescript@5.9.2))
       '@vue/compiler-dom': 3.5.18
-      unplugin: 1.16.1
+      unplugin: 2.3.8
     transitivePeerDependencies:
       - vue
 
-  '@vue-macros/devtools@0.4.1(typescript@5.9.2)(vite@7.0.6(@types/node@24.2.0)(jiti@2.5.1)(tsx@4.20.3)(yaml@2.8.0))':
+  '@vue-macros/devtools@3.0.0-beta.21(typescript@5.9.2)(vite@7.0.6(@types/node@24.2.0)(jiti@2.5.1)(tsx@4.20.3)(yaml@2.8.0))':
     dependencies:
       sirv: 3.0.1
       vue: 3.5.18(typescript@5.9.2)
@@ -4663,91 +4744,83 @@ snapshots:
     transitivePeerDependencies:
       - typescript
 
-  '@vue-macros/export-expose@0.3.5(vue@3.5.18(typescript@5.9.2))':
+  '@vue-macros/export-expose@3.0.0-beta.21(vue@3.5.18(typescript@5.9.2))':
     dependencies:
-      '@vue-macros/common': 1.16.1(vue@3.5.18(typescript@5.9.2))
+      '@vue-macros/common': 3.0.0-beta.21(vue@3.5.18(typescript@5.9.2))
       '@vue/compiler-sfc': 3.5.18
-      unplugin: 1.16.1
+      unplugin: 2.3.8
       vue: 3.5.18(typescript@5.9.2)
 
-  '@vue-macros/export-props@0.6.5(vue@3.5.18(typescript@5.9.2))':
+  '@vue-macros/export-props@3.0.0-beta.21(vue@3.5.18(typescript@5.9.2))':
     dependencies:
-      '@vue-macros/common': 1.16.1(vue@3.5.18(typescript@5.9.2))
-      unplugin: 1.16.1
+      '@vue-macros/common': 3.0.0-beta.21(vue@3.5.18(typescript@5.9.2))
+      unplugin: 2.3.8
       vue: 3.5.18(typescript@5.9.2)
 
-  '@vue-macros/export-render@0.3.5(vue@3.5.18(typescript@5.9.2))':
+  '@vue-macros/export-render@3.0.0-beta.21(vue@3.5.18(typescript@5.9.2))':
     dependencies:
-      '@vue-macros/common': 1.16.1(vue@3.5.18(typescript@5.9.2))
-      unplugin: 1.16.1
+      '@vue-macros/common': 3.0.0-beta.21(vue@3.5.18(typescript@5.9.2))
+      unplugin: 2.3.8
       vue: 3.5.18(typescript@5.9.2)
 
-  '@vue-macros/hoist-static@1.7.0(vue@3.5.18(typescript@5.9.2))':
+  '@vue-macros/hoist-static@3.0.0-beta.21(vue@3.5.18(typescript@5.9.2))':
     dependencies:
-      '@vue-macros/common': 1.16.1(vue@3.5.18(typescript@5.9.2))
-      unplugin: 1.16.1
+      '@vue-macros/common': 3.0.0-beta.21(vue@3.5.18(typescript@5.9.2))
+      unplugin: 2.3.8
     transitivePeerDependencies:
       - vue
 
-  '@vue-macros/jsx-directive@0.10.6(typescript@5.9.2)':
+  '@vue-macros/jsx-directive@3.0.0-beta.21(typescript@5.9.2)':
     dependencies:
-      '@vue-macros/common': 1.16.1(vue@3.5.18(typescript@5.9.2))
-      '@vue/compiler-sfc': 3.5.18
-      unplugin: 1.16.1
+      '@vue-macros/common': 3.0.0-beta.21(vue@3.5.18(typescript@5.9.2))
+      unplugin: 2.3.8
       vue: 3.5.18(typescript@5.9.2)
     transitivePeerDependencies:
       - typescript
 
-  '@vue-macros/named-template@0.5.5(vue@3.5.18(typescript@5.9.2))':
+  '@vue-macros/named-template@3.0.0-beta.21(vue@3.5.18(typescript@5.9.2))':
     dependencies:
-      '@vue-macros/common': 1.16.1(vue@3.5.18(typescript@5.9.2))
+      '@vue-macros/common': 3.0.0-beta.21(vue@3.5.18(typescript@5.9.2))
       '@vue/compiler-dom': 3.5.18
-      unplugin: 1.16.1
+      unplugin: 2.3.8
     transitivePeerDependencies:
       - vue
 
-  '@vue-macros/reactivity-transform@1.1.6(vue@3.5.18(typescript@5.9.2))':
+  '@vue-macros/reactivity-transform@3.0.0-beta.21(vue@3.5.18(typescript@5.9.2))':
     dependencies:
       '@babel/parser': 7.28.0
-      '@vue-macros/common': 1.16.1(vue@3.5.18(typescript@5.9.2))
+      '@vue-macros/common': 3.0.0-beta.21(vue@3.5.18(typescript@5.9.2))
       '@vue/compiler-core': 3.5.18
       '@vue/shared': 3.5.18
       magic-string: 0.30.17
-      unplugin: 1.16.1
+      unplugin: 2.3.8
       vue: 3.5.18(typescript@5.9.2)
 
-  '@vue-macros/script-lang@0.2.5(vue@3.5.18(typescript@5.9.2))':
+  '@vue-macros/script-lang@3.0.0-beta.21(vue@3.5.18(typescript@5.9.2))':
     dependencies:
-      '@vue-macros/common': 1.16.1(vue@3.5.18(typescript@5.9.2))
-      unplugin: 1.16.1
+      '@vue-macros/common': 3.0.0-beta.21(vue@3.5.18(typescript@5.9.2))
+      unplugin: 2.3.8
       vue: 3.5.18(typescript@5.9.2)
 
-  '@vue-macros/setup-block@0.4.5(vue@3.5.18(typescript@5.9.2))':
+  '@vue-macros/setup-block@3.0.0-beta.21(vue@3.5.18(typescript@5.9.2))':
     dependencies:
-      '@vue-macros/common': 1.16.1(vue@3.5.18(typescript@5.9.2))
+      '@vue-macros/common': 3.0.0-beta.21(vue@3.5.18(typescript@5.9.2))
       '@vue/compiler-dom': 3.5.18
-      unplugin: 1.16.1
+      unplugin: 2.3.8
     transitivePeerDependencies:
       - vue
 
-  '@vue-macros/setup-component@0.18.5(vue@3.5.18(typescript@5.9.2))':
+  '@vue-macros/setup-component@3.0.0-beta.21(vue@3.5.18(typescript@5.9.2))':
     dependencies:
-      '@vue-macros/common': 1.16.1(vue@3.5.18(typescript@5.9.2))
-      unplugin: 1.16.1
+      '@vue-macros/common': 3.0.0-beta.21(vue@3.5.18(typescript@5.9.2))
+      unplugin: 2.3.8
     transitivePeerDependencies:
       - vue
 
-  '@vue-macros/setup-sfc@0.18.5(vue@3.5.18(typescript@5.9.2))':
+  '@vue-macros/setup-sfc@3.0.0-beta.21(vue@3.5.18(typescript@5.9.2))':
     dependencies:
-      '@vue-macros/common': 1.16.1(vue@3.5.18(typescript@5.9.2))
-      unplugin: 1.16.1
-    transitivePeerDependencies:
-      - vue
-
-  '@vue-macros/short-bind@1.1.5(vue@3.5.18(typescript@5.9.2))':
-    dependencies:
-      '@vue-macros/common': 1.16.1(vue@3.5.18(typescript@5.9.2))
-      '@vue/compiler-core': 3.5.18
+      '@vue-macros/common': 3.0.0-beta.21(vue@3.5.18(typescript@5.9.2))
+      unplugin: 2.3.8
     transitivePeerDependencies:
       - vue
 
@@ -4758,17 +4831,17 @@ snapshots:
     transitivePeerDependencies:
       - vue
 
-  '@vue-macros/short-emits@1.6.5(vue@3.5.18(typescript@5.9.2))':
+  '@vue-macros/short-bind@3.0.0-beta.21(vue@3.5.18(typescript@5.9.2))':
     dependencies:
-      '@vue-macros/common': 1.16.1(vue@3.5.18(typescript@5.9.2))
-      unplugin: 1.16.1
+      '@vue-macros/common': 3.0.0-beta.21(vue@3.5.18(typescript@5.9.2))
+      '@vue/compiler-core': 3.5.18
     transitivePeerDependencies:
       - vue
 
-  '@vue-macros/short-vmodel@1.5.5(vue@3.5.18(typescript@5.9.2))':
+  '@vue-macros/short-emits@3.0.0-beta.21(vue@3.5.18(typescript@5.9.2))':
     dependencies:
-      '@vue-macros/common': 1.16.1(vue@3.5.18(typescript@5.9.2))
-      '@vue/compiler-core': 3.5.18
+      '@vue-macros/common': 3.0.0-beta.21(vue@3.5.18(typescript@5.9.2))
+      unplugin: 2.3.8
     transitivePeerDependencies:
       - vue
 
@@ -4779,18 +4852,11 @@ snapshots:
     transitivePeerDependencies:
       - vue
 
-  '@vue-macros/volar@0.30.15(typescript@5.9.2)(vue@3.5.18(typescript@5.9.2))':
+  '@vue-macros/short-vmodel@3.0.0-beta.21(vue@3.5.18(typescript@5.9.2))':
     dependencies:
-      '@vue-macros/boolean-prop': 0.5.5(vue@3.5.18(typescript@5.9.2))
-      '@vue-macros/common': 1.16.1(vue@3.5.18(typescript@5.9.2))
-      '@vue-macros/config': 0.6.1(vue@3.5.18(typescript@5.9.2))
-      '@vue-macros/short-bind': 1.1.5(vue@3.5.18(typescript@5.9.2))
-      '@vue-macros/short-vmodel': 1.5.5(vue@3.5.18(typescript@5.9.2))
-      '@vue/language-core': 2.1.10(typescript@5.9.2)
-      muggle-string: 0.4.1
-      ts-macro: 0.1.35
+      '@vue-macros/common': 3.0.0-beta.21(vue@3.5.18(typescript@5.9.2))
+      '@vue/compiler-core': 3.5.18
     transitivePeerDependencies:
-      - typescript
       - vue
 
   '@vue-macros/volar@3.0.0-beta.20(typescript@5.9.2)(vue@3.5.18(typescript@5.9.2))':
@@ -4804,6 +4870,21 @@ snapshots:
       '@vue/shared': 3.5.18
       muggle-string: 0.4.1
       ts-macro: 0.3.1
+    transitivePeerDependencies:
+      - typescript
+      - vue
+
+  '@vue-macros/volar@3.0.0-beta.21(typescript@5.9.2)(vue@3.5.18(typescript@5.9.2))':
+    dependencies:
+      '@vue-macros/boolean-prop': 3.0.0-beta.21(vue@3.5.18(typescript@5.9.2))
+      '@vue-macros/common': 3.0.0-beta.21(vue@3.5.18(typescript@5.9.2))
+      '@vue-macros/config': 3.0.0-beta.21(vue@3.5.18(typescript@5.9.2))
+      '@vue-macros/short-bind': 3.0.0-beta.21(vue@3.5.18(typescript@5.9.2))
+      '@vue-macros/short-vmodel': 3.0.0-beta.21(vue@3.5.18(typescript@5.9.2))
+      '@vue/language-core': 3.0.5(typescript@5.9.2)
+      '@vue/shared': 3.5.18
+      muggle-string: 0.4.1
+      ts-macro: 0.3.4
     transitivePeerDependencies:
       - typescript
       - vue
@@ -4872,22 +4953,22 @@ snapshots:
       de-indent: 1.0.2
       he: 1.2.0
 
-  '@vue/language-core@2.1.10(typescript@5.9.2)':
-    dependencies:
-      '@volar/language-core': 2.4.22
-      '@vue/compiler-dom': 3.5.18
-      '@vue/compiler-vue2': 2.7.16
-      '@vue/shared': 3.5.18
-      alien-signals: 0.2.2
-      minimatch: 9.0.5
-      muggle-string: 0.4.1
-      path-browserify: 1.0.1
-    optionalDependencies:
-      typescript: 5.9.2
-
   '@vue/language-core@3.0.4(typescript@5.9.2)':
     dependencies:
       '@volar/language-core': 2.4.20
+      '@vue/compiler-dom': 3.5.18
+      '@vue/compiler-vue2': 2.7.16
+      '@vue/shared': 3.5.18
+      alien-signals: 2.0.6
+      muggle-string: 0.4.1
+      path-browserify: 1.0.1
+      picomatch: 4.0.3
+    optionalDependencies:
+      typescript: 5.9.2
+
+  '@vue/language-core@3.0.5(typescript@5.9.2)':
+    dependencies:
+      '@volar/language-core': 2.4.22
       '@vue/compiler-dom': 3.5.18
       '@vue/compiler-vue2': 2.7.16
       '@vue/shared': 3.5.18
@@ -4935,8 +5016,6 @@ snapshots:
       json-schema-traverse: 0.4.1
       uri-js: 4.4.1
 
-  alien-signals@0.2.2: {}
-
   alien-signals@2.0.6: {}
 
   ansi-escapes@4.3.2:
@@ -4964,20 +5043,20 @@ snapshots:
 
   assertion-error@2.0.1: {}
 
-  ast-kit@1.4.3:
-    dependencies:
-      '@babel/parser': 7.28.0
-      pathe: 2.0.3
-
   ast-kit@2.1.1:
     dependencies:
       '@babel/parser': 7.28.0
       pathe: 2.0.3
 
-  ast-walker-scope@0.6.2:
+  ast-kit@2.1.2:
     dependencies:
-      '@babel/parser': 7.28.0
-      ast-kit: 1.4.3
+      '@babel/parser': 7.28.3
+      pathe: 2.0.3
+
+  ast-walker-scope@0.8.2:
+    dependencies:
+      '@babel/parser': 7.28.3
+      ast-kit: 2.1.2
 
   autoprefixer@10.4.21(postcss@8.5.6):
     dependencies:
@@ -5854,10 +5933,6 @@ snapshots:
     dependencies:
       yallist: 3.1.1
 
-  magic-string-ast@0.7.1:
-    dependencies:
-      magic-string: 0.30.17
-
   magic-string-ast@1.0.0:
     dependencies:
       magic-string: 0.30.17
@@ -5871,8 +5946,6 @@ snapshots:
       '@babel/parser': 7.28.0
       '@babel/types': 7.28.2
       source-map-js: 1.2.1
-
-  make-synchronized@0.2.10: {}
 
   markdown-table@3.0.4: {}
 
@@ -6244,9 +6317,15 @@ snapshots:
 
   nanoid@3.3.11: {}
 
+  napi-postinstall@0.3.3: {}
+
   natural-compare@1.4.0: {}
 
   natural-orderby@5.0.0: {}
+
+  neverthrow@8.2.0:
+    optionalDependencies:
+      '@rollup/rollup-linux-x64-gnu': 4.46.2
 
   node-fetch-native@1.6.7: {}
 
@@ -6287,19 +6366,29 @@ snapshots:
 
   os-tmpdir@1.0.2: {}
 
-  oxc-resolver@4.2.0:
+  oxc-resolver@11.6.2:
+    dependencies:
+      napi-postinstall: 0.3.3
     optionalDependencies:
-      '@oxc-resolver/binding-darwin-arm64': 4.2.0
-      '@oxc-resolver/binding-darwin-x64': 4.2.0
-      '@oxc-resolver/binding-freebsd-x64': 4.2.0
-      '@oxc-resolver/binding-linux-arm-gnueabihf': 4.2.0
-      '@oxc-resolver/binding-linux-arm64-gnu': 4.2.0
-      '@oxc-resolver/binding-linux-arm64-musl': 4.2.0
-      '@oxc-resolver/binding-linux-x64-gnu': 4.2.0
-      '@oxc-resolver/binding-linux-x64-musl': 4.2.0
-      '@oxc-resolver/binding-wasm32-wasi': 4.2.0
-      '@oxc-resolver/binding-win32-arm64-msvc': 4.2.0
-      '@oxc-resolver/binding-win32-x64-msvc': 4.2.0
+      '@oxc-resolver/binding-android-arm-eabi': 11.6.2
+      '@oxc-resolver/binding-android-arm64': 11.6.2
+      '@oxc-resolver/binding-darwin-arm64': 11.6.2
+      '@oxc-resolver/binding-darwin-x64': 11.6.2
+      '@oxc-resolver/binding-freebsd-x64': 11.6.2
+      '@oxc-resolver/binding-linux-arm-gnueabihf': 11.6.2
+      '@oxc-resolver/binding-linux-arm-musleabihf': 11.6.2
+      '@oxc-resolver/binding-linux-arm64-gnu': 11.6.2
+      '@oxc-resolver/binding-linux-arm64-musl': 11.6.2
+      '@oxc-resolver/binding-linux-ppc64-gnu': 11.6.2
+      '@oxc-resolver/binding-linux-riscv64-gnu': 11.6.2
+      '@oxc-resolver/binding-linux-riscv64-musl': 11.6.2
+      '@oxc-resolver/binding-linux-s390x-gnu': 11.6.2
+      '@oxc-resolver/binding-linux-x64-gnu': 11.6.2
+      '@oxc-resolver/binding-linux-x64-musl': 11.6.2
+      '@oxc-resolver/binding-wasm32-wasi': 11.6.2
+      '@oxc-resolver/binding-win32-arm64-msvc': 11.6.2
+      '@oxc-resolver/binding-win32-ia32-msvc': 11.6.2
+      '@oxc-resolver/binding-win32-x64-msvc': 11.6.2
 
   p-limit@3.1.0:
     dependencies:
@@ -6756,11 +6845,11 @@ snapshots:
       picomatch: 4.0.3
       typescript: 5.9.2
 
-  ts-macro@0.1.35:
+  ts-macro@0.3.1:
     dependencies:
       muggle-string: 0.4.1
 
-  ts-macro@0.3.1:
+  ts-macro@0.3.4:
     dependencies:
       muggle-string: 0.4.1
 
@@ -6873,11 +6962,11 @@ snapshots:
       - postcss
       - supports-color
 
-  unplugin-combine@1.2.1(esbuild@0.25.8)(rollup@4.46.2)(unplugin@1.16.1)(vite@7.0.6(@types/node@24.2.0)(jiti@2.5.1)(tsx@4.20.3)(yaml@2.8.0)):
+  unplugin-combine@2.1.2(esbuild@0.25.8)(rollup@4.46.2)(unplugin@2.3.8)(vite@7.0.6(@types/node@24.2.0)(jiti@2.5.1)(tsx@4.20.3)(yaml@2.8.0)):
     optionalDependencies:
       esbuild: 0.25.8
       rollup: 4.46.2
-      unplugin: 1.16.1
+      unplugin: 2.3.8
       vite: 7.0.6(@types/node@24.2.0)(jiti@2.5.1)(tsx@4.20.3)(yaml@2.8.0)
 
   unplugin-utils@0.2.4:
@@ -6885,63 +6974,19 @@ snapshots:
       pathe: 2.0.3
       picomatch: 4.0.3
 
-  unplugin-vue-define-options@1.5.5(vue@3.5.18(typescript@5.9.2)):
+  unplugin-vue-define-options@3.0.0-beta.21(vue@3.5.18(typescript@5.9.2)):
     dependencies:
-      '@vue-macros/common': 1.16.1(vue@3.5.18(typescript@5.9.2))
-      ast-walker-scope: 0.6.2
-      unplugin: 1.16.1
+      '@vue-macros/common': 3.0.0-beta.21(vue@3.5.18(typescript@5.9.2))
+      ast-walker-scope: 0.8.2
+      unplugin: 2.3.8
     transitivePeerDependencies:
       - vue
 
-  unplugin-vue-macros@2.14.5(esbuild@0.25.8)(rollup@4.46.2)(typescript@5.9.2)(vite@7.0.6(@types/node@24.2.0)(jiti@2.5.1)(tsx@4.20.3)(yaml@2.8.0))(vue@3.5.18(typescript@5.9.2)):
+  unplugin@2.3.8:
     dependencies:
-      '@vue-macros/better-define': 1.11.4(vue@3.5.18(typescript@5.9.2))
-      '@vue-macros/boolean-prop': 0.5.5(vue@3.5.18(typescript@5.9.2))
-      '@vue-macros/chain-call': 0.4.5(vue@3.5.18(typescript@5.9.2))
-      '@vue-macros/common': 1.16.1(vue@3.5.18(typescript@5.9.2))
-      '@vue-macros/config': 0.6.1(vue@3.5.18(typescript@5.9.2))
-      '@vue-macros/define-emit': 0.5.4(vue@3.5.18(typescript@5.9.2))
-      '@vue-macros/define-models': 1.3.5(vue@3.5.18(typescript@5.9.2))
-      '@vue-macros/define-prop': 0.6.5(vue@3.5.18(typescript@5.9.2))
-      '@vue-macros/define-props': 4.0.6(@vue-macros/reactivity-transform@1.1.6(vue@3.5.18(typescript@5.9.2)))(vue@3.5.18(typescript@5.9.2))
-      '@vue-macros/define-props-refs': 1.3.5(vue@3.5.18(typescript@5.9.2))
-      '@vue-macros/define-render': 1.6.6(vue@3.5.18(typescript@5.9.2))
-      '@vue-macros/define-slots': 1.2.6(vue@3.5.18(typescript@5.9.2))
-      '@vue-macros/define-stylex': 0.2.3(vue@3.5.18(typescript@5.9.2))
-      '@vue-macros/devtools': 0.4.1(typescript@5.9.2)(vite@7.0.6(@types/node@24.2.0)(jiti@2.5.1)(tsx@4.20.3)(yaml@2.8.0))
-      '@vue-macros/export-expose': 0.3.5(vue@3.5.18(typescript@5.9.2))
-      '@vue-macros/export-props': 0.6.5(vue@3.5.18(typescript@5.9.2))
-      '@vue-macros/export-render': 0.3.5(vue@3.5.18(typescript@5.9.2))
-      '@vue-macros/hoist-static': 1.7.0(vue@3.5.18(typescript@5.9.2))
-      '@vue-macros/jsx-directive': 0.10.6(typescript@5.9.2)
-      '@vue-macros/named-template': 0.5.5(vue@3.5.18(typescript@5.9.2))
-      '@vue-macros/reactivity-transform': 1.1.6(vue@3.5.18(typescript@5.9.2))
-      '@vue-macros/script-lang': 0.2.5(vue@3.5.18(typescript@5.9.2))
-      '@vue-macros/setup-block': 0.4.5(vue@3.5.18(typescript@5.9.2))
-      '@vue-macros/setup-component': 0.18.5(vue@3.5.18(typescript@5.9.2))
-      '@vue-macros/setup-sfc': 0.18.5(vue@3.5.18(typescript@5.9.2))
-      '@vue-macros/short-bind': 1.1.5(vue@3.5.18(typescript@5.9.2))
-      '@vue-macros/short-emits': 1.6.5(vue@3.5.18(typescript@5.9.2))
-      '@vue-macros/short-vmodel': 1.5.5(vue@3.5.18(typescript@5.9.2))
-      '@vue-macros/volar': 0.30.15(typescript@5.9.2)(vue@3.5.18(typescript@5.9.2))
-      unplugin: 1.16.1
-      unplugin-combine: 1.2.1(esbuild@0.25.8)(rollup@4.46.2)(unplugin@1.16.1)(vite@7.0.6(@types/node@24.2.0)(jiti@2.5.1)(tsx@4.20.3)(yaml@2.8.0))
-      unplugin-vue-define-options: 1.5.5(vue@3.5.18(typescript@5.9.2))
-      vue: 3.5.18(typescript@5.9.2)
-    transitivePeerDependencies:
-      - '@rspack/core'
-      - '@vueuse/core'
-      - esbuild
-      - rolldown
-      - rollup
-      - typescript
-      - vite
-      - vue-tsc
-      - webpack
-
-  unplugin@1.16.1:
-    dependencies:
+      '@jridgewell/remapping': 2.3.5
       acorn: 8.15.0
+      picomatch: 4.0.3
       webpack-virtual-modules: 0.6.2
 
   untyped@2.0.0:
@@ -7055,6 +7100,52 @@ snapshots:
       - supports-color
 
   vue-flow-layout@0.2.0: {}
+
+  vue-macros@3.0.0-beta.21(esbuild@0.25.8)(rollup@4.46.2)(typescript@5.9.2)(vite@7.0.6(@types/node@24.2.0)(jiti@2.5.1)(tsx@4.20.3)(yaml@2.8.0))(vue@3.5.18(typescript@5.9.2)):
+    dependencies:
+      '@vue-macros/better-define': 3.0.0-beta.21(vue@3.5.18(typescript@5.9.2))
+      '@vue-macros/boolean-prop': 3.0.0-beta.21(vue@3.5.18(typescript@5.9.2))
+      '@vue-macros/chain-call': 3.0.0-beta.21(vue@3.5.18(typescript@5.9.2))
+      '@vue-macros/common': 3.0.0-beta.21(vue@3.5.18(typescript@5.9.2))
+      '@vue-macros/config': 3.0.0-beta.21(vue@3.5.18(typescript@5.9.2))
+      '@vue-macros/define-emit': 3.0.0-beta.21(vue@3.5.18(typescript@5.9.2))
+      '@vue-macros/define-models': 3.0.0-beta.21(vue@3.5.18(typescript@5.9.2))
+      '@vue-macros/define-prop': 3.0.0-beta.21(vue@3.5.18(typescript@5.9.2))
+      '@vue-macros/define-props': 3.0.0-beta.21(@vue-macros/reactivity-transform@3.0.0-beta.21(vue@3.5.18(typescript@5.9.2)))(vue@3.5.18(typescript@5.9.2))
+      '@vue-macros/define-props-refs': 3.0.0-beta.21(vue@3.5.18(typescript@5.9.2))
+      '@vue-macros/define-render': 3.0.0-beta.21(vue@3.5.18(typescript@5.9.2))
+      '@vue-macros/define-slots': 3.0.0-beta.21(vue@3.5.18(typescript@5.9.2))
+      '@vue-macros/define-stylex': 3.0.0-beta.21(vue@3.5.18(typescript@5.9.2))
+      '@vue-macros/devtools': 3.0.0-beta.21(typescript@5.9.2)(vite@7.0.6(@types/node@24.2.0)(jiti@2.5.1)(tsx@4.20.3)(yaml@2.8.0))
+      '@vue-macros/export-expose': 3.0.0-beta.21(vue@3.5.18(typescript@5.9.2))
+      '@vue-macros/export-props': 3.0.0-beta.21(vue@3.5.18(typescript@5.9.2))
+      '@vue-macros/export-render': 3.0.0-beta.21(vue@3.5.18(typescript@5.9.2))
+      '@vue-macros/hoist-static': 3.0.0-beta.21(vue@3.5.18(typescript@5.9.2))
+      '@vue-macros/jsx-directive': 3.0.0-beta.21(typescript@5.9.2)
+      '@vue-macros/named-template': 3.0.0-beta.21(vue@3.5.18(typescript@5.9.2))
+      '@vue-macros/reactivity-transform': 3.0.0-beta.21(vue@3.5.18(typescript@5.9.2))
+      '@vue-macros/script-lang': 3.0.0-beta.21(vue@3.5.18(typescript@5.9.2))
+      '@vue-macros/setup-block': 3.0.0-beta.21(vue@3.5.18(typescript@5.9.2))
+      '@vue-macros/setup-component': 3.0.0-beta.21(vue@3.5.18(typescript@5.9.2))
+      '@vue-macros/setup-sfc': 3.0.0-beta.21(vue@3.5.18(typescript@5.9.2))
+      '@vue-macros/short-bind': 3.0.0-beta.21(vue@3.5.18(typescript@5.9.2))
+      '@vue-macros/short-emits': 3.0.0-beta.21(vue@3.5.18(typescript@5.9.2))
+      '@vue-macros/short-vmodel': 3.0.0-beta.21(vue@3.5.18(typescript@5.9.2))
+      '@vue-macros/volar': 3.0.0-beta.21(typescript@5.9.2)(vue@3.5.18(typescript@5.9.2))
+      unplugin: 2.3.8
+      unplugin-combine: 2.1.2(esbuild@0.25.8)(rollup@4.46.2)(unplugin@2.3.8)(vite@7.0.6(@types/node@24.2.0)(jiti@2.5.1)(tsx@4.20.3)(yaml@2.8.0))
+      unplugin-vue-define-options: 3.0.0-beta.21(vue@3.5.18(typescript@5.9.2))
+      vue: 3.5.18(typescript@5.9.2)
+    transitivePeerDependencies:
+      - '@rspack/core'
+      - '@vueuse/core'
+      - esbuild
+      - rolldown
+      - rollup
+      - typescript
+      - vite
+      - vue-tsc
+      - webpack
 
   vue@3.5.18(typescript@5.9.2):
     dependencies:

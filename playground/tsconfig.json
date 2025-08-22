@@ -10,7 +10,7 @@
     "resolveJsonModule": true,
     "types": [
       "node",
-      "unplugin-vue-macros/macros-global"
+      "vue-macros/macros-global"
     ],
     "strict": true,
     "noUnusedLocals": true,

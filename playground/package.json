@@ -15,7 +15,7 @@
     "@vue-macros/volar": "^3.0.0-beta.20",
     "tsx": "^4.20.3",
     "typescript": "^5.9.2",
-    "unplugin-vue-macros": "^2.14.5",
+    "vue-macros": "^3.0.0-beta.21",
     "vite": "^7.0.6"
   }
 }

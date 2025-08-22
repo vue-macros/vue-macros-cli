@@ -28,7 +28,7 @@ export async function rewritePackage(macros: VueMacros, target: string) {
   const deps = [
     '@vue-macros/volar',
     '@vitejs/plugin-vue',
-    'unplugin-vue-macros',
+    'vue-macros',
     'typescript',
   ]
   if (macros.jsxDirective || macros.setupSFC)
