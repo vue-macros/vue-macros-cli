@@ -26,7 +26,6 @@ export async function rewritePackage(macros: VueMacros, target: string) {
   }
 
   const deps = [
-    '@vue-macros/volar',
     '@vitejs/plugin-vue',
     'vue-macros',
     'typescript',

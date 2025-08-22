@@ -2,7 +2,7 @@
   "name": "@vue-macros/cli",
   "type": "module",
   "version": "1.2.3",
-  "packageManager": "pnpm@10.14.0",
+  "packageManager": "pnpm@10.15.0",
   "description": "Rewriting at vue macros powered by ast-grep.",
   "author": "zhiyuanzmj <zhiyuanzmj@gmail.com>",
   "license": "MIT",
@@ -43,23 +43,22 @@
   },
   "dependencies": {
     "@antfu/ni": "^25.0.0",
-    "@ast-grep/cli": "^0.39.2",
-    "@inquirer/prompts": "^7.8.0",
+    "@ast-grep/cli": "^0.39.4",
+    "@inquirer/prompts": "^7.8.3",
     "magicast": "^0.3.5",
-    "pkg-types": "^2.2.0",
-    "zx": "^8.7.2"
+    "pkg-types": "^2.3.0",
+    "zx": "^8.8.1"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^5.1.0",
-    "@types/node": "^24.2.0",
+    "@antfu/eslint-config": "^5.2.1",
+    "@types/node": "^24.3.0",
     "@vitejs/plugin-vue": "^6.0.1",
     "@vitejs/plugin-vue-jsx": "^5.0.1",
-    "@vue-macros/volar": "^3.0.0-beta.20",
-    "@vue/babel-helper-vue-transform-on": "1.4.0",
-    "bumpp": "^10.2.2",
+    "@vue/babel-helper-vue-transform-on": "1.5.0",
+    "bumpp": "^10.2.3",
     "typescript": "^5.9.2",
-    "unbuild": "^3.6.0",
-    "unocss": "^66.4.1",
+    "unbuild": "^3.6.1",
+    "unocss": "^66.4.2",
     "vitest": "^3.2.4",
     "vue-macros": "^3.0.0-beta.21"
   }

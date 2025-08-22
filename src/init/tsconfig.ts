@@ -37,14 +37,14 @@ export async function rewriteTsConfig(selectedMacros: VueMacros, target: string)
 
     // prevent exportProps and exportExpose co-usage
     if (['export-props', 'export-expose'].includes(macro)) {
-      const exportPropsIndex = plugins.indexOf(`@vue-macros/volar/export-props`)
+      const exportPropsIndex = plugins.indexOf(`vue-macros/volar/export-props`)
       exportPropsIndex > -1 && plugins.splice(exportPropsIndex, 1)
-      const exportExposeIndex = plugins.indexOf(`@vue-macros/volar/export-expose`)
+      const exportExposeIndex = plugins.indexOf(`vue-macros/volar/export-expose`)
       exportExposeIndex > -1 && plugins.splice(exportExposeIndex, 1)
     }
 
-    if (!plugins.includes(`@vue-macros/volar/${macro}`))
-      plugins.push(`@vue-macros/volar/${macro}`)
+    if (!plugins.includes(`vue-macros/volar/${macro}`))
+      plugins.push(`vue-macros/volar/${macro}`)
   }
 
   tsconfig.compilerOptions ??= {}

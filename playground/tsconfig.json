@@ -22,9 +22,9 @@
   ],
   "vueCompilerOptions": {
     "plugins": [
-      "@vue-macros/volar/define-render",
-      "@vue-macros/volar/export-render",
-      "@vue-macros/volar/jsx-directive"
+      "vue-macros/volar/define-render",
+      "vue-macros/volar/export-render",
+      "vue-macros/volar/jsx-directive"
     ]
   }
 }
